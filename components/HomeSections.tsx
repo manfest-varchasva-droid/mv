@@ -354,7 +354,7 @@ export function Highlights() {
 
 export function PartnersPreview() {
   return (
-    <section className="section section-light">
+    <section className="section section-dark">
       <div className="page-shell">
         <div className="title-row">
           <SectionTitle
@@ -363,7 +363,7 @@ export function PartnersPreview() {
             accent="Partners"
             description="Organisations that supported Manfest-Varchasva in the past edition."
           />
-          <Link href="/partners" className="text-link">
+          <Link href="/partners" className="text-link light-link">
             View all partners →
           </Link>
         </div>
