@@ -110,12 +110,13 @@ export default function AboutPage() {
 
           <div className={styles.teamPhoto}>
             <Image
-              src="/api/core-team-photo"
+              src="/api/core-team-photo?v=3"
               alt="Manfest-Varchasva Core Team at IIM Lucknow"
               width={800}
               height={533}
-              sizes="(max-width: 820px) calc(100vw - 28px), 1180px"
+              sizes="(max-width: 820px) calc(100vw - 28px), 800px"
               unoptimized
+              priority
             />
           </div>
         </div>
