@@ -1,14 +1,12 @@
 import Image from "next/image";
-import { SectionTitle } from "@/components/SectionTitle";
 import { partnerLogos } from "@/lib/content";
 import styles from "./partners.module.css";
 
 export const metadata = { title: "Our Partners" };
 
-const partnerTypes = [
-  "Title Partner",
-  "Co-Title Partner",
-  "Powered By Partner",
+const secondaryPartners = ["Co-Title Partner", "Powered By Partner"];
+
+const featuredPartners = [
   "Lucknow City Run Title Partner",
   "Ticketing Partner",
   "Concerts Partner",
@@ -19,6 +17,9 @@ const partnerTypes = [
   "Jewellery Partner",
   "Vegan Beauty Partner",
   "Associate Partners",
+];
+
+const supportingPartners = [
   "Desi Snacks Partner",
   "Creator Tech Partner",
   "Logistics Partner",
@@ -47,27 +48,47 @@ export default function PartnersPage() {
       <section className="subhero">
         <div className="page-shell subhero-content">
           <div className="eyebrow">OUR PARTNERS</div>
-          <h1>Partnerships that make Manfest-Varchasva possible.</h1>
+          <h1>Partners who power Manfest-Varchasva.</h1>
           <p>
             Manfest-Varchasva works with companies, governments, nonprofits and other organizations to bring to fruition Asia&apos;s largest B-School fest.
           </p>
         </div>
       </section>
 
-      <section className={`section section-dark ${styles.partnerTypesSection}`}>
+      <section className={`section section-dark ${styles.hierarchySection}`}>
         <div className="page-shell">
-          <SectionTitle
-            eyebrow="OUR PARTNERS - 2025-26"
-            title="An ecosystem built"
-            accent="across categories."
-            description="The partnership categories from the 2025-26 Manfest-Varchasva partner page."
-          />
+          <div className={styles.hierarchyIntro}>
+            <span>OUR PARTNERS - 2025-26</span>
+            <h2>Our partner ecosystem</h2>
+          </div>
 
-          <div className={styles.partnerTypeGrid}>
-            {partnerTypes.map((type, index) => (
-              <div className={styles.partnerTypeCard} key={type}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{type}</strong>
+          <div className={styles.titleTier}>
+            <span className={styles.tierLabel}>TITLE PARTNER</span>
+            <div className={styles.titlePartnerSlot}>
+              <strong>Title Partner</strong>
+            </div>
+          </div>
+
+          <div className={styles.secondaryTier}>
+            {secondaryPartners.map((partner) => (
+              <div className={styles.secondaryPartnerSlot} key={partner}>
+                <span>{partner}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.featuredTier}>
+            {featuredPartners.map((partner) => (
+              <div className={styles.featuredPartnerSlot} key={partner}>
+                <span>{partner}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.supportingTier}>
+            {supportingPartners.map((partner) => (
+              <div className={styles.supportingPartnerSlot} key={partner}>
+                <span>{partner}</span>
               </div>
             ))}
           </div>
@@ -76,12 +97,12 @@ export default function PartnersPage() {
 
       <section className={`section section-light ${styles.logoSection}`}>
         <div className="page-shell">
-          <SectionTitle
-            eyebrow="PARTNER WALL"
-            title="Our"
-            accent="Partners"
-            description="Partner logos currently available on the Manfest-Varchasva website."
-          />
+          <div className={styles.logoIntro}>
+            <span>PARTNER WALL</span>
+            <h2>Our Partners</h2>
+            <p>Partner logos currently available on the Manfest-Varchasva website.</p>
+          </div>
+
           <div className={`logo-grid logo-grid-large ${styles.logoGrid}`}>
             {partnerLogos.map((partner) => (
               <div className={`logo-card ${styles.logoCard}`} key={partner.name}>
