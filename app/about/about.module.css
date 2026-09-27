@@ -4,7 +4,8 @@
 }
 
 .teamPhoto {
-  margin-top: 10px;
+  width: min(100%, 800px);
+  margin: 18px auto 0;
   overflow: hidden;
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -16,6 +17,10 @@
   display: block;
   width: 100%;
   height: auto;
+  image-rendering: auto;
+  filter: contrast(1.035) saturate(1.015);
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
 }
 
 @media (max-width: 820px) {
@@ -25,6 +30,7 @@
   }
 
   .teamPhoto {
+    width: 100%;
     border-radius: 20px;
   }
 }
