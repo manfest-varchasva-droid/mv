@@ -6,6 +6,34 @@ import styles from "./about.module.css";
 
 export const metadata = { title: "About us" };
 
+const history = [
+  {
+    year: "1988",
+    title: "Manfest begins",
+    copy: "Manfest started as IIM Lucknow's management festival, bringing together leadership competitions, paper presentations, debates and industry-student interactions.",
+  },
+  {
+    year: "2007–2009",
+    title: "Scale and recognition",
+    copy: "Manfest received ISO 9001:2000 certification for event management in 2007. By 2009, it had grown into one of Asia's largest B-school festivals by prize money and participation.",
+  },
+  {
+    year: "2009",
+    title: "Varchasva is born",
+    copy: "Varchasva began as IIM Lucknow's cultural and sports festival, spanning dance, fashion, theatre, music, literature and sport.",
+  },
+  {
+    year: "2014",
+    title: "Two festivals become one",
+    copy: "Manfest and Varchasva merged to create Manfest-Varchasva, combining the intensity of business competition with culture, sport and entertainment in one campus-wide festival.",
+  },
+  {
+    year: "Today",
+    title: "Built bigger every year",
+    copy: "Successive student teams continue to build on that legacy, growing the scale, energy and reach of Manfest-Varchasva with every edition.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -39,9 +67,9 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="page-shell stats-grid compact-stats">
+        <div className={`page-shell ${styles.aboutStats}`}>
           {stats.map((item) => (
-            <div className="stat-card" key={item.label}>
+            <div className={styles.aboutStat} key={item.label}>
               <strong>{item.value}</strong>
               <span>{item.label}</span>
             </div>
@@ -49,54 +77,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section section-dark">
-        <div className="page-shell split-copy">
+      <section className={`section section-dark ${styles.historySection}`}>
+        <div className="page-shell">
           <SectionTitle
             eyebrow="HOW IT ALL STARTED"
             title="From Manfest to"
             accent="Manfest-Varchasva."
           />
 
-          <div className="info-stack">
-            <div className="info-card">
-              <span>1988</span>
-              <strong>Manfest begins</strong>
-              <p>
-                Manfest started as IIM Lucknow&apos;s management festival, bringing together leadership competitions, paper presentations, debates and industry-student interactions.
-              </p>
-            </div>
-
-            <div className="info-card">
-              <span>2007–2009</span>
-              <strong>Scale and recognition</strong>
-              <p>
-                Manfest received ISO 9001:2000 certification for event management in 2007. By 2009, it had grown into one of Asia&apos;s largest B-school festivals by prize money and participation.
-              </p>
-            </div>
-
-            <div className="info-card">
-              <span>2009</span>
-              <strong>Varchasva is born</strong>
-              <p>
-                Varchasva began as IIM Lucknow&apos;s cultural and sports festival, spanning dance, fashion, theatre, music, literature and sport.
-              </p>
-            </div>
-
-            <div className="info-card">
-              <span>2014</span>
-              <strong>Two festivals become one</strong>
-              <p>
-                Manfest and Varchasva merged to create Manfest-Varchasva, combining the intensity of business competition with culture, sport and entertainment in one campus-wide festival.
-              </p>
-            </div>
-
-            <div className="info-card">
-              <span>Today</span>
-              <strong>Built bigger every year</strong>
-              <p>
-                Successive student teams continue to build on that legacy, growing the scale, energy and reach of Manfest-Varchasva with every edition.
-              </p>
-            </div>
+          <div className={styles.historyGrid}>
+            {history.map((item) => (
+              <article className={styles.historyItem} key={`${item.year}-${item.title}`}>
+                <div className={styles.historyMarker} aria-hidden="true" />
+                <span>{item.year}</span>
+                <strong>{item.title}</strong>
+                <p>{item.copy}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
