@@ -1,8 +1,8 @@
 .global-partners {
   padding: 72px 0 58px;
-  background: #f5f3f8;
-  color: #11121a;
-  border-top: 1px solid #e6e2ea;
+  background: var(--bg);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
 }
 
 .global-partners-heading {
@@ -22,6 +22,7 @@
   font-size: clamp(34px, 4vw, 56px);
   line-height: 0.98;
   letter-spacing: -2px;
+  color: var(--ink);
 }
 
 .global-partners-heading h2 span {
@@ -34,7 +35,7 @@
 .global-partners-heading p {
   max-width: 360px;
   margin: 0;
-  color: #686b78;
+  color: var(--muted);
   line-height: 1.55;
   text-align: right;
 }
@@ -82,9 +83,10 @@
   display: grid;
   place-items: center;
   padding: 20px;
-  border: 1px solid #e2dfe7;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 18px;
   background: #fff;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
 }
 
 .global-partner-logo img {
@@ -111,7 +113,7 @@
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: #c9c6d0;
+  background: rgba(255, 255, 255, 0.24);
   cursor: pointer;
   transition: width 0.2s ease, background 0.2s ease;
 }
