@@ -37,7 +37,16 @@ const history = [
 export default function AboutPage() {
   return (
     <>
-      <section className="subhero subhero-about">
+      <section
+        className="subhero subhero-about"
+        style={{
+          backgroundImage:
+            'linear-gradient(90deg, rgba(6, 7, 15, 0.88) 0%, rgba(6, 7, 15, 0.62) 48%, rgba(6, 7, 15, 0.34) 100%), url("https://www.iiml-manfestvarchasva.com/images/aboutus/iimlucknow.jpg")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="page-shell subhero-content">
           <div className="eyebrow">ABOUT US</div>
           <h1>Where business, culture and sport meet.</h1>
