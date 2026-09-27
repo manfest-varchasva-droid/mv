@@ -101,16 +101,14 @@ export function PartnerCarousel() {
     <section className="global-partners" aria-label="Our partners">
       <div className="page-shell">
         <div className="global-partners-heading">
-          <div>
+          <div className="global-partners-copy">
             <div className="eyebrow">BACKED BY</div>
             <h2>Our <span>Partners</span></h2>
-          </div>
-          <div className="global-partners-meta">
             <p>Organisations that supported Manfest-Varchasva in the past edition.</p>
-            <Link href="/partners" className="global-partners-link">
-              View all partners →
-            </Link>
           </div>
+          <Link href="/partners" className="global-partners-link">
+            View all partners →
+          </Link>
         </div>
 
         <div
