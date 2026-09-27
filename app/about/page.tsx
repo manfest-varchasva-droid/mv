@@ -40,10 +40,11 @@ export default function AboutPage() {
       <section
         className="subhero subhero-about"
         style={{
+          minHeight: "100svh",
           backgroundImage:
             'linear-gradient(90deg, rgba(6, 7, 15, 0.88) 0%, rgba(6, 7, 15, 0.62) 48%, rgba(6, 7, 15, 0.34) 100%), url("https://www.iiml-manfestvarchasva.com/images/aboutus/iimlucknow.jpg")',
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "left center",
           backgroundRepeat: "no-repeat",
         }}
       >
