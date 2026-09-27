@@ -104,7 +104,7 @@ export function PartnerCarousel() {
             <div className="eyebrow">BACKED BY</div>
             <h2>Our <span>Partners</span></h2>
           </div>
-          <p>Organisations that help power Manfest-Varchasva.</p>
+          <p>Organisations that supported Manfest-Varchasva in the past edition.</p>
         </div>
 
         <div
