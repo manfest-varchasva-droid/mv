@@ -32,12 +32,33 @@
   color: transparent;
 }
 
+.global-partners-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
 .global-partners-heading p {
   max-width: 360px;
   margin: 0;
   color: var(--muted);
   line-height: 1.55;
   text-align: right;
+}
+
+.global-partners-link {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.global-partners-link:hover {
+  color: #d88aff;
+  transform: translateX(3px);
 }
 
 .global-partners-viewport {
@@ -132,8 +153,12 @@
     display: block;
   }
 
-  .global-partners-heading p {
+  .global-partners-meta {
+    align-items: flex-start;
     margin-top: 12px;
+  }
+
+  .global-partners-heading p {
     text-align: left;
   }
 
