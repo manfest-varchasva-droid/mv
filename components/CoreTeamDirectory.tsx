@@ -33,8 +33,9 @@ export function CoreTeamDirectory() {
       <div className={styles.directoryIntro}>
         <div>
           <span className={styles.directoryEyebrow}>CORE TEAM DIRECTORY</span>
+          <h3>Senior Coordinators</h3>
         </div>
-        <p>All members listed below are Senior Coordinators. Hover over a name, or tap on mobile, to view contact details.</p>
+        <p>Hover over a name, or tap on mobile, to view contact details.</p>
       </div>
 
       <div className={styles.directoryLayout}>
