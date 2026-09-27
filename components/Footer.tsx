@@ -22,7 +22,7 @@ export function Footer() {
         <div>
           <h3>Explore</h3>
           <Link href="/events">Events</Link>
-          <Link href="/partners">Partners</Link>
+          <Link href="/partners">Our Partners</Link>
           <Link href="/gallery">Gallery</Link>
         </div>
 
