@@ -1,3 +1,10 @@
+.stats-section {
+  background:
+    radial-gradient(circle at 12% 58%, rgba(83, 94, 255, 0.14), transparent 32%),
+    radial-gradient(circle at 84% 60%, rgba(244, 82, 186, 0.13), transparent 33%),
+    linear-gradient(180deg, #070810 0%, #0b0c18 28%, #080911 100%) !important;
+}
+
 .stats-section .section-title-center {
   margin-left: 0;
   margin-right: 0;
