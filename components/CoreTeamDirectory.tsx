@@ -51,7 +51,6 @@ export function CoreTeamDirectory() {
               aria-pressed={index === activeIndex}
             >
               <span>{member.name}</span>
-              <small>{member.roll}</small>
             </button>
           ))}
         </div>
@@ -60,7 +59,6 @@ export function CoreTeamDirectory() {
           <div className={styles.contactAccent} aria-hidden="true" />
           <span className={styles.contactKicker}>CONTACT</span>
           <h4>{active.name}</h4>
-          <p className={styles.contactRoll}>{active.roll}</p>
 
           <div className={styles.contactLinks}>
             <a href={`tel:+91${active.phone}`}>
