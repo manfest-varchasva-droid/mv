@@ -97,12 +97,6 @@ export default function PartnersPage() {
 
       <section className={`section section-light ${styles.logoSection}`}>
         <div className="page-shell">
-          <div className={styles.logoIntro}>
-            <span>PARTNER WALL</span>
-            <h2>Our Partners</h2>
-            <p>Partner logos currently available on the Manfest-Varchasva website.</p>
-          </div>
-
           <div className={`logo-grid logo-grid-large ${styles.logoGrid}`}>
             {partnerLogos.map((partner) => (
               <div className={`logo-card ${styles.logoCard}`} key={partner.name}>
