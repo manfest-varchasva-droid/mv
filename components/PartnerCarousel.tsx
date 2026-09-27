@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { partnerLogos } from "@/lib/content";
@@ -104,7 +105,12 @@ export function PartnerCarousel() {
             <div className="eyebrow">BACKED BY</div>
             <h2>Our <span>Partners</span></h2>
           </div>
-          <p>Organisations that supported Manfest-Varchasva in the past edition.</p>
+          <div className="global-partners-meta">
+            <p>Organisations that supported Manfest-Varchasva in the past edition.</p>
+            <Link href="/partners" className="global-partners-link">
+              View all partners →
+            </Link>
+          </div>
         </div>
 
         <div
