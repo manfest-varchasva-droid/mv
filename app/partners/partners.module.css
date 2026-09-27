@@ -1,48 +1,168 @@
-.partnerTypesSection {
-  padding-top: 88px;
-  padding-bottom: 92px;
+.hierarchySection {
+  padding-top: 82px;
+  padding-bottom: 94px;
 }
 
-.partnerTypeGrid {
+.hierarchyIntro {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+.hierarchyIntro > span,
+.logoIntro > span,
+.tierLabel {
+  display: block;
+  color: #cf73ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.8px;
+}
+
+.hierarchyIntro h2,
+.logoIntro h2 {
+  margin: 10px 0 0;
+  color: #f8f8fb;
+  font-size: clamp(34px, 5vw, 62px);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.titleTier {
+  text-align: center;
+  padding-bottom: 42px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.titleTier .tierLabel {
+  margin-bottom: 16px;
+}
+
+.titlePartnerSlot {
+  width: min(100%, 620px);
+  min-height: 190px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(199, 124, 255, 0.28);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top, rgba(199, 124, 255, 0.12), transparent 58%),
+    rgba(255, 255, 255, 0.022);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+.titlePartnerSlot strong {
+  color: #ffffff;
+  font-size: clamp(24px, 3vw, 38px);
+  letter-spacing: -0.8px;
+}
+
+.secondaryTier {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 42px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.secondaryPartnerSlot {
+  min-height: 138px;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.secondaryPartnerSlot span {
+  color: #f4f4f9;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.featuredTier {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  padding: 42px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.featuredPartnerSlot {
+  min-height: 100px;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.featuredPartnerSlot span {
+  color: rgba(247, 247, 251, 0.88);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.supportingTier {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 34px;
+  gap: 10px;
+  padding-top: 38px;
 }
 
-.partnerTypeCard {
-  min-height: 92px;
-  padding: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.025);
+.supportingPartnerSlot {
+  min-height: 72px;
+  display: grid;
+  place-items: center;
+  padding: 13px 14px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.supportingPartnerSlot span {
+  color: rgba(229, 232, 244, 0.62);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.secondaryPartnerSlot,
+.featuredPartnerSlot,
+.supportingPartnerSlot,
+.titlePartnerSlot {
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
-.partnerTypeCard:hover {
+.secondaryPartnerSlot:hover,
+.featuredPartnerSlot:hover,
+.titlePartnerSlot:hover {
   transform: translateY(-3px);
   border-color: rgba(199, 124, 255, 0.34);
-  background: rgba(199, 124, 255, 0.045);
-}
-
-.partnerTypeCard span {
-  display: block;
-  margin-bottom: 16px;
-  color: rgba(206, 121, 255, 0.58);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 1.8px;
-}
-
-.partnerTypeCard strong {
-  display: block;
-  color: #f4f4f9;
-  font-size: 14px;
-  line-height: 1.35;
+  background-color: rgba(199, 124, 255, 0.035);
 }
 
 .logoSection {
   padding-top: 88px;
+}
+
+.logoIntro {
+  max-width: 680px;
+}
+
+.logoIntro h2 {
+  color: #11131a;
+}
+
+.logoIntro p {
+  margin: 14px 0 0;
+  color: rgba(17, 19, 26, 0.58);
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .logoGrid {
@@ -58,43 +178,51 @@
   box-shadow: 0 18px 40px rgba(10, 11, 20, 0.08);
 }
 
-@media (max-width: 1040px) {
-  .partnerTypeGrid {
+@media (max-width: 980px) {
+  .featuredTier {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .supportingTier {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 760px) {
-  .partnerTypesSection,
+@media (max-width: 720px) {
+  .hierarchySection,
   .logoSection {
-    padding-top: 70px;
+    padding-top: 68px;
     padding-bottom: 72px;
   }
 
-  .partnerTypeGrid {
+  .secondaryTier,
+  .featuredTier {
+    grid-template-columns: 1fr;
+  }
+
+  .supportingTier {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .partnerTypeCard {
-    min-height: 84px;
-    padding: 15px;
+  .titlePartnerSlot {
+    min-height: 150px;
+  }
+
+  .secondaryPartnerSlot {
+    min-height: 110px;
+  }
+
+  .featuredPartnerSlot {
+    min-height: 82px;
   }
 }
 
 @media (max-width: 480px) {
-  .partnerTypeGrid {
+  .supportingTier {
     grid-template-columns: 1fr;
   }
 
-  .partnerTypeCard {
-    min-height: 0;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .partnerTypeCard span {
-    margin: 0;
-    flex: 0 0 auto;
+  .supportingPartnerSlot {
+    min-height: 56px;
   }
 }
