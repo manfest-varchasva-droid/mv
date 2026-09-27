@@ -43,17 +43,18 @@ const supportingPartners = [
 export default function PartnersPage() {
   return (
     <>
-      <section
-        className="subhero"
-        style={{
-          minHeight: "100svh",
-          backgroundImage:
-            'linear-gradient(90deg, rgba(6, 7, 15, 0.56) 0%, rgba(6, 7, 15, 0.22) 46%, rgba(6, 7, 15, 0.05) 100%), linear-gradient(180deg, rgba(6, 7, 15, 0.04) 0%, rgba(6, 7, 15, 0.28) 100%), url("/api/partners-hero?v=2")',
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
+      <section className={`subhero ${styles.partnersHero}`}>
+        <img
+          className={styles.partnersHeroImage}
+          src="/api/partners-hero?v=3"
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+        <div className={styles.partnersHeroOverlay} aria-hidden="true" />
+
         <div className="page-shell subhero-content">
           <div className="eyebrow">OUR PARTNERS</div>
           <h1>Partners who power Manfest-Varchasva.</h1>
