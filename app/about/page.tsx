@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CoreTeamDirectory } from "@/components/CoreTeamDirectory";
 import { SectionTitle } from "@/components/SectionTitle";
 import { stats } from "@/lib/content";
 import styles from "./about.module.css";
@@ -119,6 +120,8 @@ export default function AboutPage() {
               priority
             />
           </div>
+
+          <CoreTeamDirectory />
         </div>
       </section>
     </>
