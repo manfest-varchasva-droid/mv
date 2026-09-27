@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { partnerLogos } from "@/lib/content";
 import styles from "./partners.module.css";
 
 export const metadata = { title: "Our Partners" };
@@ -89,18 +87,6 @@ export default function PartnersPage() {
             {supportingPartners.map((partner) => (
               <div className={styles.supportingPartnerSlot} key={partner}>
                 <span>{partner}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={`section section-light ${styles.logoSection}`}>
-        <div className="page-shell">
-          <div className={`logo-grid logo-grid-large ${styles.logoGrid}`}>
-            {partnerLogos.map((partner) => (
-              <div className={`logo-card ${styles.logoCard}`} key={partner.name}>
-                <Image src={partner.image} alt={partner.name} width={210} height={110} />
               </div>
             ))}
           </div>
