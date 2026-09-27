@@ -1,3 +1,36 @@
+.partnersHero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #080a12;
+}
+
+.partnersHeroImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.partnersHeroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(6, 7, 15, 0.54) 0%, rgba(6, 7, 15, 0.18) 46%, rgba(6, 7, 15, 0.03) 100%),
+    linear-gradient(180deg, rgba(6, 7, 15, 0.03) 0%, rgba(6, 7, 15, 0.30) 100%);
+}
+
+.partnersHero :global(.subhero-content) {
+  position: relative;
+  z-index: 2;
+}
+
 .hierarchySection {
   padding-top: 82px;
   padding-bottom: 94px;
@@ -189,6 +222,11 @@
 }
 
 @media (max-width: 720px) {
+  .partnersHeroImage {
+    object-fit: contain;
+    object-position: center center;
+  }
+
   .hierarchySection,
   .logoSection {
     padding-top: 68px;
