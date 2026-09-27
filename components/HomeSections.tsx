@@ -361,7 +361,7 @@ export function PartnersPreview() {
             eyebrow="BACKED BY"
             title="Our"
             accent="Partners"
-            description="Organisations that have supported Manfest-Varchasva across editions."
+            description="Organisations that supported Manfest-Varchasva in the past edition."
           />
           <Link href="/partners" className="text-link">
             View all partners →
