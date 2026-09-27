@@ -1,6 +1,16 @@
+import hero00 from "../api/partners-hero/chunks/chunk00";
+import hero01 from "../api/partners-hero/chunks/chunk01";
+import hero02 from "../api/partners-hero/chunks/chunk02";
+import hero03 from "../api/partners-hero/chunks/chunk03";
+import hero04 from "../api/partners-hero/chunks/chunk04";
+import hero05 from "../api/partners-hero/chunks/chunk05";
+import hero06 from "../api/partners-hero/chunks/chunk06";
+import hero07 from "../api/partners-hero/chunks/chunk07";
 import styles from "./partners.module.css";
 
 export const metadata = { title: "Our Partners" };
+
+const partnersHeroImage = `data:image/webp;base64,${hero00}${hero01}${hero02}${hero03}${hero04}${hero05}${hero06}${hero07}`;
 
 const secondaryPartners = ["Co-Title Partner", "Powered By Partner"];
 
@@ -47,8 +57,7 @@ export default function PartnersPage() {
         className={`subhero ${styles.partnersHero}`}
         style={{
           minHeight: "100svh",
-          backgroundImage:
-            'linear-gradient(90deg, rgba(6, 7, 15, 0.60) 0%, rgba(6, 7, 15, 0.30) 46%, rgba(6, 7, 15, 0.10) 100%), linear-gradient(180deg, rgba(6, 7, 15, 0.02) 0%, rgba(6, 7, 15, 0.24) 100%), url("/api/partners-hero?v=4")',
+          backgroundImage: `linear-gradient(90deg, rgba(6, 7, 15, 0.60) 0%, rgba(6, 7, 15, 0.30) 46%, rgba(6, 7, 15, 0.10) 100%), linear-gradient(180deg, rgba(6, 7, 15, 0.02) 0%, rgba(6, 7, 15, 0.24) 100%), url("${partnersHeroImage}")`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
