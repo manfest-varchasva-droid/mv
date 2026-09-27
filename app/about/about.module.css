@@ -20,6 +20,197 @@
   image-rendering: auto;
 }
 
+.directoryWrap {
+  margin-top: 58px;
+  padding-top: 34px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.directoryIntro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+
+.directoryEyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #cf73ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.directoryIntro h3 {
+  margin: 0;
+  color: #f7f7fb;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.08;
+  letter-spacing: -0.8px;
+}
+
+.directoryIntro p {
+  max-width: 360px;
+  margin: 0 0 3px;
+  color: rgba(226, 229, 242, 0.62);
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: right;
+}
+
+.directoryLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(290px, 0.72fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.memberGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.memberButton {
+  min-height: 68px;
+  padding: 13px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #f5f5fa;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.memberButton span {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.memberButton small {
+  display: block;
+  margin-top: 5px;
+  color: rgba(219, 224, 241, 0.42);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+}
+
+.memberButton:hover,
+.memberButton:focus-visible,
+.memberButtonActive {
+  transform: translateY(-2px);
+  border-color: rgba(187, 105, 255, 0.48);
+  background: linear-gradient(145deg, rgba(142, 83, 226, 0.11), rgba(255, 75, 154, 0.055));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+
+.memberButtonActive small {
+  color: rgba(223, 180, 255, 0.72);
+}
+
+.contactPanel {
+  position: relative;
+  min-height: 292px;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  background: linear-gradient(160deg, rgba(27, 23, 45, 0.95), rgba(10, 11, 22, 0.98));
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.24);
+}
+
+.contactAccent {
+  position: absolute;
+  top: -58px;
+  right: -48px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(189, 86, 255, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+.contactKicker {
+  color: #d46cff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.6px;
+}
+
+.contactPanel h4 {
+  position: relative;
+  margin: 12px 0 4px;
+  color: #ffffff;
+  font-size: clamp(24px, 2.3vw, 34px);
+  line-height: 1.08;
+  letter-spacing: -0.7px;
+}
+
+.contactRoll {
+  margin: 0;
+  color: rgba(216, 221, 239, 0.5);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.contactLinks {
+  display: grid;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.contactLinks a {
+  display: block;
+  padding: 13px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  text-decoration: none;
+  transition: border-color 170ms ease, background 170ms ease, transform 170ms ease;
+}
+
+.contactLinks a:hover {
+  transform: translateX(3px);
+  border-color: rgba(121, 167, 255, 0.36);
+  background: rgba(115, 143, 255, 0.06);
+}
+
+.contactLinks span {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(218, 223, 239, 0.44);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.contactLinks strong {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #edf2ff;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+@media (max-width: 1040px) {
+  .directoryLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .contactPanel {
+    min-height: 0;
+  }
+}
+
 @media (max-width: 820px) {
   .teamSection {
     padding-top: 70px;
@@ -29,5 +220,37 @@
   .teamPhoto {
     width: min(100%, 640px);
     border-radius: 20px;
+  }
+
+  .directoryWrap {
+    margin-top: 44px;
+    padding-top: 28px;
+  }
+
+  .directoryIntro {
+    display: block;
+  }
+
+  .directoryIntro p {
+    margin-top: 12px;
+    text-align: left;
+  }
+
+  .memberGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .memberGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .memberButton {
+    min-height: 60px;
+  }
+
+  .contactPanel {
+    padding: 22px;
   }
 }
