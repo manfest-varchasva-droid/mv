@@ -112,9 +112,10 @@ export default function AboutPage() {
             <Image
               src="/about/mv-core-team-2026.webp"
               alt="Manfest-Varchasva Core Team at IIM Lucknow"
-              width={1200}
-              height={800}
+              width={1400}
+              height={933}
               sizes="(max-width: 820px) calc(100vw - 28px), 1180px"
+              unoptimized
             />
           </div>
         </div>
