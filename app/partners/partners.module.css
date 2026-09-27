@@ -1,0 +1,100 @@
+.partnerTypesSection {
+  padding-top: 88px;
+  padding-bottom: 92px;
+}
+
+.partnerTypeGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.partnerTypeCard {
+  min-height: 92px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.025);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.partnerTypeCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(199, 124, 255, 0.34);
+  background: rgba(199, 124, 255, 0.045);
+}
+
+.partnerTypeCard span {
+  display: block;
+  margin-bottom: 16px;
+  color: rgba(206, 121, 255, 0.58);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.partnerTypeCard strong {
+  display: block;
+  color: #f4f4f9;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.logoSection {
+  padding-top: 88px;
+}
+
+.logoGrid {
+  margin-top: 34px;
+}
+
+.logoCard {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.logoCard:hover {
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 18px 40px rgba(10, 11, 20, 0.08);
+}
+
+@media (max-width: 1040px) {
+  .partnerTypeGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .partnerTypesSection,
+  .logoSection {
+    padding-top: 70px;
+    padding-bottom: 72px;
+  }
+
+  .partnerTypeGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .partnerTypeCard {
+    min-height: 84px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partnerTypeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .partnerTypeCard {
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .partnerTypeCard span {
+    margin: 0;
+    flex: 0 0 auto;
+  }
+}
