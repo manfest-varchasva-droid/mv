@@ -70,7 +70,15 @@ export default function AboutPage() {
         <div className={`page-shell ${styles.aboutStats}`}>
           {stats.map((item) => (
             <div className={styles.aboutStat} key={item.label}>
-              <strong>{item.value}</strong>
+              <strong
+                style={
+                  item.label === "Participants"
+                    ? { fontSize: "clamp(34px, 3.55vw, 50px)", letterSpacing: "-2.8px" }
+                    : undefined
+                }
+              >
+                {item.value}
+              </strong>
               <span>{item.label}</span>
             </div>
           ))}
