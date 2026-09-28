@@ -48,7 +48,7 @@ export default function PartnersPage() {
         style={{
           minHeight: "100svh",
           backgroundImage:
-            'linear-gradient(90deg, rgba(6, 7, 15, 0.60) 0%, rgba(6, 7, 15, 0.30) 46%, rgba(6, 7, 15, 0.10) 100%), linear-gradient(180deg, rgba(6, 7, 15, 0.02) 0%, rgba(6, 7, 15, 0.24) 100%), url("/api/partners-hero?v=7")',
+            'linear-gradient(90deg, rgba(6, 7, 15, 0.60) 0%, rgba(6, 7, 15, 0.30) 46%, rgba(6, 7, 15, 0.10) 100%), linear-gradient(180deg, rgba(6, 7, 15, 0.02) 0%, rgba(6, 7, 15, 0.24) 100%), url("/events/partners hero.png")',
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
