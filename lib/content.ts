@@ -267,14 +267,16 @@ export const events: EventItem[] = [
     name: "Imperio",
     category: "Dance",
     blurb:
-      "The Bollywood group dance showcase where crews bring rhythm, energy and stage presence to IIM Lucknow.",
+      "The ultimate Western group dance arena where crews bring raw energy, synchronized precision and stage presence to Manfest-Varchasva.",
     details: [
       "Team size: 6–20 members",
       "2 rounds: online preliminary + offline final",
-      "Bollywood songs only; no restriction on dance form/style",
-      "Final round at IIM Lucknow",
+      "Only Western dance forms are permitted",
+      "Only registered teams can participate",
+      "Submission and registration deadline: 20 January 2026",
+      "Final round: 6–8 February 2026 at IIM Lucknow",
     ],
-    prize: "₹20,000 first place · ₹13,000 runners-up",
+    prize: "₹24,000 first place · ₹15,000 runners-up",
   },
   {
     slug: "duex-danza",
