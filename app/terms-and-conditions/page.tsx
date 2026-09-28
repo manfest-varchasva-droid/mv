@@ -70,7 +70,7 @@ export default function TermsPage() {
         </div>
       </section>
 
-      <main className={styles.page}>
+      <section className={styles.page}>
         <div className="page-shell">
           <div className={styles.introBar}>
             <span>MANFEST-VARCHASVA</span>
@@ -86,7 +86,7 @@ export default function TermsPage() {
             <Link className={styles.cityRunLink} href="/city-run">City Run archive →</Link>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 }
