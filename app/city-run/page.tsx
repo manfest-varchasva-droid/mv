@@ -31,8 +31,8 @@ export default function CityRunPage() {
       </section>
 
       <section className={styles.section}>
-        <div className={`page-shell ${styles.introGrid}`}>
-          <div>
+        <div className="page-shell">
+          <div className={styles.introCopy}>
             <SectionTitle
               eyebrow="2026 CITY RUN"
               title="Lucknow"
@@ -57,22 +57,41 @@ export default function CityRunPage() {
             </div>
           </div>
 
-          <div className={styles.factStack}>
-            <div className={styles.fact}>
-              <span>Date</span>
-              <strong>1 February 2026</strong>
-            </div>
-            <div className={styles.fact}>
-              <span>Flag off</span>
-              <strong>6:00 AM</strong>
-            </div>
-            <div className={styles.fact}>
-              <span>Venue</span>
-              <strong>Lohia Park, Gate No. 3 / Gomti Riverfront</strong>
-            </div>
-            <div className={styles.fact}>
-              <span>Race formats</span>
-              <strong>Competitive 5K &amp; 10K</strong>
+          <div className={styles.archiveGrid}>
+            <figure className={styles.posterFrame}>
+              <div className={styles.posterLabel}>OFFICIAL POSTER • 2026 ARCHIVE</div>
+              <img
+                src="/api/city-run-poster"
+                alt="Lucknow City Run 2026 official poster"
+                className={styles.posterImage}
+                loading="lazy"
+              />
+            </figure>
+
+            <div className={styles.detailsBlock}>
+              <div className={styles.detailsEyebrow}>EVENT DETAILS</div>
+              <div className={styles.factStack}>
+                <div className={styles.fact}>
+                  <span>Date</span>
+                  <strong>1 February 2026</strong>
+                </div>
+                <div className={styles.fact}>
+                  <span>Flag off</span>
+                  <strong>6:00 AM</strong>
+                </div>
+                <div className={styles.fact}>
+                  <span>Venue</span>
+                  <strong>Lohia Park, Gate No. 3 / Gomti Riverfront</strong>
+                </div>
+                <div className={styles.fact}>
+                  <span>Race formats</span>
+                  <strong>Competitive 5K &amp; 10K</strong>
+                </div>
+                <div className={styles.fact}>
+                  <span>Theme</span>
+                  <strong>Run for Inclusion</strong>
+                </div>
+              </div>
             </div>
           </div>
         </div>
