@@ -5,7 +5,7 @@
 
 .posterFrame {
   float: left;
-  width: 57%;
+  width: 64%;
   margin: 0;
   overflow: hidden;
   border: 0;
@@ -24,7 +24,7 @@
 
 .statGrid {
   float: right;
-  width: 39%;
+  width: 32%;
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
@@ -343,14 +343,14 @@
   color: #d58aff;
 }
 
-/* Portrait event posters use a narrower artwork column. The shared base frame
-   also hugs Campus Ambassador artwork so no empty card/background is visible. */
+/* Portrait event posters get more visual weight than the fact sidebar.
+   Campus Ambassador keeps a slightly wider image share because its artwork is a banner. */
 .posterFrame:not(:has(img[src*="campus_ambassador"])) {
-  width: 42%;
+  width: 58%;
 }
 
 .posterFrame:not(:has(img[src*="campus_ambassador"])) + .statGrid {
-  width: 54%;
+  width: 38%;
 }
 
 @media (max-width: 900px) {
