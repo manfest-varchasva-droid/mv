@@ -150,6 +150,180 @@ function CampusAmbassadorPage() {
   );
 }
 
+function VibesPage() {
+  return (
+    <>
+      <section className="subhero event-detail-hero">
+        <div className="page-shell subhero-content">
+          <div className="eyebrow">DANCE • 2025–26 ARCHIVE</div>
+          <h1>Vibes</h1>
+          <p>
+            The flagship solo freestyle dance competition where individual performers brought their own style, energy and stage presence to Manfest-Varchasva.
+          </p>
+        </div>
+      </section>
+
+      <section className={styles.caSection}>
+        <div className="page-shell">
+          <figure className={styles.posterFrame}>
+            <img
+              src="/api/vibes-poster"
+              alt="Vibes solo freestyle dance competition poster"
+              className={styles.poster}
+            />
+          </figure>
+
+          <div className={styles.statGrid}>
+            <article className={`${styles.statCard} ${styles.prizeCard}`}>
+              <div className={styles.statIcon} aria-hidden="true">₹</div>
+              <div>
+                <span>Total prize pool</span>
+                <strong>₹16,000</strong>
+                <small>Cash prizes across the top two positions</small>
+              </div>
+            </article>
+
+            <article className={styles.statCard}>
+              <div className={styles.personIcon} aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <circle cx="24" cy="15" r="8" />
+                  <path d="M10 40c1.4-10 6.3-15 14-15s12.6 5 14 15" />
+                </svg>
+              </div>
+              <div>
+                <span>Team size</span>
+                <strong>1 person</strong>
+                <small>Solo participation</small>
+              </div>
+            </article>
+          </div>
+
+          <section className={styles.contentBlock}>
+            <div className={styles.sectionHeading}>
+              <span>RECOGNITION</span>
+              <h2>Prizes &amp; certificates</h2>
+            </div>
+
+            <div className={styles.rankGrid}>
+              <article className={styles.rankCard}>
+                <span>Winner</span>
+                <strong>₹10K</strong>
+                <small>National Winner Certificate</small>
+              </article>
+              <article className={styles.rankCard}>
+                <span>First Runner Up</span>
+                <strong>₹6K</strong>
+                <small>National Finalist Certificate</small>
+              </article>
+              <article className={styles.rankCard}>
+                <span>Top 15</span>
+                <strong>15</strong>
+                <small>National Finalist Certificates</small>
+              </article>
+            </div>
+          </section>
+
+          <section className={styles.contentBlock}>
+            <div className={styles.sectionHeading}>
+              <span>COMPETITION FORMAT</span>
+              <h2>Two stages. One spotlight.</h2>
+            </div>
+
+            <div className={styles.roleGrid}>
+              <article className={styles.roleCard}>
+                <b>01 • ONLINE PRELIMINARY</b>
+                <p>
+                  Participants submitted a 2–3 minute solo dance video from a practice session or past performance. Fifteen dancers advanced to the campus final.
+                </p>
+              </article>
+              <article className={styles.roleCard}>
+                <b>02 • OFFLINE FINAL</b>
+                <p>
+                  Shortlisted dancers performed at IIM Lucknow. The final performance window was 3–4 minutes, with up to 2 additional minutes for stage setup and clearance.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section className={styles.contentBlock}>
+            <div className={styles.sectionHeading}>
+              <span>EVENT GUIDELINES</span>
+              <h2>Freestyle, with a few clear boundaries.</h2>
+            </div>
+
+            <div className={styles.roleGrid}>
+              <article className={styles.roleCard}>
+                <b>01</b>
+                <p>There was no restriction on dance form or style — hip-hop, contemporary and other freestyle formats were welcome.</p>
+              </article>
+              <article className={styles.roleCard}>
+                <b>02</b>
+                <p>Use of fire and colours was prohibited, and vulgarity in songs, costumes or choreography was not permitted.</p>
+              </article>
+              <article className={styles.roleCard}>
+                <b>03</b>
+                <p>Only registered participants could compete. On-spot registrations were not permitted.</p>
+              </article>
+              <article className={styles.roleCard}>
+                <b>04</b>
+                <p>Direct copying of previously performed dance sequences could attract a deduction of marks. Judges’ decisions were final and binding.</p>
+              </article>
+            </div>
+          </section>
+
+          <section className={styles.contentBlock}>
+            <div className={styles.sectionHeading}>
+              <span>JUDGING</span>
+              <h2>What the performance was judged on</h2>
+            </div>
+
+            <div className={styles.certificateCard}>
+              <div className={styles.certificateMark}>✦</div>
+              <p>
+                Choreography • Energy • Creativity • Synchronization • Expressions • Track selection • Costumes in the final round • Overall impact
+              </p>
+            </div>
+          </section>
+
+          <section className={styles.infoGrid}>
+            <article className={styles.infoCard}>
+              <span className={styles.infoEyebrow}>2026 EDITION</span>
+              <div className={styles.timelineDate}>
+                <strong>06</strong>
+                <div>
+                  <b>FEB</b>
+                  <small>2026</small>
+                </div>
+              </div>
+              <h3>Finals during Manfest-Varchasva</h3>
+              <p>The 2025–26 festival ran from 6–8 February 2026 at IIM Lucknow.</p>
+            </article>
+
+            <article className={styles.infoCard}>
+              <span className={styles.infoEyebrow}>EVENT CONTACT</span>
+              <div className={styles.contactList}>
+                <a href="mailto:dance@iiml-manfestvarchasva.com">
+                  <span>EMAIL</span>
+                  <strong>dance@iiml-manfestvarchasva.com</strong>
+                </a>
+              </div>
+              <h3>Dance vertical</h3>
+              <p>Queries and preliminary-round submissions for Vibes were handled through the dance events email.</p>
+            </article>
+          </section>
+
+          <div className={styles.bottomLinks}>
+            <Link className="btn btn-primary" href="/events">All events</Link>
+            <Link className={styles.termsLink} href="/terms-and-conditions">
+              Terms &amp; Conditions →
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 export default async function EventDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const event = events.find((item) => item.slug === slug);
@@ -158,6 +332,10 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
 
   if (event.slug === "campus-ambassador") {
     return <CampusAmbassadorPage />;
+  }
+
+  if (event.slug === "vibes") {
+    return <VibesPage />;
   }
 
   return (
