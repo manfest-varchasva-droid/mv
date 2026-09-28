@@ -24,7 +24,7 @@ function CampusAmbassadorPage() {
         <div className="page-shell">
           <figure className={styles.posterFrame}>
             <img
-              src="https://www.iiml-manfestvarchasva.com/images/events/2026/campus_ambassador1920_x_560_px.jpg"
+              src="/events/campus_ambassador1920_x_560_px.jpg"
               alt="Campus Ambassador 9.0 poster"
               className={styles.poster}
             />
@@ -167,7 +167,7 @@ function VibesPage() {
         <div className="page-shell">
           <figure className={styles.posterFrame}>
             <img
-              src="/api/vibes-poster"
+              src="/events/vibes_banner.png"
               alt="Vibes solo freestyle dance competition poster"
               className={styles.poster}
             />
@@ -372,7 +372,7 @@ function ImperioPage() {
         <div className="page-shell">
           <figure className={styles.posterFrame}>
             <img
-              src="/api/imperio-poster"
+              src="/events/imperio_banner.png"
               alt="Imperio group Western dance competition poster"
               className={styles.poster}
             />
