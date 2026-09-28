@@ -4,18 +4,7 @@ import styles from "../[slug]/campus-ambassador.module.css";
 export default function AntarnaadPage() {
   return (
     <>
-      <section
-        className="subhero event-detail-hero"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, rgba(7, 4, 17, 0.9) 0%, rgba(7, 4, 17, 0.62) 48%, rgba(7, 4, 17, 0.2) 100%), url('/events/antarnaad.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center 42%",
-          minHeight: "520px",
-          display: "flex",
-          alignItems: "flex-end",
-        }}
-      >
+      <section className="subhero event-detail-hero">
         <div className="page-shell subhero-content">
           <div className="eyebrow">THEATRE • 2025–26 EDITION</div>
           <h1>Antarnaad</h1>
@@ -27,6 +16,14 @@ export default function AntarnaadPage() {
 
       <section className={styles.caSection}>
         <div className="page-shell">
+          <figure className={styles.posterFrame}>
+            <img
+              src="/events/antarnaad.png"
+              alt="Antarnaad short film and vlog making competition poster"
+              className={styles.poster}
+            />
+          </figure>
+
           <div className={styles.statGrid}>
             <article className={`${styles.statCard} ${styles.prizeCard}`}>
               <div className={styles.statIcon} aria-hidden="true">₹</div>
