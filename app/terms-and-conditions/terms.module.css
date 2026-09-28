@@ -1,0 +1,120 @@
+.page {
+  padding: 82px 0 100px;
+  background:
+    radial-gradient(circle at 10% 6%, rgba(156,100,255,0.09), transparent 24%),
+    #080913;
+}
+
+.introBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 20px 0 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.introBar span {
+  color: #ca7dff;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2.2px;
+}
+
+.introBar p {
+  max-width: 640px;
+  margin: 0;
+  color: rgba(227,229,239,0.58);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.guidelineSection {
+  display: grid;
+  grid-template-columns: 90px minmax(0,1fr);
+  gap: 40px;
+  padding: 58px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.09);
+}
+
+.sectionLabel {
+  color: rgba(206,128,255,0.55);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.guidelineSection h2 {
+  margin: 0 0 26px;
+  color: #fff;
+  font-size: clamp(30px,4vw,48px);
+  line-height: 1.05;
+  letter-spacing: -1.6px;
+}
+
+.guidelineList {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.guidelineList li {
+  position: relative;
+  padding: 18px 0 18px 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  color: rgba(235,237,245,0.74);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.guidelineList li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 26px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c978ff;
+  box-shadow: 0 0 12px rgba(201,120,255,0.45);
+}
+
+.backRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 44px;
+}
+
+.cityRunLink {
+  color: rgba(239,241,247,0.66);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.cityRunLink:hover {
+  color: #cf82ff;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 62px 0 78px;
+  }
+
+  .introBar,
+  .backRow {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .guidelineSection {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 44px 0;
+  }
+}
