@@ -42,7 +42,8 @@
 .heroInner {
   position: relative;
   z-index: 1;
-  width: 100%;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
   padding-top: 160px;
   padding-bottom: 72px;
 }
@@ -159,8 +160,8 @@
 
 .archiveGrid {
   display: grid;
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-  gap: 64px;
+  grid-template-columns: minmax(420px, 0.95fr) minmax(340px, 1.05fr);
+  gap: 72px;
   align-items: start;
   margin-top: 56px;
   padding-top: 40px;
@@ -171,7 +172,6 @@
   margin: 0;
 }
 
-.posterLabel,
 .detailsEyebrow {
   margin-bottom: 14px;
   color: #c978ff;
@@ -183,7 +183,8 @@
 
 .posterImage {
   display: block;
-  width: min(100%, 360px);
+  width: 100%;
+  max-width: 540px;
   height: auto;
   border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 18px;
@@ -325,6 +326,10 @@
     min-height: 66svh;
   }
 
+  .heroInner {
+    width: min(1180px, calc(100% - 28px));
+  }
+
   .hero h1 {
     letter-spacing: -3px;
   }
@@ -343,7 +348,8 @@
   }
 
   .posterImage {
-    width: min(100%, 420px);
+    width: min(100%, 540px);
+    max-width: none;
   }
 
   .highlightGrid {
@@ -378,6 +384,7 @@
 
 @media (max-width: 620px) {
   .heroInner {
+    width: calc(100% - 28px);
     padding-top: 132px;
     padding-bottom: 54px;
   }
@@ -411,12 +418,8 @@
   }
 
   .posterImage {
-    width: min(100%, 340px);
+    width: min(100%, 440px);
     margin: 0 auto;
-  }
-
-  .posterLabel {
-    text-align: center;
   }
 
   .fact {
