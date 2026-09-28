@@ -3,9 +3,21 @@
   background: #080913;
 }
 
+.caSection :global(.page-shell) {
+  display: grid;
+  grid-template-columns: minmax(0, 72%) minmax(0, 24%);
+  column-gap: 4%;
+  align-items: start;
+}
+
+.caSection :global(.page-shell):has(.posterFrame:not(:has(img[src*="campus_ambassador"]))) {
+  grid-template-columns: minmax(0, 68%) minmax(0, 28%);
+}
+
 .posterFrame {
-  float: left;
-  width: 64%;
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
   margin: 0;
   overflow: hidden;
   border: 0;
@@ -23,8 +35,10 @@
 }
 
 .statGrid {
-  float: right;
-  width: 32%;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
@@ -82,8 +96,12 @@
 }
 
 .contentBlock {
-  clear: both;
+  grid-column: 1 / -1;
   margin-top: 52px;
+}
+
+.statGrid + .contentBlock {
+  margin-top: 78px;
 }
 
 .sectionHeading {
@@ -228,7 +246,7 @@
 }
 
 .infoGrid {
-  clear: both;
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
   gap: 42px;
@@ -323,6 +341,7 @@
 }
 
 .bottomLinks {
+  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   gap: 22px;
@@ -343,22 +362,14 @@
   color: #d58aff;
 }
 
-/* Portrait event posters get more visual weight than the fact sidebar.
-   Campus Ambassador keeps a slightly wider image share because its artwork is a banner. */
-.posterFrame:not(:has(img[src*="campus_ambassador"])) {
-  width: 58%;
-}
-
-.posterFrame:not(:has(img[src*="campus_ambassador"])) + .statGrid {
-  width: 38%;
-}
-
 @media (max-width: 900px) {
+  .caSection :global(.page-shell),
+  .caSection :global(.page-shell):has(.posterFrame:not(:has(img[src*="campus_ambassador"]))) {
+    display: block;
+  }
+
   .posterFrame,
-  .statGrid,
-  .posterFrame:not(:has(img[src*="campus_ambassador"])) ,
-  .posterFrame:not(:has(img[src*="campus_ambassador"])) + .statGrid {
-    float: none;
+  .statGrid {
     width: 100%;
   }
 
@@ -370,7 +381,7 @@
 
   .statGrid {
     grid-template-columns: repeat(2,minmax(0,1fr));
-    margin-top: 18px;
+    margin-top: 22px;
   }
 
   .statCard {
@@ -383,8 +394,9 @@
     border-left: 1px solid rgba(255,255,255,0.12);
   }
 
-  .contentBlock {
-    margin-top: 44px;
+  .contentBlock,
+  .statGrid + .contentBlock {
+    margin-top: 52px;
   }
 }
 
@@ -432,8 +444,9 @@
   }
 
   .contentBlock,
-  .infoGrid {
-    margin-top: 40px;
+  .infoGrid,
+  .statGrid + .contentBlock {
+    margin-top: 44px;
   }
 
   .contactList a,
