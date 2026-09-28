@@ -181,14 +181,20 @@
   text-transform: uppercase;
 }
 
-.posterImage {
+.posterArtwork {
   display: block;
   width: 100%;
   max-width: 540px;
-  height: auto;
+  aspect-ratio: 4 / 5;
   border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 18px;
-  background: #10121b;
+  background-color: #10121b;
+  background-image:
+    url("/api/city-run-poster"),
+    url("https://www.iiml-manfestvarchasva.com/images/events/2026/city_run_33x.png");
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
 }
 
@@ -347,7 +353,7 @@
     gap: 36px;
   }
 
-  .posterImage {
+  .posterArtwork {
     width: min(100%, 540px);
     max-width: none;
   }
@@ -417,7 +423,7 @@
     gap: 30px;
   }
 
-  .posterImage {
+  .posterArtwork {
     width: min(100%, 440px);
     margin: 0 auto;
   }
