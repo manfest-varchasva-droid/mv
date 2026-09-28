@@ -342,9 +342,33 @@
   color: #d58aff;
 }
 
+/* Most event posters share the same portrait artwork proportions. Let the
+   frame follow the artwork itself so no empty frame/background shows around it.
+   Campus Ambassador intentionally keeps its wider banner treatment. */
+.posterFrame:not(:has(img[src*="campus_ambassador"])) {
+  width: 42%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.posterFrame:not(:has(img[src*="campus_ambassador"])) .poster {
+  width: 100%;
+  height: auto;
+  object-fit: initial;
+  background: transparent;
+  border-radius: 14px;
+}
+
+.posterFrame:not(:has(img[src*="campus_ambassador"])) + .statGrid {
+  width: 54%;
+}
+
 @media (max-width: 900px) {
   .posterFrame,
-  .statGrid {
+  .statGrid,
+  .posterFrame:not(:has(img[src*="campus_ambassador"])) ,
+  .posterFrame:not(:has(img[src*="campus_ambassador"])) + .statGrid {
     float: none;
     width: 100%;
   }
@@ -353,6 +377,10 @@
     height: auto;
     max-height: 520px;
     object-fit: contain;
+  }
+
+  .posterFrame:not(:has(img[src*="campus_ambassador"])) .poster {
+    max-height: none;
   }
 
   .statGrid {
@@ -382,6 +410,10 @@
 
   .posterFrame {
     border-radius: 12px;
+  }
+
+  .posterFrame:not(:has(img[src*="campus_ambassador"])) {
+    border-radius: 0;
   }
 
   .statGrid,
