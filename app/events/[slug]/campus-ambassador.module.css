@@ -249,18 +249,32 @@
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 42px;
-  margin-top: 52px;
-  padding-top: 2px;
+  gap: 0;
+  margin-top: 58px;
+  padding: 24px 28px 26px;
+  border: 1px solid rgba(201,124,255,0.18);
+  border-left: 3px solid #c97cff;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(201,124,255,0.075), rgba(255,255,255,0.018) 62%);
 }
 
 .infoCard {
   min-height: 0;
-  padding: 20px 0 0;
+  padding: 0 28px 0 0;
   border: 0;
-  border-top: 1px solid rgba(255,255,255,0.14);
-  border-radius: 0;
   background: transparent;
+}
+
+.infoCard + .infoCard {
+  padding: 0 0 0 28px;
+  border-left: 1px solid rgba(255,255,255,0.12);
+}
+
+.infoEyebrow {
+  margin-bottom: 14px;
+  color: #efc2ff;
+  font-size: 11px;
+  letter-spacing: 2.3px;
 }
 
 .timelineDate {
@@ -283,13 +297,13 @@
 }
 
 .timelineDate b {
-  color: #d084ff;
+  color: #e2a5ff;
   font-size: 14px;
   letter-spacing: 1.8px;
 }
 
 .timelineDate small {
-  color: rgba(233,235,244,0.5);
+  color: rgba(233,235,244,0.62);
   font-size: 10px;
   letter-spacing: 1px;
 }
@@ -297,20 +311,20 @@
 .infoCard h3 {
   margin: 18px 0 6px;
   color: #fff;
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .infoCard p {
   margin: 0;
-  color: rgba(225,228,239,0.58);
+  color: rgba(225,228,239,0.68);
   font-size: 12px;
   line-height: 1.6;
 }
 
 .contactList {
   display: grid;
-  margin-top: 12px;
-  border-top: 1px solid rgba(255,255,255,0.09);
+  margin-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .contactList a,
@@ -319,25 +333,26 @@
   grid-template-columns: 150px minmax(0,1fr);
   gap: 20px;
   padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.09);
 }
 
 .contactList span {
-  color: rgba(224,227,238,0.43);
+  color: rgba(232,212,242,0.68);
   font-size: 8px;
   font-weight: 850;
   letter-spacing: 1.4px;
 }
 
 .contactList strong {
-  color: rgba(248,248,252,0.9);
-  font-size: 13px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 750;
   line-height: 1.4;
   word-break: break-word;
 }
 
 .contactList a:hover strong {
-  color: #d68aff;
+  color: #e2a5ff;
 }
 
 .bottomLinks {
@@ -434,9 +449,24 @@
     column-gap: 0;
   }
 
-  .rankGrid,
-  .infoGrid {
+  .rankGrid {
     gap: 18px;
+  }
+
+  .infoGrid {
+    gap: 0;
+    margin-top: 44px;
+    padding: 22px 20px;
+  }
+
+  .infoCard {
+    padding: 0 0 20px;
+  }
+
+  .infoCard + .infoCard {
+    padding: 20px 0 0;
+    border-left: 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
   }
 
   .rankCard span {
@@ -444,7 +474,6 @@
   }
 
   .contentBlock,
-  .infoGrid,
   .statGrid + .contentBlock {
     margin-top: 44px;
   }
