@@ -259,7 +259,8 @@ export const events: EventItem[] = [
     slug: "vibes",
     name: "Vibes",
     category: "Dance",
-    blurb: "A dance event from the cultural line-up.",
+    blurb:
+      "The flagship solo freestyle dance competition where individual performers bring their own style, energy and stage presence to own the spotlight at Manfest-Varchasva.",
   },
   {
     slug: "imperio",
