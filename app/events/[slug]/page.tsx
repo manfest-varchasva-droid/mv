@@ -12,7 +12,7 @@ function CampusAmbassadorPage() {
     <>
       <section className="subhero event-detail-hero">
         <div className="page-shell subhero-content">
-          <div className="eyebrow">CAMPUS AMBASSADOR • 2025–26 ARCHIVE</div>
+          <div className="eyebrow">CAMPUS AMBASSADOR • 2025–26 EDITION</div>
           <h1>Campus Ambassador 9.0</h1>
           <p>
             Represent Manfest-Varchasva on your campus, drive participation and help the fest reach more students.
@@ -116,7 +116,7 @@ function CampusAmbassadorPage() {
                 </div>
               </div>
               <h3>Registration Deadline</h3>
-              <p>The registration window for the 2025–26 edition closed on 15 January 2026.</p>
+              <p>Registration deadline for the 2025–26 edition: 15 January 2026.</p>
             </article>
 
             <article className={styles.infoCard}>
@@ -155,10 +155,10 @@ function VibesPage() {
     <>
       <section className="subhero event-detail-hero">
         <div className="page-shell subhero-content">
-          <div className="eyebrow">DANCE • 2025–26 ARCHIVE</div>
+          <div className="eyebrow">DANCE • 2025–26 EDITION</div>
           <h1>Vibes</h1>
           <p>
-            The flagship solo freestyle dance competition where individual performers brought their own style, energy and stage presence to Manfest-Varchasva.
+            The flagship solo freestyle dance competition where individual performers bring their own style, energy and stage presence to Manfest-Varchasva.
           </p>
         </div>
       </section>
@@ -233,13 +233,13 @@ function VibesPage() {
               <article className={styles.roleCard}>
                 <b>01 • ONLINE PRELIMINARY</b>
                 <p>
-                  Participants submitted a 2–3 minute solo dance video from a practice session or past performance. Fifteen dancers advanced to the campus final.
+                  Participants submit a 2–3 minute solo dance video from a practice session or past performance. Fifteen dancers advance to the campus final.
                 </p>
               </article>
               <article className={styles.roleCard}>
                 <b>02 • OFFLINE FINAL</b>
                 <p>
-                  Shortlisted dancers performed at IIM Lucknow. The final performance window was 3–4 minutes, with up to 2 additional minutes for stage setup and clearance.
+                  Shortlisted dancers perform at IIM Lucknow. The final performance window is 3–4 minutes, with up to 2 additional minutes for stage setup and clearance.
                 </p>
               </article>
             </div>
@@ -254,19 +254,19 @@ function VibesPage() {
             <div className={styles.roleGrid}>
               <article className={styles.roleCard}>
                 <b>01</b>
-                <p>There was no restriction on dance form or style — hip-hop, contemporary and other freestyle formats were welcome.</p>
+                <p>There is no restriction on dance form or style — hip-hop, contemporary and other freestyle formats are welcome.</p>
               </article>
               <article className={styles.roleCard}>
                 <b>02</b>
-                <p>Use of fire and colours was prohibited, and vulgarity in songs, costumes or choreography was not permitted.</p>
+                <p>Use of fire and colours is prohibited, and vulgarity in songs, costumes or choreography is not permitted.</p>
               </article>
               <article className={styles.roleCard}>
                 <b>03</b>
-                <p>Only registered participants could compete. On-spot registrations were not permitted.</p>
+                <p>Only registered participants can compete. On-spot registrations are not permitted.</p>
               </article>
               <article className={styles.roleCard}>
                 <b>04</b>
-                <p>Direct copying of previously performed dance sequences could attract a deduction of marks. Judges’ decisions were final and binding.</p>
+                <p>Direct copying of previously performed dance sequences may attract a deduction of marks. Judges’ decisions are final and binding.</p>
               </article>
             </div>
           </section>
@@ -274,7 +274,7 @@ function VibesPage() {
           <section className={styles.contentBlock}>
             <div className={styles.sectionHeading}>
               <span>JUDGING</span>
-              <h2>What the performance was judged on</h2>
+              <h2>What the performance is judged on</h2>
             </div>
 
             <div className={styles.certificateCard}>
@@ -296,7 +296,7 @@ function VibesPage() {
                 </div>
               </div>
               <h3>Finals during Manfest-Varchasva</h3>
-              <p>The 2025–26 festival ran from 6–8 February 2026 at IIM Lucknow.</p>
+              <p>Festival dates: 6–8 February 2026 at IIM Lucknow.</p>
             </article>
 
             <article className={styles.infoCard}>
@@ -308,7 +308,7 @@ function VibesPage() {
                 </a>
               </div>
               <h3>Dance vertical</h3>
-              <p>Queries and preliminary-round submissions for Vibes were handled through the dance events email.</p>
+              <p>Queries and preliminary-round submissions for Vibes are handled through the dance events email.</p>
             </article>
           </section>
 
