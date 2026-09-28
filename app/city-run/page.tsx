@@ -28,7 +28,7 @@ export default function CityRunPage() {
             <span>Lohia Park &amp; Gomti Riverfront</span>
             <span>5K &amp; 10K</span>
           </div>
-          <Link className={styles.termsLink} href="/terms-and-conditions">
+          <Link className="text-link light-link" href="/terms-and-conditions">
             Terms &amp; Conditions →
           </Link>
         </div>
