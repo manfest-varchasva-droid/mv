@@ -1,7 +1,7 @@
 import { SectionTitle } from "@/components/SectionTitle";
 import styles from "./city-run.module.css";
 
-export const metadata = { title: "Lucknow City Run" };
+export const metadata = { title: "Lucknow City Run 2026 Archive" };
 
 const partners = [
   ["Presented by", "Axis Bank"],
@@ -16,14 +16,14 @@ export default function CityRunPage() {
     <>
       <section className={styles.hero}>
         <div className={`page-shell ${styles.heroInner}`}>
-          <p className={styles.kicker}>MANFEST-VARCHASVA • IIM LUCKNOW</p>
+          <p className={styles.kicker}>2026 ARCHIVE • MANFEST-VARCHASVA</p>
           <h1>Lucknow City Run</h1>
           <p className={styles.heroLead}>
-            A morning when Lucknow comes together to run for health, community and the
-            energy of the city.
+            On 1 February 2026, Lucknow came together for a morning of running,
+            community and shared energy across the city.
           </p>
           <div className={styles.heroMeta}>
-            <span>2026 edition</span>
+            <span>1 February 2026</span>
             <span>Lohia Park &amp; Gomti Riverfront</span>
             <span>5K &amp; 10K</span>
           </div>
@@ -34,24 +34,25 @@ export default function CityRunPage() {
         <div className={`page-shell ${styles.introGrid}`}>
           <div>
             <SectionTitle
-              eyebrow="THE RUN"
-              title="Lucknow,"
-              accent="it’s time to run."
+              eyebrow="2026 CITY RUN"
+              title="Lucknow"
+              accent="ran together."
             />
             <div className={styles.copy}>
               <p>
-                The Lucknow City Run brings runners, families and communities across the
-                city together for an energetic start to the day. The 2026 edition returned
-                after a year-long break with competitive <strong>5K and 10K races</strong>,
-                combining sport with the spirit of togetherness.
+                The 2026 Lucknow City Run brought runners, families and communities
+                from across the city together for an energetic start to the day.
+                Returning after a year-long break, the edition featured competitive
+                <strong> 5K and 10K races</strong> and celebrated sport, participation
+                and the spirit of togetherness.
               </p>
               <p>
-                Hosted by Team Manfest-Varchasva, IIM Lucknow, the run celebrated movement,
-                participation and community while giving runners the chance to compete for
-                prizes, medals, certificates and goodies.
+                Hosted by Team Manfest-Varchasva, IIM Lucknow, the run gave participants
+                the opportunity to compete for prizes while taking home medals,
+                certificates and event goodies.
               </p>
               <div className={styles.archiveNote}>
-                2026 edition archive • next edition details will be announced here
+                2026 archive • Lucknow City Run • 1 February 2026
               </div>
             </div>
           </div>
@@ -70,22 +71,22 @@ export default function CityRunPage() {
               <strong>Lohia Park, Gate No. 3 / Gomti Riverfront</strong>
             </div>
             <div className={styles.fact}>
-              <span>Races</span>
+              <span>Race formats</span>
               <strong>Competitive 5K &amp; 10K</strong>
             </div>
           </div>
         </div>
       </section>
 
-      <section className={styles.highlights} aria-label="City Run highlights">
+      <section className={styles.highlights} aria-label="2026 City Run highlights">
         <div className={`page-shell ${styles.highlightGrid}`}>
           <div className={styles.highlight}>
             <strong>5K</strong>
-            <span>Competitive race</span>
+            <span>Race distance</span>
           </div>
           <div className={styles.highlight}>
             <strong>10K</strong>
-            <span>Competitive race</span>
+            <span>Race distance</span>
           </div>
           <div className={styles.highlight}>
             <strong>₹1L</strong>
@@ -101,9 +102,9 @@ export default function CityRunPage() {
       <section className={styles.partnersSection}>
         <div className="page-shell">
           <div className={styles.partnerIntro}>
-            <h2>Supported by partners who helped bring the city together.</h2>
+            <h2>Partners behind the 2026 Lucknow City Run.</h2>
             <p>
-              The 2026 Lucknow City Run was supported by organisations across banking,
+              The 2026 edition was supported by organisations across banking,
               public welfare, quick commerce and social impact.
             </p>
           </div>
