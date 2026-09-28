@@ -238,6 +238,24 @@ export type EventItem = {
 
 export const events: EventItem[] = [
   {
+    slug: "campus-ambassador",
+    name: "Campus Ambassador 9.0",
+    category: "Campus Ambassador",
+    blurb:
+      "A chance to be the face of Manfest-Varchasva on your campus, drive participation and expand the fest’s outreach through online and offline channels.",
+    details: [
+      "2025–26 edition of the Campus Ambassador Programme",
+      "Be the face of Manfest-Varchasva on your campus and drive participation for events",
+      "Grow fest outreach through campus networks, websites and social media channels",
+      "Official Manfest-Varchasva certificate for all ambassadors",
+      "National Campus Ambassador: prizes worth ₹7,000",
+      "Runner-up: prizes worth ₹5,000",
+      "Second runner-up: prizes worth ₹3,000",
+      "Registration deadline for this edition was 15 January 2026",
+    ],
+    prize: "₹15,000 total prizes",
+  },
+  {
     slug: "vibes",
     name: "Vibes",
     category: "Dance",
