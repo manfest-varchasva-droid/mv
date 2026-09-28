@@ -112,6 +112,10 @@
   align-items: start;
 }
 
+.introCopy {
+  max-width: 760px;
+}
+
 .copy {
   margin-top: 30px;
   max-width: 720px;
@@ -151,6 +155,44 @@
   border-radius: 50%;
   background: #d57cff;
   box-shadow: 0 0 16px rgba(213, 124, 255, 0.7);
+}
+
+.archiveGrid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: 64px;
+  align-items: start;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.posterFrame {
+  margin: 0;
+}
+
+.posterLabel,
+.detailsEyebrow {
+  margin-bottom: 14px;
+  color: #c978ff;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.posterImage {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 18px;
+  background: #10121b;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+}
+
+.detailsBlock {
+  min-width: 0;
 }
 
 .factStack {
@@ -287,9 +329,21 @@
     letter-spacing: -3px;
   }
 
-  .introGrid {
+  .introGrid,
+  .archiveGrid {
     grid-template-columns: 1fr;
+  }
+
+  .introGrid {
     gap: 46px;
+  }
+
+  .archiveGrid {
+    gap: 36px;
+  }
+
+  .posterImage {
+    width: min(100%, 420px);
   }
 
   .highlightGrid {
@@ -348,6 +402,21 @@
 
   .section {
     padding: 72px 0;
+  }
+
+  .archiveGrid {
+    margin-top: 42px;
+    padding-top: 30px;
+    gap: 30px;
+  }
+
+  .posterImage {
+    width: min(100%, 340px);
+    margin: 0 auto;
+  }
+
+  .posterLabel {
+    text-align: center;
   }
 
   .fact {
