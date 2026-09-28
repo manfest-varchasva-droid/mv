@@ -59,12 +59,10 @@ export default function CityRunPage() {
 
           <div className={styles.archiveGrid}>
             <figure className={styles.posterFrame}>
-              <img
-                src="/api/city-run-poster?rev=20260928-2"
-                alt="Lucknow City Run 2026 poster"
-                className={styles.posterImage}
-                loading="eager"
-                decoding="sync"
+              <div
+                className={styles.posterArtwork}
+                role="img"
+                aria-label="Lucknow City Run 2026 poster"
               />
             </figure>
 
