@@ -1,0 +1,50 @@
+.categoryNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.categoryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(8, 9, 18, 0.46);
+  color: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(10px);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.categoryButton:hover,
+.categoryButton:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(199, 124, 255, 0.7);
+  background: rgba(156, 100, 255, 0.16);
+  outline: none;
+}
+
+.categorySection {
+  scroll-margin-top: 130px;
+}
+
+@media (max-width: 720px) {
+  .categoryNav {
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .categoryButton {
+    min-height: 38px;
+    padding: 0 13px;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+}
