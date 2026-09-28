@@ -10,7 +10,9 @@ function categoryId(category: string) {
 }
 
 export default function EventsPage() {
-  const categories = [...new Set(events.map((event) => event.category))];
+  const categories = [...new Set(events.map((event) => event.category))].sort((a, b) =>
+    a.localeCompare(b, "en", { sensitivity: "base" })
+  );
 
   return (
     <>
