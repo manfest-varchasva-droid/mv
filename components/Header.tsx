@@ -7,7 +7,6 @@ const links = [
   ["Our Partners", "/partners"],
   ["City Run", "/city-run"],
   ["Events", "/events"],
-  ["Workshops", "/workshops"],
   ["Gallery", "/gallery"],
 ] as const;
 
