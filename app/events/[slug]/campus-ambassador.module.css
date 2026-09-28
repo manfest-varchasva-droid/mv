@@ -21,16 +21,6 @@
   height: auto;
 }
 
-/* Imperio uses the exact user-uploaded poster. The versioned URL also bypasses any stale cached poster. */
-.posterFrame:has(img[alt="Imperio group Western dance competition poster"]) {
-  aspect-ratio: 2048 / 1170;
-  background: #10121b url("/api/imperio-poster?v=uploaded-20260928") center / cover no-repeat;
-}
-
-.posterFrame:has(img[alt="Imperio group Western dance competition poster"]) > img {
-  display: none;
-}
-
 .statGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
@@ -314,7 +304,7 @@
 .contactList a,
 .contactList > div {
   display: grid;
-  grid-template-columns: 92px minmax(0,1fr);
+  grid-template-columns: 92px minmax(0,1fr));
   gap: 20px;
   padding: 20px 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
