@@ -42,7 +42,7 @@ export default function AboutPage() {
         style={{
           minHeight: "100svh",
           backgroundImage:
-            'linear-gradient(90deg, rgba(6, 7, 15, 0.88) 0%, rgba(6, 7, 15, 0.62) 48%, rgba(6, 7, 15, 0.34) 100%), url("https://www.iiml-manfestvarchasva.com/images/aboutus/iimlucknow.jpg")',
+            'linear-gradient(90deg, rgba(6, 7, 15, 0.88) 0%, rgba(6, 7, 15, 0.62) 48%, rgba(6, 7, 15, 0.34) 100%), url("/events/about us hero.jpg")',
           backgroundSize: "cover",
           backgroundPosition: "left center",
           backgroundRepeat: "no-repeat",
@@ -126,7 +126,7 @@ export default function AboutPage() {
 
           <div className={styles.teamPhoto}>
             <Image
-              src="/api/core-team-photo?v=3"
+              src="/events/core team photo.JPG"
               alt="Manfest-Varchasva Core Team at IIM Lucknow"
               width={800}
               height={533}
