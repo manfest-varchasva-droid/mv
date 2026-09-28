@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SectionTitle } from "@/components/SectionTitle";
 import styles from "./city-run.module.css";
 
@@ -27,6 +28,9 @@ export default function CityRunPage() {
             <span>Lohia Park &amp; Gomti Riverfront</span>
             <span>5K &amp; 10K</span>
           </div>
+          <Link className={styles.termsLink} href="/terms-and-conditions">
+            Terms &amp; Conditions →
+          </Link>
         </div>
       </section>
 
