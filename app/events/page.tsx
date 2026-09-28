@@ -29,6 +29,10 @@ export default function EventsPage() {
               </a>
             ))}
           </nav>
+
+          <Link className={styles.termsLink} href="/terms-and-conditions">
+            Terms &amp; Conditions →
+          </Link>
         </div>
       </section>
 
