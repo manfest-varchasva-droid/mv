@@ -1,12 +1,7 @@
 import { SectionTitle } from "@/components/SectionTitle";
-import { small0 } from "../api/city-run-poster/chunks/small0";
-import { small1 } from "../api/city-run-poster/chunks/small1";
-import { small2 } from "../api/city-run-poster/chunks/small2";
 import styles from "./city-run.module.css";
 
 export const metadata = { title: "Lucknow City Run 2026 Archive" };
-
-const cityRunPoster = `data:image/jpeg;base64,${small0}${small1}${small2}`;
 
 const partners = [
   ["Presented by", "Axis Bank"],
@@ -65,10 +60,11 @@ export default function CityRunPage() {
           <div className={styles.archiveGrid}>
             <figure className={styles.posterFrame}>
               <img
-                src={cityRunPoster}
+                src="/api/city-run-poster?rev=20260928-2"
                 alt="Lucknow City Run 2026 poster"
                 className={styles.posterImage}
-                loading="lazy"
+                loading="eager"
+                decoding="sync"
               />
             </figure>
 
