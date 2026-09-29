@@ -346,7 +346,7 @@ export const events: EventItem[] = [
   },
   {
     slug: "young-leaders-programme",
-    name: "YLP",
+    name: "Young Leaders Program(YLP)",
     category: "Leaders Express",
     blurb: "A Leaders Express format focused on ideas, leadership and conversation.",
   },
