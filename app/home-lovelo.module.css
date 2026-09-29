@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Lovelo Home";
+  src: url("https://static.wfonts.com/data/2016/07/12/lovelo/Lovelo%20Black.otf") format("opentype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+.loveloHero :global(.hero h1),
+.loveloHero :global(.hero-year) {
+  font-family: "Lovelo Home", Arial, Helvetica, sans-serif;
+}
