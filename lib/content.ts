@@ -157,7 +157,7 @@ export const stats = [
 export const partnerLogos = [
   { name: "ABP", image: "/partners/abp.png" },
   { name: "Amar Ujala", image: "/partners/Amar Ujala black (1).jpg" },
-  { name: "Axis Bank", image: "/partners/axis bank.png" },
+  { name: "Axis Bank", image: "/partners/axis-bank.svg" },
   { name: "Business Standard", image: "/partners/bs.png" },
   { name: "CBI", image: "/partners/cbi.png" },
   { name: "Coke Studio", image: "/partners/coke_studio.png" },
