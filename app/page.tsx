@@ -7,11 +7,14 @@ import {
   OverTheYears,
   PartnersPreview,
 } from "@/components/HomeSections";
+import styles from "./home-lovelo.module.css";
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <div className={styles.loveloHero}>
+        <Hero />
+      </div>
       <Headliners />
       <LeadersExpress />
       <OverTheYears />
