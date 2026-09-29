@@ -167,23 +167,40 @@ const supportingPartners: PartnerGroup[] = [
   },
 ];
 
-function PartnerLogos({ sponsors }: { sponsors: Sponsor[] }) {
+function LogoCard({ sponsor }: { sponsor: Sponsor }) {
   return (
-    <div className={`${styles.logoStage} ${sponsors.length > 1 ? styles.logoStageMulti : ""}`}>
-      {sponsors.map((sponsor) => (
-        <div className={styles.logoTile} key={sponsor.name}>
-          <img src={sponsor.logo} alt={sponsor.name} loading="lazy" />
-        </div>
-      ))}
+    <div className={styles.logoStage}>
+      <div className={styles.logoTile}>
+        <img src={sponsor.logo} alt={sponsor.name} loading="lazy" />
+      </div>
     </div>
   );
 }
 
 function PartnerCard({ partner, className }: { partner: PartnerGroup; className: string }) {
+  const isMulti = partner.sponsors.length > 1;
+
+  if (isMulti) {
+    return (
+      <article className={`${className} ${styles.multiPartnerGroup}`}>
+        <span className={styles.partnerLabel}>{partner.title}</span>
+        <div
+          className={`${styles.multiLogoGrid} ${
+            partner.sponsors.length === 4 ? styles.multiLogoGridFour : styles.multiLogoGridThree
+          }`}
+        >
+          {partner.sponsors.map((sponsor) => (
+            <LogoCard sponsor={sponsor} key={sponsor.name} />
+          ))}
+        </div>
+      </article>
+    );
+  }
+
   return (
     <article className={className}>
       <span className={styles.partnerLabel}>{partner.title}</span>
-      <PartnerLogos sponsors={partner.sponsors} />
+      <LogoCard sponsor={partner.sponsors[0]} />
     </article>
   );
 }
