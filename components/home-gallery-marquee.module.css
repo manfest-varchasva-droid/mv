@@ -14,7 +14,12 @@
   gap: 14px;
   padding-left: 14px;
   animation: galleryMarquee 24s linear infinite;
+  animation-play-state: paused;
   will-change: transform;
+}
+
+.active {
+  animation-play-state: running;
 }
 
 .item {
@@ -92,7 +97,8 @@
     display: none;
   }
 
-  .track {
+  .track,
+  .active {
     animation: none;
   }
 }
