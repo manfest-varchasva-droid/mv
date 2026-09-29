@@ -14,10 +14,17 @@ import { HorizontalScroller } from "@/components/HorizontalScroller";
 
 export function Hero() {
   return (
-    <section
-      className="hero"
-      style={{ backgroundImage: `url(${site.heroImage})` }}
-    >
+    <section className="hero">
+      <Image
+        src={site.heroImage}
+        alt=""
+        fill
+        sizes="100vw"
+        quality={75}
+        preload
+        aria-hidden="true"
+        style={{ objectFit: "cover", objectPosition: "center" }}
+      />
       <div className="hero-scrim" />
       <div className="hero-glow hero-glow-left" />
       <div className="hero-glow hero-glow-right" />
@@ -76,12 +83,13 @@ export function Headliners() {
         <HorizontalScroller className="headliner-grid">
           {headliners.map((artist, index) => (
             <article className="headliner-card" key={artist.name}>
-              <img
+              <Image
                 src={artist.image}
                 alt={artist.name}
+                fill
+                sizes="(max-width: 700px) 78vw, 350px"
+                quality={75}
                 className={`headliner-photo${index < 3 || artist.name === "Javed Ali" || artist.name === "Vishal & Shekhar" || artist.name === "Jubin Nautiyal" ? " final-crop" : ""}`}
-                loading="lazy"
-                decoding="async"
               />
               <div className="card-gradient" />
               <div className="headliner-copy">
@@ -180,11 +188,27 @@ export function OverTheYears() {
 }
 
 function VideoCard({ id, title }: { id: string; title: string }) {
+  const embedUrl = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+  const thumbnail = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  const srcDoc = `
+    <style>
+      *{padding:0;margin:0;overflow:hidden;box-sizing:border-box}
+      html,body{height:100%;background:#080910}
+      img{position:absolute;width:100%;height:100%;inset:0;object-fit:cover}
+      a{position:absolute;inset:0;display:grid;place-items:center;text-decoration:none}
+      span{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;padding-left:4px;background:rgba(0,0,0,.72);color:#fff;font:700 28px Arial,sans-serif;box-shadow:0 10px 34px rgba(0,0,0,.35)}
+    </style>
+    <a href="${embedUrl}" aria-label="Play ${title}">
+      <img src="${thumbnail}" alt="">
+      <span>▶</span>
+    </a>`;
+
   return (
     <article className="video-card">
       <div className="video-frame">
         <iframe
-          src={`https://www.youtube.com/embed/${id}`}
+          src={embedUrl}
+          srcDoc={srcDoc}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
