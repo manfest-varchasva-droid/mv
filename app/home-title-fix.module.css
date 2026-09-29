@@ -1,0 +1,5 @@
+.titlePaintFix :global(.hero h1 span) {
+  display: inline-block;
+  padding-right: 0.06em;
+  margin-right: -0.06em;
+}
