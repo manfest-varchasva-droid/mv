@@ -67,46 +67,60 @@
 
 .logoStage {
   width: 100%;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 130px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.18);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .logoTile {
   min-width: 0;
   width: 100%;
+  min-height: inherit;
   display: grid;
   place-items: center;
-  padding: 8px;
+  padding: 14px 18px;
 }
 
 .logoTile img {
   display: block;
-  width: auto;
-  height: auto;
-  max-width: 280px;
-  max-height: 112px;
+  width: 88%;
+  height: 118px;
+  max-width: 340px;
   object-fit: contain;
-  transition: transform 180ms ease, filter 180ms ease;
+  transition: transform 180ms ease;
 }
 
-.logoTile img:hover {
-  transform: scale(1.045);
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.28));
+.logoStage:hover {
+  transform: translateY(-3px);
+  border-color: rgba(199, 124, 255, 0.4);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.24), 0 0 30px rgba(199, 124, 255, 0.09);
+}
+
+.logoStage:hover img {
+  transform: scale(1.03);
 }
 
 .titlePartnerSlot .logoStage {
-  min-height: 220px;
+  min-height: 240px;
+  border-radius: 24px;
+  border-color: rgba(199, 124, 255, 0.28);
 }
 
 .titlePartnerSlot .logoTile {
-  padding: 12px;
+  padding: 20px 28px;
 }
 
 .titlePartnerSlot .logoTile img {
-  max-width: 460px;
-  max-height: 170px;
+  width: 92%;
+  height: 180px;
+  max-width: 500px;
 }
 
 .secondaryTier {
@@ -122,12 +136,13 @@
 }
 
 .secondaryPartnerSlot .logoStage {
-  min-height: 170px;
+  min-height: 190px;
 }
 
 .secondaryPartnerSlot .logoTile img {
-  max-width: 340px;
-  max-height: 136px;
+  width: 90%;
+  height: 145px;
+  max-width: 390px;
 }
 
 .featuredTier {
@@ -145,12 +160,13 @@
 }
 
 .featuredPartnerSlot .logoStage {
-  min-height: 156px;
+  min-height: 172px;
 }
 
 .featuredPartnerSlot .logoTile img {
-  max-width: 300px;
-  max-height: 122px;
+  width: 92%;
+  height: 128px;
+  max-width: 330px;
 }
 
 .supportingTier {
@@ -173,16 +189,18 @@
 }
 
 .supportingPartnerSlot .logoStage {
-  min-height: 144px;
+  min-height: 158px;
+  border-radius: 16px;
 }
 
 .supportingPartnerSlot .logoTile {
-  padding: 8px;
+  padding: 12px 16px;
 }
 
 .supportingPartnerSlot .logoTile img {
-  max-width: 260px;
-  max-height: 108px;
+  width: 94%;
+  height: 116px;
+  max-width: 310px;
 }
 
 .multiPartnerGroup {
@@ -210,16 +228,17 @@
 }
 
 .multiLogoGrid .logoStage {
-  min-height: 150px;
+  min-height: 166px;
 }
 
 .multiLogoGrid .logoTile {
-  padding: 8px;
+  padding: 12px 16px;
 }
 
 .multiLogoGrid .logoTile img {
-  max-width: 280px;
-  max-height: 116px;
+  width: 94%;
+  height: 122px;
+  max-width: 320px;
 }
 
 @media (max-width: 1040px) {
@@ -261,17 +280,23 @@
   }
 
   .titlePartnerSlot .logoStage {
-    min-height: 180px;
+    min-height: 190px;
   }
 
   .titlePartnerSlot .logoTile img {
-    max-width: 380px;
-    max-height: 146px;
+    width: 90%;
+    height: 150px;
+    max-width: 400px;
   }
 
   .secondaryPartnerSlot .logoStage,
   .featuredPartnerSlot .logoStage {
-    min-height: 142px;
+    min-height: 156px;
+  }
+
+  .secondaryPartnerSlot .logoTile img,
+  .featuredPartnerSlot .logoTile img {
+    height: 118px;
   }
 
   .partnerLabel,
@@ -294,13 +319,14 @@
 
   .supportingPartnerSlot .logoStage,
   .multiLogoGrid .logoStage {
-    min-height: 126px;
+    min-height: 150px;
   }
 
   .supportingPartnerSlot .logoTile img,
   .multiLogoGrid .logoTile img {
-    max-width: 250px;
-    max-height: 104px;
+    width: 92%;
+    height: 112px;
+    max-width: 300px;
   }
 
   .multiPartnerGroup .partnerLabel {
