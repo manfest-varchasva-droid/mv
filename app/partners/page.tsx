@@ -2,43 +2,191 @@ import styles from "./partners.module.css";
 
 export const metadata = { title: "Our Partners" };
 
-const secondaryPartners = ["Co-Title Partner", "Powered By Partner"];
+type Sponsor = {
+  name: string;
+  logo: string;
+};
 
-const featuredPartners = [
-  "Lucknow City Run Title Partner",
-  "Ticketing Partner",
-  "Concerts Partner",
-  "Social Impact Partner",
-  "Investment Partner",
-  "Development Partner",
-  "Tourism Partner",
-  "Jewellery Partner",
-  "Vegan Beauty Partner",
-  "Associate Partners",
+type PartnerGroup = {
+  title: string;
+  sponsors: Sponsor[];
+};
+
+const titlePartner: PartnerGroup = {
+  title: "Title Partner",
+  sponsors: [{ name: "Axis Bank", logo: "/partners/axis bank.png" }],
+};
+
+const secondaryPartners: PartnerGroup[] = [
+  {
+    title: "Co-Title Partner",
+    sponsors: [{ name: "Flipkart Minutes", logo: "/partners/Flipkart minutes.jpg" }],
+  },
+  {
+    title: "Powered By Partner",
+    sponsors: [{ name: "ODOP", logo: "/partners/ODOP.jpg" }],
+  },
 ];
 
-const supportingPartners = [
-  "Desi Snacks Partner",
-  "Creator Tech Partner",
-  "Logistics Partner",
-  "Herbal Care Partner",
-  "Official Poker Partner",
-  "NGO Partner",
-  "Management Events Partner",
-  "Radio Partner",
-  "Banking Partner",
-  "Books Partner",
-  "Entertainment Partner",
-  "Music Streaming Partner",
-  "Memories Partner",
-  "Official Nutrition Partner",
-  "Urban Outreach and Engagement Partner",
-  "Travel Partner",
-  "Social Media Partner",
-  "Gourmet Partner",
-  "Media Partners",
-  "General Partners",
+const featuredPartners: PartnerGroup[] = [
+  {
+    title: "Lucknow City Run Title Partner",
+    sponsors: [{ name: "Social Welfare", logo: "/partners/Social Welfare (1).png" }],
+  },
+  {
+    title: "Ticketing Partner",
+    sponsors: [{ name: "District", logo: "/partners/district.png" }],
+  },
+  {
+    title: "Concerts Partner",
+    sponsors: [{ name: "Coke Studio", logo: "/partners/coke_studio.png" }],
+  },
+  {
+    title: "Social Impact Partner",
+    sponsors: [{ name: "Pranyas", logo: "/partners/Pranyas.PNG" }],
+  },
+  {
+    title: "Investment Partner",
+    sponsors: [{ name: "Invest UP", logo: "/partners/invest up.png" }],
+  },
+  {
+    title: "Development Partner",
+    sponsors: [{ name: "LDA", logo: "/partners/lda.png" }],
+  },
+  {
+    title: "Tourism Partner",
+    sponsors: [{ name: "UP Tourism", logo: "/partners/up_tourism.png" }],
+  },
+  {
+    title: "Jewellery Partner",
+    sponsors: [{ name: "Sahu Jewellers", logo: "/partners/sahu jewellers.png" }],
+  },
+  {
+    title: "Vegan Beauty Partner",
+    sponsors: [{ name: "Plum", logo: "/partners/plum.png" }],
+  },
+  {
+    title: "Associate Partners",
+    sponsors: [
+      { name: "LIC", logo: "/partners/LIC-Logo (1).jpg" },
+      { name: "SBI", logo: "/partners/sbi.png" },
+      { name: "CBI", logo: "/partners/cbi.png" },
+    ],
+  },
 ];
+
+const supportingPartners: PartnerGroup[] = [
+  {
+    title: "Desi Snacks Partner",
+    sponsors: [{ name: "Go Desi", logo: "/partners/go desi.png" }],
+  },
+  {
+    title: "Creator Tech Partner",
+    sponsors: [{ name: "Digitek", logo: "/partners/digitek_logo.jpeg" }],
+  },
+  {
+    title: "Logistics Partner",
+    sponsors: [{ name: "Safexpress", logo: "/partners/Safe-Express.png" }],
+  },
+  {
+    title: "Herbal Care Partner",
+    sponsors: [{ name: "Jovees", logo: "/partners/Jovees (1).jpg" }],
+  },
+  {
+    title: "Poker Partner",
+    sponsors: [{ name: "Tilt", logo: "/partners/tilt.png" }],
+  },
+  {
+    title: "NGO Partner",
+    sponsors: [{ name: "Kiran Foundation", logo: "/partners/Kiran-Foundation.png" }],
+  },
+  {
+    title: "Management Events Partner",
+    sponsors: [{ name: "LSG", logo: "/partners/LSG.png" }],
+  },
+  {
+    title: "Radio Partner",
+    sponsors: [{ name: "Mirchi", logo: "/partners/mirchi_logo.jpg" }],
+  },
+  {
+    title: "Banking Partner",
+    sponsors: [{ name: "UBI", logo: "/partners/ubi.png" }],
+  },
+  {
+    title: "Books Partner",
+    sponsors: [{ name: "Crossword", logo: "/partners/crossword-bookstores-seeklogo (1).png" }],
+  },
+  {
+    title: "Entertainment Partner",
+    sponsors: [{ name: "Funtura", logo: "/partners/Funtura logo (1).png" }],
+  },
+  {
+    title: "Music Streaming Partner",
+    sponsors: [{ name: "JioSaavn", logo: "/partners/Jio Saavn Logo (3) (1).png" }],
+  },
+  {
+    title: "Memories Partner",
+    sponsors: [{ name: "Instax", logo: "/partners/Instax logo.jpeg" }],
+  },
+  {
+    title: "Nutrition Partner",
+    sponsors: [{ name: "Phab", logo: "/partners/phab blue logo 1.png" }],
+  },
+  {
+    title: "Urban Outreach and Engagement Partner",
+    sponsors: [{ name: "SUDA", logo: "/partners/suda.png" }],
+  },
+  {
+    title: "Travel Partner",
+    sponsors: [{ name: "Ixigo", logo: "/partners/ixigo.png" }],
+  },
+  {
+    title: "Social Media Partner",
+    sponsors: [{ name: "Eye Media", logo: "/partners/eye media solutions.png" }],
+  },
+  {
+    title: "Gourmet Partner",
+    sponsors: [{ name: "Roastery", logo: "/partners/roastery.png" }],
+  },
+  {
+    title: "Media Partners",
+    sponsors: [
+      { name: "Amar Ujala", logo: "/partners/Amar Ujala black (1).jpg" },
+      { name: "ABP", logo: "/partners/abp.png" },
+      { name: "Business Standard", logo: "/partners/bs.png" },
+    ],
+  },
+  {
+    title: "General Partners",
+    sponsors: [
+      { name: "EIC", logo: "/partners/eic.png" },
+      { name: "KitKat", logo: "/partners/KITKAT LOGO.png" },
+      { name: "UPSDM", logo: "/partners/upsdm.png" },
+      { name: "UPSRTC", logo: "/partners/upsrtc.jpg" },
+    ],
+  },
+];
+
+function PartnerLogos({ sponsors }: { sponsors: Sponsor[] }) {
+  return (
+    <div className={`${styles.logoStage} ${sponsors.length > 1 ? styles.logoStageMulti : ""}`}>
+      {sponsors.map((sponsor) => (
+        <div className={styles.logoTile} key={sponsor.name}>
+          <img src={sponsor.logo} alt={sponsor.name} loading="lazy" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PartnerCard({ partner, className }: { partner: PartnerGroup; className: string }) {
+  return (
+    <article className={className}>
+      <span className={styles.partnerLabel}>{partner.title}</span>
+      <PartnerLogos sponsors={partner.sponsors} />
+    </article>
+  );
+}
 
 export default function PartnersPage() {
   return (
@@ -71,33 +219,24 @@ export default function PartnersPage() {
           </div>
 
           <div className={styles.titleTier}>
-            <span className={styles.tierLabel}>TITLE PARTNER</span>
-            <div className={styles.titlePartnerSlot}>
-              <strong>Title Partner</strong>
-            </div>
+            <PartnerCard partner={titlePartner} className={styles.titlePartnerSlot} />
           </div>
 
           <div className={styles.secondaryTier}>
             {secondaryPartners.map((partner) => (
-              <div className={styles.secondaryPartnerSlot} key={partner}>
-                <span>{partner}</span>
-              </div>
+              <PartnerCard partner={partner} className={styles.secondaryPartnerSlot} key={partner.title} />
             ))}
           </div>
 
           <div className={styles.featuredTier}>
             {featuredPartners.map((partner) => (
-              <div className={styles.featuredPartnerSlot} key={partner}>
-                <span>{partner}</span>
-              </div>
+              <PartnerCard partner={partner} className={styles.featuredPartnerSlot} key={partner.title} />
             ))}
           </div>
 
           <div className={styles.supportingTier}>
             {supportingPartners.map((partner) => (
-              <div className={styles.supportingPartnerSlot} key={partner}>
-                <span>{partner}</span>
-              </div>
+              <PartnerCard partner={partner} className={styles.supportingPartnerSlot} key={partner.title} />
             ))}
           </div>
         </div>
