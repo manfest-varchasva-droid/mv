@@ -1,33 +1,39 @@
 .categoryNav {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 30px;
+  justify-content: center;
+  gap: 12px;
+  width: min(100%, 900px);
+  margin: 30px auto 0;
 }
 
 .categoryButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
-  padding: 0 16px;
+  flex: 0 1 160px;
+  min-width: 145px;
+  min-height: 44px;
+  padding: 0 18px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
-  background: rgba(8, 9, 18, 0.46);
-  color: rgba(255, 255, 255, 0.86);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #e45bc8, #c944ad);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(201, 68, 173, 0.28);
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
+  font-weight: 850;
+  line-height: 1.2;
+  letter-spacing: 1.05px;
+  text-align: center;
   text-transform: uppercase;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .categoryButton:hover,
 .categoryButton:focus-visible {
   transform: translateY(-2px);
-  border-color: rgba(199, 124, 255, 0.7);
-  background: rgba(156, 100, 255, 0.16);
+  background: linear-gradient(135deg, #f06bd3, #d64bbb);
+  box-shadow: 0 10px 28px rgba(214, 75, 187, 0.4);
   outline: none;
 }
 
@@ -54,15 +60,18 @@
 
 @media (max-width: 720px) {
   .categoryNav {
-    gap: 8px;
+    width: 100%;
+    gap: 9px;
     margin-top: 24px;
   }
 
   .categoryButton {
-    min-height: 38px;
+    flex: 1 1 calc(50% - 9px);
+    min-width: 0;
+    min-height: 40px;
     padding: 0 13px;
     font-size: 10px;
-    letter-spacing: 1px;
+    letter-spacing: 0.9px;
   }
 
   .termsLink {
