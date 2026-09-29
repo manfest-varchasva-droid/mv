@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./partners.module.css";
 
 export const metadata = { title: "Our Partners" };
@@ -168,10 +169,20 @@ const supportingPartners: PartnerGroup[] = [
 ];
 
 function LogoCard({ sponsor }: { sponsor: Sponsor }) {
+  const isAxisBank = sponsor.name === "Axis Bank";
+
   return (
     <div className={styles.logoStage}>
       <div className={styles.logoTile}>
-        <img src={sponsor.logo} alt={sponsor.name} loading="lazy" />
+        <Image
+          src={sponsor.logo}
+          alt={sponsor.name}
+          width={600}
+          height={300}
+          sizes="(max-width: 520px) 92vw, (max-width: 720px) 88vw, (max-width: 1040px) 44vw, 30vw"
+          quality={75}
+          preload={isAxisBank}
+        />
       </div>
     </div>
   );
