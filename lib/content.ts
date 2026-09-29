@@ -356,18 +356,6 @@ export const events: EventItem[] = [
     category: "Leaders Express",
     blurb: "A Leaders Express format featuring notable voices and ideas.",
   },
-  {
-    slug: "minute-to-win-it",
-    name: "Minute to Win It",
-    category: "Management",
-    blurb: "A management challenge from the Manfest-Varchasva event line-up.",
-  },
-  {
-    slug: "vridhi-season-4",
-    name: "Vridhi Season 4",
-    category: "Management",
-    blurb: "A management event from the Manfest-Varchasva programme.",
-  },
 ];
 
 export const galleryImages = [
