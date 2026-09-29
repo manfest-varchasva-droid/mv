@@ -5,12 +5,15 @@ import styles from "./events.module.css";
 
 export const metadata = { title: "Events" };
 
+const managementUnstopUrl =
+  "https://unstop.com/college-fests/manfest-varchasva-2025-26-indian-institute-of-management-iim-lucknow-430632";
+
 function categoryId(category: string) {
   return `category-${category.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
 }
 
 export default function EventsPage() {
-  const categories = [...new Set(events.map((event) => event.category))].sort((a, b) =>
+  const categories = [...new Set([...events.map((event) => event.category), "Management"])].sort((a, b) =>
     a.localeCompare(b, "en", { sensitivity: "base" })
   );
 
@@ -46,18 +49,35 @@ export default function EventsPage() {
               key={category}
             >
               <h2>{category}</h2>
-              <div className="event-grid">
-                {events
-                  .filter((event) => event.category === category)
-                  .map((event) => (
-                    <Link className="event-card" href={`/events/${event.slug}`} key={event.slug}>
-                      <span>{event.category}</span>
-                      <h3>{event.name}</h3>
-                      <p>{event.blurb}</p>
-                      <b>View event →</b>
-                    </Link>
-                  ))}
-              </div>
+
+              {category === "Management" ? (
+                <div className="event-grid">
+                  <a
+                    className="event-card"
+                    href={managementUnstopUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span>Management</span>
+                    <h3>Management Events</h3>
+                    <p>View the complete Manfest-Varchasva management event line-up and registrations on Unstop.</p>
+                    <b>Unstop Link &gt;&gt;</b>
+                  </a>
+                </div>
+              ) : (
+                <div className="event-grid">
+                  {events
+                    .filter((event) => event.category === category)
+                    .map((event) => (
+                      <Link className="event-card" href={`/events/${event.slug}`} key={event.slug}>
+                        <span>{event.category}</span>
+                        <h3>{event.name}</h3>
+                        <p>{event.blurb}</p>
+                        <b>View event →</b>
+                      </Link>
+                    ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
