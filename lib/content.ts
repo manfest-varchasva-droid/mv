@@ -155,76 +155,46 @@ export const stats = [
 ];
 
 export const partnerLogos = [
-  {
-    name: "Axis Bank",
-    image:
-      "/partners/axis-bank.png",
-  },
-  {
-    name: "Alpha 8",
-    image:
-      "/partners/alpha-8.png",
-  },
-  {
-    name: "Bonn",
-    image:
-      "/partners/bonn.png",
-  },
-  {
-    name: "Decathlon",
-    image:
-      "/partners/decathlon.png",
-  },
-  {
-    name: "Devyani International",
-    image:
-      "/partners/devyani-international.png",
-  },
-  {
-    name: "Mahindra Solarize",
-    image:
-      "/partners/mahindra-solarize.png",
-  },
-  {
-    name: "IDFC FIRST Bank",
-    image:
-      "/partners/idfc-first-bank.png",
-  },
-  {
-    name: "SBI",
-    image:
-      "/partners/sbi.png",
-  },
-  {
-    name: "LIC",
-    image:
-      "/partners/lic.png",
-  },
-  {
-    name: "Plum",
-    image:
-      "/partners/plum.png",
-  },
-  {
-    name: "Safexpress",
-    image:
-      "/partners/safexpress.png",
-  },
-  {
-    name: "Sparx",
-    image:
-      "/partners/sparx.png",
-  },
-  {
-    name: "UPSRTC",
-    image:
-      "/partners/upsrtc.png",
-  },
-  {
-    name: "UPSDM",
-    image:
-      "/partners/upsdm.png",
-  },
+  { name: "ABP", image: "/partners/abp.png" },
+  { name: "Amar Ujala", image: "/partners/Amar Ujala black (1).jpg" },
+  { name: "Axis Bank", image: "/partners/axis bank.png" },
+  { name: "Business Standard", image: "/partners/bs.png" },
+  { name: "CBI", image: "/partners/cbi.png" },
+  { name: "Coke Studio", image: "/partners/coke_studio.png" },
+  { name: "Crossword", image: "/partners/crossword-bookstores-seeklogo (1).png" },
+  { name: "Digitek", image: "/partners/digitek_logo.jpeg" },
+  { name: "District", image: "/partners/district.png" },
+  { name: "EIC", image: "/partners/eic.png" },
+  { name: "Eye Media", image: "/partners/eye media solutions.png" },
+  { name: "Flipkart Minutes", image: "/partners/Flipkart minutes.jpg" },
+  { name: "Funtura", image: "/partners/Funtura logo (1).png" },
+  { name: "Go Desi", image: "/partners/go desi.png" },
+  { name: "Instax", image: "/partners/Instax logo.jpeg" },
+  { name: "Invest UP", image: "/partners/invest up.png" },
+  { name: "Ixigo", image: "/partners/ixigo.png" },
+  { name: "JioSaavn", image: "/partners/Jio Saavn Logo (3) (1).png" },
+  { name: "Jovees", image: "/partners/Jovees (1).jpg" },
+  { name: "Kiran Foundation", image: "/partners/Kiran-Foundation.png" },
+  { name: "KitKat", image: "/partners/KITKAT LOGO.png" },
+  { name: "LDA", image: "/partners/lda.png" },
+  { name: "LIC", image: "/partners/LIC-Logo (1).jpg" },
+  { name: "LSG", image: "/partners/LSG.png" },
+  { name: "Mirchi", image: "/partners/mirchi_logo.jpg" },
+  { name: "ODOP", image: "/partners/ODOP.jpg" },
+  { name: "Phab", image: "/partners/phab blue logo 1.png" },
+  { name: "Plum", image: "/partners/plum.png" },
+  { name: "Pranyas", image: "/partners/Pranyas.PNG" },
+  { name: "Roastery", image: "/partners/roastery.png" },
+  { name: "Safexpress", image: "/partners/Safe-Express.png" },
+  { name: "Sahu Jewellers", image: "/partners/sahu jewellers.png" },
+  { name: "SBI", image: "/partners/sbi.png" },
+  { name: "Social Welfare", image: "/partners/Social Welfare (1).png" },
+  { name: "SUDA", image: "/partners/suda.png" },
+  { name: "Tilt", image: "/partners/tilt.png" },
+  { name: "UBI", image: "/partners/ubi.png" },
+  { name: "UP Tourism", image: "/partners/up_tourism.png" },
+  { name: "UPSDM", image: "/partners/upsdm.png" },
+  { name: "UPSRTC", image: "/partners/upsrtc.jpg" },
 ];
 
 export type EventItem = {
