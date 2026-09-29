@@ -350,12 +350,6 @@ export const events: EventItem[] = [
     category: "Leaders Express",
     blurb: "A Leaders Express format focused on ideas, leadership and conversation.",
   },
-  {
-    slug: "icons",
-    name: "ICONS",
-    category: "Leaders Express",
-    blurb: "A Leaders Express format featuring notable voices and ideas.",
-  },
 ];
 
 export const galleryImages = [
