@@ -6,7 +6,6 @@
       border-color 0.3s ease,
       box-shadow 0.3s ease;
     transform-origin: center;
-    will-change: transform;
   }
 
   .headliner-photo,
@@ -37,5 +36,25 @@
   .headliner-card:hover .headliner-copy,
   .speaker-card:hover .speaker-copy {
     transform: translateY(-3px);
+  }
+}
+
+/* Skip expensive paint/layout work for content that is still far below the viewport. */
+.section,
+.global-partners,
+.global-partners-lazy-shell {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 760px;
+}
+
+/* Reserve the footer carousel footprint while its client bundle is deferred. */
+.global-partners-lazy-shell {
+  min-height: 420px;
+  background: #070810;
+}
+
+@media (max-width: 700px) {
+  .global-partners-lazy-shell {
+    min-height: 360px;
   }
 }
