@@ -58,7 +58,8 @@ export default function GalleryPage() {
               <img
                 src={`/gallery/${file}`}
                 alt={file === "bismil.jpeg" ? "Bismil at Manfest-Varchasva" : `Manfest-Varchasva gallery moment ${index + 1}`}
-                loading="lazy"
+                loading={index < 3 ? "eager" : "lazy"}
+                fetchPriority={index < 3 ? "high" : "auto"}
                 decoding="async"
               />
             </figure>
