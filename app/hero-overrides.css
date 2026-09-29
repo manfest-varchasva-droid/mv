@@ -6,12 +6,6 @@
   font-size: clamp(10.5px, 0.95vw, 13px) !important;
 }
 
-/* Original homepage hero font is explicitly forced while Lovelo is disabled. */
-.hero h1,
-.hero-year {
-  font-family: Arial, Helvetica, sans-serif !important;
-}
-
 .hero-year {
   -webkit-text-stroke: 1.8px rgba(206, 116, 255, 0.8) !important;
 }
