@@ -5,8 +5,8 @@ import {
   Highlights,
   LeadersExpress,
   OverTheYears,
-  PartnersPreview,
 } from "@/components/HomeSections";
+import { PartnerCarousel } from "@/components/PartnerCarousel";
 import styles from "./home-lovelo.module.css";
 import titleFix from "./home-title-fix.module.css";
 
@@ -21,7 +21,7 @@ export default function HomePage() {
       <OverTheYears />
       <Highlights />
       <GalleryPreview />
-      <PartnersPreview />
+      <PartnerCarousel />
     </>
   );
 }
