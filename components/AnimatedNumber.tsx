@@ -10,8 +10,9 @@ type AnimatedNumberProps = {
 };
 
 function splitValue(value: string) {
-  const match = value.match(/^(\\D*)([\\d,]+(?:\\.\\d+)?)(.*)$/);
+  const match = value.match(/^(\D*)([\d,]+(?:\.\d+)?)(.*)$/);
   if (!match) return { prefix: "", number: 0, suffix: value };
+
   return {
     prefix: match[1],
     number: Number(match[2].replace(/,/g, "")),
@@ -22,63 +23,84 @@ function splitValue(value: string) {
 export function AnimatedNumber({ value, className, style }: AnimatedNumberProps) {
   const parsed = useMemo(() => splitValue(value), [value]);
   const [display, setDisplay] = useState(0);
-  const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
+  const elementRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
+    const element = elementRef.current;
+    if (!element || hasAnimated.current) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
-      setDisplay(parsed.number);
-      setStarted(true);
+
+    const animate = () => {
+      if (hasAnimated.current) return;
+      hasAnimated.current = true;
+
+      if (reduceMotion) {
+        setDisplay(parsed.number);
+        return;
+      }
+
+      const duration = 850;
+      const start = performance.now();
+
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setDisplay(parsed.number * eased);
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          setDisplay(parsed.number);
+        }
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    // Start as soon as the number enters the viewport. A very small threshold
+    // makes this reliable on both desktop and mobile.
+    if (!("IntersectionObserver" in window)) {
+      animate();
       return;
     }
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        setStarted(true);
-        observer.disconnect();
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          animate();
+          observer.disconnect();
+        }
       },
-      { threshold: 0.35 }
+      { threshold: 0.01, rootMargin: "0px 0px -5% 0px" }
     );
+
     observer.observe(element);
-    return () => observer.disconnect();
-  }, [parsed.number]);
 
-  useEffect(() => {
-    if (!started) return;
+    // Fallback for browsers/webviews where intersection callbacks are delayed.
+    const fallback = window.setTimeout(() => {
+      if (element.getBoundingClientRect().top < window.innerHeight) {
+        animate();
+        observer.disconnect();
+      }
+    }, 700);
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
-      setDisplay(parsed.number);
-      return;
-    }
-
-    const duration = 1100;
-    const startTime = performance.now();
-    let frame = 0;
-
-    const tick = (now: number) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(parsed.number * eased);
-      if (progress < 1) frame = requestAnimationFrame(tick);
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
     };
-
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [started, parsed.number]);
+  }, [parsed.number]);
 
   const formatted = Number.isInteger(parsed.number)
     ? Math.round(display).toLocaleString("en-IN")
     : display.toFixed(1);
 
   return (
-    <span ref={ref} className={className} style={style} aria-label={value}>
-      {parsed.prefix}{formatted}{parsed.suffix}
+    <span ref={elementRef} className={className} style={style} aria-label={value}>
+      {parsed.prefix}
+      {formatted}
+      {parsed.suffix}
     </span>
   );
 }
