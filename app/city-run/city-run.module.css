@@ -264,7 +264,7 @@
   text-transform: uppercase;
 }
 
-.highlight strong .animated-number { font-size: inherit; line-height: inherit; letter-spacing: inherit; font-weight: inherit; color: inherit; }
+.highlight strong .animated-number { display: inline; margin: 0; font-size: inherit; line-height: inherit; letter-spacing: inherit; font-weight: inherit; color: inherit; }
 
 .partnersSection {
   padding: 86px 0 94px;
