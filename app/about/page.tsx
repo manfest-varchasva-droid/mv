@@ -2,6 +2,7 @@ import Image from "next/image";
 import { CoreTeamDirectory } from "@/components/CoreTeamDirectory";
 import { SectionTitle } from "@/components/SectionTitle";
 import { stats } from "@/lib/content";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
 import styles from "./about.module.css";
 
 export const metadata = { title: "About us" };
@@ -87,7 +88,7 @@ export default function AboutPage() {
                     : undefined
                 }
               >
-                {item.value}
+                <AnimatedNumber value={item.value} />
               </strong>
               <span>{item.label}</span>
             </div>
