@@ -53,8 +53,127 @@
   background: #070810;
 }
 
+/* Shared navigation for the homepage horizontal carousels. */
+.horizontal-scroller-shell {
+  position: relative;
+}
+
+/* Replace the old static drag hints with controls that reflect the real position. */
+.headliner-scroll-meta,
+.leaders-scroll-meta,
+.years-scroll-meta {
+  display: none !important;
+}
+
+.carousel-controls {
+  min-height: 44px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.carousel-arrows {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carousel-arrow {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(30, 31, 51, 0.92), rgba(11, 12, 25, 0.94));
+  color: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.2);
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(218, 112, 255, 0.58);
+  background: linear-gradient(180deg, rgba(45, 36, 68, 0.96), rgba(18, 15, 35, 0.96));
+}
+
+.carousel-arrow:focus-visible,
+.carousel-dot:focus-visible {
+  outline: 2px solid #d877ff;
+  outline-offset: 3px;
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.carousel-counter {
+  min-width: 46px;
+  color: rgba(255,255,255,0.48);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-align: center;
+}
+
+.carousel-progress {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  max-width: min(78vw, 280px);
+  overflow: hidden;
+}
+
+.carousel-dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: width 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+}
+
+.carousel-dot.is-active {
+  width: 20px;
+  background: linear-gradient(90deg, #9c64ff, #ec4db5, #ff5368);
+  box-shadow: 0 0 12px rgba(236,77,181,0.34);
+}
+
+.headliner-grid:focus-visible,
+.leaders-grid:focus-visible,
+.years-video-scroll:focus-visible {
+  outline: 1px solid rgba(215,119,255,0.6);
+  outline-offset: 6px;
+  border-radius: 20px;
+}
+
 @media (max-width: 700px) {
   .global-partners-lazy-shell {
     min-height: 360px;
+  }
+
+  .carousel-controls {
+    min-height: 30px;
+    margin-top: 13px;
+    justify-content: center;
+  }
+
+  .carousel-progress {
+    display: inline-flex;
+  }
+
+  .carousel-arrows {
+    display: none;
   }
 }
