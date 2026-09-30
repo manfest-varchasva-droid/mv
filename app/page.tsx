@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   Headliners,
   Hero,
@@ -9,6 +10,15 @@ import { HomeGalleryMarquee } from "@/components/HomeGalleryMarquee";
 import { PartnerCarousel } from "@/components/PartnerCarousel";
 import styles from "./home-lovelo.module.css";
 import titleFix from "./home-title-fix.module.css";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    url: "/",
+  },
+};
 
 export default function HomePage() {
   return (
