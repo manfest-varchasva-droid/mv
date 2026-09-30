@@ -713,6 +713,7 @@ button, input, textarea, select { font: inherit; }
 .stat-card { min-height: 168px; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; border-radius: 22px; border: 1px solid var(--line); background: rgba(255,255,255,0.035); }
 .stat-card strong { font-size: clamp(30px, 4vw, 48px); letter-spacing: -2px; background: linear-gradient(90deg, #fff, #d28aff); -webkit-background-clip: text; color: transparent; }
 .stat-card span { margin-top: 6px; color: var(--muted); font-size: 13px; letter-spacing: 1px; }
+.stat-card strong .animated-number { font-size: inherit; line-height: inherit; letter-spacing: inherit; font-weight: inherit; color: inherit; background: inherit; -webkit-background-clip: inherit; }
 .compact-stats { margin-top: 50px; }
 
 .title-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; }
