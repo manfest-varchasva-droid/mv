@@ -59,7 +59,7 @@
   text-transform: uppercase;
 }
 
-.aboutStat strong .animated-number { font-size: inherit; line-height: inherit; letter-spacing: inherit; font-weight: inherit; color: inherit; }
+.aboutStat strong .animated-number { display: inline; margin: 0; font-size: inherit; line-height: inherit; letter-spacing: inherit; font-weight: inherit; color: inherit; }
 
 .historySection {
   padding-top: 86px;
