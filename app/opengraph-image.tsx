@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 
+export const dynamic = "force-static";
 export const alt = "Manfest-Varchasva 2027 at IIM Lucknow";
 export const size = {
   width: 1200,
