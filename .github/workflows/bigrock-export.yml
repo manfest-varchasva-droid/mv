@@ -63,6 +63,7 @@ jobs:
           set ftp:ssl-auth TLS
           set ftp:passive-mode true
           set ssl:verify-certificate yes
+          set ssl:check-hostname no
           set net:max-retries 2
           set net:timeout 30
           mirror --reverse --verbose --parallel=4 --only-newer out/ ./
