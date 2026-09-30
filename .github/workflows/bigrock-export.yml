@@ -38,6 +38,44 @@ jobs:
       - name: Remove unused raw event copies
         run: rm -rf out/raw-events
 
+      - name: Generate lightweight WebP images
+        run: node scripts/optimize-static-images.mjs out
+
+      - name: Add BigRock image and cache rules
+        run: |
+          cat > out/.htaccess <<'HTACCESS'
+          <IfModule mod_rewrite.c>
+            RewriteEngine On
+
+            # Transparently serve generated WebP versions to browsers that support them.
+            RewriteCond %{HTTP_ACCEPT} image/webp [NC]
+            RewriteCond %{REQUEST_FILENAME}.webp -f
+            RewriteRule ^(.+\.(?:jpe?g|png))$ $1.webp [T=image/webp,L,NC]
+          </IfModule>
+
+          <IfModule mod_mime.c>
+            AddType image/webp .webp
+          </IfModule>
+
+          <IfModule mod_headers.c>
+            <FilesMatch "\.(?:jpe?g|png)$">
+              Header append Vary Accept
+            </FilesMatch>
+
+            <FilesMatch "\.(?:jpg|jpeg|png|webp|gif|svg)$">
+              Header set Cache-Control "public, max-age=604800"
+            </FilesMatch>
+
+            <FilesMatch "\.(?:js|css|woff2)$">
+              Header set Cache-Control "public, max-age=31536000, immutable"
+            </FilesMatch>
+
+            <FilesMatch "\.(?:html|txt)$">
+              Header set Cache-Control "no-cache"
+            </FilesMatch>
+          </IfModule>
+          HTACCESS
+
       - name: Keep downloadable backup artifact
         uses: actions/upload-artifact@v4
         with:
@@ -45,6 +83,7 @@ jobs:
           path: out/
           if-no-files-found: error
           retention-days: 30
+          include-hidden-files: true
 
       - name: Install FTPS client
         run: |
