@@ -41,7 +41,7 @@ export function AnimatedNumber({ value, className, style }: AnimatedNumberProps)
         return;
       }
 
-      const duration = 1500;
+      const duration = 2000;
       const start = performance.now();
 
       const tick = (now: number) => {
