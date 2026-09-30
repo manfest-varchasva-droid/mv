@@ -1,10 +1,19 @@
-name: Build BigRock Website
+name: Build and Deploy BigRock Website
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: bigrock-production
+  cancel-in-progress: true
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     env:
@@ -29,9 +38,33 @@ jobs:
       - name: Remove unused raw event copies
         run: rm -rf out/raw-events
 
-      - name: Package website for BigRock
+      - name: Keep downloadable backup artifact
         uses: actions/upload-artifact@v4
         with:
           name: manfest-bigrock-site
           path: out/
           if-no-files-found: error
+          retention-days: 30
+
+      - name: Install FTPS client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+
+      - name: Deploy website to BigRock
+        env:
+          BIGROCK_FTP_HOST: ${{ secrets.BIGROCK_FTP_HOST }}
+          BIGROCK_FTP_USER: ${{ secrets.BIGROCK_FTP_USER }}
+          BIGROCK_FTP_PASSWORD: ${{ secrets.BIGROCK_FTP_PASSWORD }}
+        run: |
+          lftp -u "$BIGROCK_FTP_USER","$BIGROCK_FTP_PASSWORD" "ftp://$BIGROCK_FTP_HOST" <<'LFTP_CMDS'
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ftp:ssl-auth TLS
+          set ftp:passive-mode true
+          set ssl:verify-certificate yes
+          set net:max-retries 2
+          set net:timeout 30
+          mirror --reverse --verbose --parallel=4 --only-newer out/ ./
+          bye
+          LFTP_CMDS
