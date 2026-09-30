@@ -1,9 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionTitle } from "@/components/SectionTitle";
 import { events } from "@/lib/content";
 import styles from "./events.module.css";
 
-export const metadata = { title: "Events" };
+export const metadata: Metadata = {
+  title: "Events",
+  description:
+    "Explore cultural, literary, management and leadership events at Manfest-Varchasva 2027, IIM Lucknow.",
+  alternates: {
+    canonical: "/events/",
+  },
+  openGraph: {
+    url: "/events/",
+    title: "Events | Manfest-Varchasva 2027",
+    description:
+      "Explore cultural, literary, management and leadership events at Manfest-Varchasva 2027, IIM Lucknow.",
+  },
+};
 
 const managementUnstopUrl =
   "https://unstop.com/college-fests/manfest-varchasva-2025-26-indian-institute-of-management-iim-lucknow-430632";
