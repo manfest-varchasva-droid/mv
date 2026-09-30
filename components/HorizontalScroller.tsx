@@ -23,6 +23,7 @@ export function HorizontalScroller({
   const drag = useRef({ active: false, startX: 0, scrollLeft: 0 });
   const itemCount = Children.count(children);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [canPrevious, setCanPrevious] = useState(false);
   const [canNext, setCanNext] = useState(itemCount > 1);
 
@@ -31,9 +32,10 @@ export function HorizontalScroller({
     if (!el) return;
 
     const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth);
-    const progress = maxScroll > 0 ? el.scrollLeft / maxScroll : 0;
-    const nextIndex = itemCount > 1 ? Math.round(progress * (itemCount - 1)) : 0;
+    const nextProgress = maxScroll > 0 ? Math.min(1, Math.max(0, el.scrollLeft / maxScroll)) : 0;
+    const nextIndex = itemCount > 1 ? Math.round(nextProgress * (itemCount - 1)) : 0;
 
+    setProgress(nextProgress);
     setCurrentIndex(Math.min(itemCount - 1, Math.max(0, nextIndex)));
     setCanPrevious(el.scrollLeft > 4);
     setCanNext(el.scrollLeft < maxScroll - 4);
@@ -129,8 +131,12 @@ export function HorizontalScroller({
     }
   }
 
+  const fillWidth = `${10 + progress * 90}%`;
+
   return (
-    <div className="horizontal-scroller-shell">
+    <div
+      className={`horizontal-scroller-shell${canPrevious ? " can-previous" : ""}${canNext ? " can-next" : ""}`}
+    >
       <div
         ref={ref}
         className={className}
@@ -150,49 +156,42 @@ export function HorizontalScroller({
       </div>
 
       {itemCount > 1 && (
-        <div className="carousel-controls" aria-label="Carousel controls">
-          <div
-            className="carousel-progress"
-            role="status"
-            aria-live="polite"
-            aria-label={`Item ${currentIndex + 1} of ${itemCount}`}
+        <>
+          <button
+            type="button"
+            className="carousel-edge-button carousel-edge-button-left"
+            aria-label="Previous item"
+            onClick={() => move(-1)}
+            disabled={!canPrevious}
           >
-            {Array.from({ length: itemCount }).map((_, index) => (
-              <button
-                type="button"
-                className={`carousel-dot${index === currentIndex ? " is-active" : ""}`}
-                aria-label={`Go to item ${index + 1}`}
-                aria-current={index === currentIndex ? "true" : undefined}
-                onClick={() => scrollToIndex(index)}
-                key={index}
-              />
-            ))}
-          </div>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.5 6.5 9 12l5.5 5.5" />
+            </svg>
+          </button>
 
-          <div className="carousel-arrows">
-            <button
-              type="button"
-              className="carousel-arrow"
-              aria-label="Previous item"
-              onClick={() => move(-1)}
-              disabled={!canPrevious}
-            >
-              ←
-            </button>
-            <span className="carousel-counter" aria-hidden="true">
-              {currentIndex + 1} / {itemCount}
-            </span>
-            <button
-              type="button"
-              className="carousel-arrow"
-              aria-label="Next item"
-              onClick={() => move(1)}
-              disabled={!canNext}
-            >
-              →
-            </button>
+          <button
+            type="button"
+            className="carousel-edge-button carousel-edge-button-right"
+            aria-label="Next item"
+            onClick={() => move(1)}
+            disabled={!canNext}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9.5 6.5 5.5 5.5-5.5 5.5" />
+            </svg>
+          </button>
+
+          <div
+            className="carousel-progress-line"
+            role="progressbar"
+            aria-label="Carousel progress"
+            aria-valuemin={1}
+            aria-valuemax={itemCount}
+            aria-valuenow={currentIndex + 1}
+          >
+            <span style={{ width: fillWidth }} />
           </div>
-        </div>
+        </>
       )}
     </div>
   );
