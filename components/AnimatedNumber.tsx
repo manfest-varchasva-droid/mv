@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 
 type AnimatedNumberProps = {
   value: string;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 };
 
 function splitValue(value: string) {
