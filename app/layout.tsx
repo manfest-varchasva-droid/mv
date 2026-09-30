@@ -11,13 +11,53 @@ import { Header } from "@/components/Header";
 import { SitePartnerCarousel } from "@/components/SitePartnerCarousel";
 import { Footer } from "@/components/Footer";
 
+const siteUrl = "https://iiml-manfestvarchasva.com";
+const siteDescription =
+  "Manfest-Varchasva 2027, IIM Lucknow's annual business, cultural and sports festival, taking place 5–7 February 2027.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Manfest-Varchasva | IIM Lucknow",
+    default: "Manfest-Varchasva 2027 | IIM Lucknow",
     template: "%s | Manfest-Varchasva",
   },
-  description:
-    "Manfest-Varchasva, IIM Lucknow's annual business, cultural and sports festival.",
+  description: siteDescription,
+  applicationName: "Manfest-Varchasva",
+  keywords: [
+    "Manfest Varchasva",
+    "IIM Lucknow",
+    "college fest",
+    "business fest",
+    "cultural fest",
+    "sports fest",
+    "Manfest Varchasva 2027",
+  ],
+  authors: [{ name: "Manfest-Varchasva, IIM Lucknow" }],
+  creator: "Manfest-Varchasva, IIM Lucknow",
+  publisher: "Indian Institute of Management Lucknow",
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Manfest-Varchasva",
+    title: "Manfest-Varchasva 2027 | IIM Lucknow",
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manfest-Varchasva 2027 | IIM Lucknow",
+    description: siteDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: "/mv-logo.svg",
     shortcut: "/mv-logo.svg",
@@ -25,10 +65,70 @@ export const metadata: Metadata = {
   },
 };
 
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Manfest-Varchasva",
+    url: siteUrl,
+    logo: `${siteUrl}/mv-logo.svg`,
+    email: "manfest-varchasva@iiml.ac.in",
+    parentOrganization: {
+      "@type": "CollegeOrUniversity",
+      name: "Indian Institute of Management Lucknow",
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Prabandh Nagar",
+      addressLocality: "Lucknow",
+      postalCode: "226013",
+      addressCountry: "IN",
+    },
+    sameAs: [
+      "https://www.instagram.com/manfestvarchasva_iiml/",
+      "https://www.youtube.com/@ManfestVarchasva",
+      "https://www.facebook.com/ManfestVarchasva/",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: "Manfest-Varchasva 2027",
+    description: siteDescription,
+    url: siteUrl,
+    startDate: "2027-02-05",
+    endDate: "2027-02-07",
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    location: {
+      "@type": "Place",
+      name: "Indian Institute of Management Lucknow",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Prabandh Nagar",
+        addressLocality: "Lucknow",
+        postalCode: "226013",
+        addressCountry: "IN",
+      },
+    },
+    organizer: {
+      "@type": "Organization",
+      name: "Manfest-Varchasva, IIM Lucknow",
+      url: siteUrl,
+    },
+  },
+];
+
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          }}
+        />
         <Header />
         <main>{children}</main>
         <SitePartnerCarousel />
