@@ -1,0 +1,37 @@
+name: Build BigRock Website
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      STATIC_EXPORT: "1"
+
+    steps:
+      - name: Get website code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static website
+        run: npm run build
+
+      - name: Remove unused raw event copies
+        run: rm -rf out/raw-events
+
+      - name: Package website for BigRock
+        uses: actions/upload-artifact@v4
+        with:
+          name: manfest-bigrock-site
+          path: out/
+          if-no-files-found: error
