@@ -20,6 +20,13 @@ export function Header() {
 
   useEffect(() => {
     setMobileOpen(false);
+
+    // The Home navigation item should always return to the top of the homepage,
+    // rather than restoring the previous scroll position.
+    if (pathname === "/") {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
+    }
   }, [pathname]);
 
   useEffect(() => {
