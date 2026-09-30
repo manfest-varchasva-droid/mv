@@ -1,3 +1,4 @@
+import { GalleryLightbox } from "./GalleryLightbox";
 import styles from "./gallery.module.css";
 
 export const metadata = { title: "Gallery" };
@@ -52,19 +53,7 @@ export default function GalleryPage() {
       </section>
 
       <section className={styles.gallerySection}>
-        <div className={`page-shell ${styles.galleryGrid}`}>
-          {galleryPhotos.map((file, index) => (
-            <figure className={styles.galleryItem} key={file}>
-              <img
-                src={`/gallery/${file}`}
-                alt={file === "bismil.jpeg" ? "Bismil at Manfest-Varchasva" : `Manfest-Varchasva gallery moment ${index + 1}`}
-                loading={index < 3 ? "eager" : "lazy"}
-                fetchPriority={index < 3 ? "high" : "auto"}
-                decoding="async"
-              />
-            </figure>
-          ))}
-        </div>
+        <GalleryLightbox photos={galleryPhotos} />
       </section>
     </>
   );
