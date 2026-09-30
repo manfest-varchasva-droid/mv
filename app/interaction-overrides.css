@@ -53,107 +53,148 @@
   background: #070810;
 }
 
-/* Shared navigation for the homepage horizontal carousels. */
+/* Shared cinematic navigation for the homepage horizontal carousels. */
 .horizontal-scroller-shell {
   position: relative;
+  isolation: isolate;
 }
 
-/* Replace the old static drag hints with controls that reflect the real position. */
+/* Remove the older permanent drag/navigation hints. */
 .headliner-scroll-meta,
 .leaders-scroll-meta,
 .years-scroll-meta {
   display: none !important;
 }
 
-.carousel-controls {
-  min-height: 44px;
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 14px;
+.horizontal-scroller-shell::before,
+.horizontal-scroller-shell::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 28px;
+  width: 74px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.28s ease;
 }
 
-.carousel-arrows {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.horizontal-scroller-shell::before {
+  left: -2px;
+  background: linear-gradient(90deg, rgba(120, 72, 255, 0.18), rgba(120, 72, 255, 0.04) 42%, transparent);
 }
 
-.carousel-arrow {
-  width: 40px;
-  height: 40px;
+.horizontal-scroller-shell::after {
+  right: -2px;
+  background: linear-gradient(270deg, rgba(255, 74, 129, 0.17), rgba(255, 74, 129, 0.035) 42%, transparent);
+}
+
+.horizontal-scroller-shell.can-previous::before,
+.horizontal-scroller-shell.can-next::after {
+  opacity: 1;
+}
+
+.carousel-edge-button {
+  position: absolute;
+  z-index: 6;
+  top: calc(50% - 14px);
+  width: 46px;
+  height: 46px;
   display: grid;
   place-items: center;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255,255,255,0.14);
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(30, 31, 51, 0.92), rgba(11, 12, 25, 0.94));
-  color: rgba(255, 255, 255, 0.9);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.2);
-  font-size: 19px;
-  line-height: 1;
+  background: rgba(8, 9, 20, 0.56);
+  color: rgba(255,255,255,0.92);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 12px 34px rgba(0,0,0,0.34),
+    0 0 24px rgba(180,87,255,0.09);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.94);
   cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
-.carousel-arrow:hover:not(:disabled) {
-  transform: translateY(-1px);
-  border-color: rgba(218, 112, 255, 0.58);
-  background: linear-gradient(180deg, rgba(45, 36, 68, 0.96), rgba(18, 15, 35, 0.96));
+.carousel-edge-button-left { left: 10px; }
+.carousel-edge-button-right { right: 10px; }
+
+.carousel-edge-button svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.carousel-arrow:focus-visible,
-.carousel-dot:focus-visible {
-  outline: 2px solid #d877ff;
+.carousel-edge-button:disabled {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.carousel-edge-button:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  outline: 2px solid rgba(220, 123, 255, 0.88);
   outline-offset: 3px;
 }
 
-.carousel-arrow:disabled {
-  opacity: 0.3;
-  cursor: default;
+@media (hover: hover) and (pointer: fine) {
+  .horizontal-scroller-shell:hover .carousel-edge-button:not(:disabled),
+  .horizontal-scroller-shell:focus-within .carousel-edge-button:not(:disabled) {
+    opacity: 0.9;
+    pointer-events: auto;
+    transform: translateY(-50%) scale(1);
+  }
+
+  .carousel-edge-button:hover:not(:disabled) {
+    opacity: 1 !important;
+    border-color: rgba(224, 126, 255, 0.46);
+    background: rgba(15, 13, 31, 0.72);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.10),
+      0 14px 36px rgba(0,0,0,0.38),
+      0 0 28px rgba(214, 86, 229, 0.16);
+  }
 }
 
-.carousel-counter {
-  min-width: 46px;
-  color: rgba(255,255,255,0.48);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.4px;
-  text-align: center;
-}
-
-.carousel-progress {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  max-width: min(78vw, 280px);
+.carousel-progress-line {
+  position: relative;
+  z-index: 7;
+  width: min(180px, 34vw);
+  height: 2px;
+  margin: 16px auto 0;
   overflow: hidden;
-}
-
-.carousel-dot {
-  width: 6px;
-  height: 6px;
-  flex: 0 0 auto;
-  padding: 0;
-  border: 0;
   border-radius: 999px;
-  background: rgba(255,255,255,0.2);
-  cursor: pointer;
-  transition: width 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  background: rgba(255,255,255,0.11);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
 }
 
-.carousel-dot.is-active {
-  width: 20px;
-  background: linear-gradient(90deg, #9c64ff, #ec4db5, #ff5368);
-  box-shadow: 0 0 12px rgba(236,77,181,0.34);
+.carousel-progress-line > span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  min-width: 10%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8f67ff 0%, #d96fff 48%, #ff5f92 100%);
+  box-shadow: 0 0 13px rgba(222, 91, 220, 0.42);
+  transition: width 0.16s ease-out;
 }
 
 .headliner-grid:focus-visible,
 .leaders-grid:focus-visible,
 .years-video-scroll:focus-visible {
-  outline: 1px solid rgba(215,119,255,0.6);
+  outline: 1px solid rgba(215,119,255,0.42);
   outline-offset: 6px;
   border-radius: 20px;
 }
@@ -163,17 +204,27 @@
     min-height: 360px;
   }
 
-  .carousel-controls {
-    min-height: 30px;
-    margin-top: 13px;
-    justify-content: center;
-  }
-
-  .carousel-progress {
-    display: inline-flex;
-  }
-
-  .carousel-arrows {
+  .carousel-edge-button {
     display: none;
+  }
+
+  .horizontal-scroller-shell::before,
+  .horizontal-scroller-shell::after {
+    bottom: 22px;
+    width: 38px;
+    opacity: 0;
+  }
+
+  .horizontal-scroller-shell.can-previous::before {
+    opacity: 0.48;
+  }
+
+  .horizontal-scroller-shell.can-next::after {
+    opacity: 0.5;
+  }
+
+  .carousel-progress-line {
+    width: min(150px, 44vw);
+    margin-top: 13px;
   }
 }
