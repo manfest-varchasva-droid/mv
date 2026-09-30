@@ -10,6 +10,7 @@ import "./interaction-overrides.css";
 import { Header } from "@/components/Header";
 import { SitePartnerCarousel } from "@/components/SitePartnerCarousel";
 import { Footer } from "@/components/Footer";
+import { Analytics } from "@/components/Analytics";
 
 const siteUrl = "https://iiml-manfestvarchasva.com";
 const siteDescription =
@@ -71,7 +72,7 @@ const structuredData = [
     "@type": "Organization",
     name: "Manfest-Varchasva",
     url: siteUrl,
-    logo: `${siteUrl}/mv-logo.svg`,
+    logo: siteUrl + "/mv-logo.svg",
     email: "manfest-varchasva@iiml.ac.in",
     parentOrganization: {
       "@type": "CollegeOrUniversity",
@@ -123,10 +124,11 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en">
       <body>
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(structuredData).replace(/</g, "\u003c"),
           }}
         />
         <Header />
