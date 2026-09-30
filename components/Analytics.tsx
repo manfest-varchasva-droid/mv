@@ -1,5 +1,6 @@
 "use client";
 
+import Script from "next/script";
 import { useEffect } from "react";
 
 export const GA_MEASUREMENT_ID = "G-P37DB2Q0K0";
@@ -32,7 +33,6 @@ export function Analytics() {
         .trim()
         .replace(/\s+/g, " ")
         .slice(0, 100);
-
       const lowerHref = href.toLowerCase();
       const lowerText = text.toLowerCase();
 
@@ -41,10 +41,7 @@ export function Analytics() {
         lowerHref.includes("youtube.com") ||
         lowerHref.includes("facebook.com")
       ) {
-        trackEvent("social_click", {
-          destination: href,
-          link_text: text,
-        });
+        trackEvent("social_click", { destination: href, link_text: text });
       }
 
       if (
@@ -62,19 +59,9 @@ export function Analytics() {
       if (href.startsWith("/events")) {
         trackEvent("event_page_click", { destination: href });
       }
-
-      if (href.startsWith("/gallery")) {
-        trackEvent("gallery_visit");
-      }
-
-      if (href.startsWith("/city-run")) {
-        trackEvent("city_run_visit");
-      }
-
-      if (href.startsWith("/partners")) {
-        trackEvent("partners_visit");
-      }
-
+      if (href.startsWith("/gallery")) trackEvent("gallery_visit");
+      if (href.startsWith("/city-run")) trackEvent("city_run_visit");
+      if (href.startsWith("/partners")) trackEvent("partners_visit");
       if (lowerText.includes("explore events")) {
         trackEvent("explore_events_click");
       }
@@ -86,22 +73,20 @@ export function Analytics() {
 
   return (
     <>
-      <script
-        async
+      <Script
+        id="google-analytics"
         src={"https://www.googletagmanager.com/gtag/js?id=" + GA_MEASUREMENT_ID}
+        strategy="afterInteractive"
       />
-      <script
-        dangerouslySetInnerHTML={{
-          __html:
-            "window.dataLayer=window.dataLayer||[];" +
-            "function gtag(){dataLayer.push(arguments)};" +
-            "window.gtag=gtag;" +
-            "gtag('js',new Date());" +
-            "gtag('config','" +
-            GA_MEASUREMENT_ID +
-            "',{anonymize_ip:true});",
-        }}
-      />
+      <Script id="google-analytics-config" strategy="afterInteractive">
+        {"window.dataLayer = window.dataLayer || [];" +
+          "function gtag(){window.dataLayer.push(arguments);}" +
+          "window.gtag = gtag;" +
+          "gtag('js', new Date());" +
+          "gtag('config', '" +
+          GA_MEASUREMENT_ID +
+          "', {send_page_view: true, anonymize_ip: true});"}
+      </Script>
     </>
   );
 }
