@@ -41,7 +41,7 @@ export function AnimatedNumber({ value, className, style }: AnimatedNumberProps)
         return;
       }
 
-      const duration = 850;
+      const duration = 1500;
       const start = performance.now();
 
       const tick = (now: number) => {
@@ -97,7 +97,7 @@ export function AnimatedNumber({ value, className, style }: AnimatedNumberProps)
     : display.toFixed(1);
 
   return (
-    <span ref={elementRef} className={className} style={style} aria-label={value}>
+    <span ref={elementRef} className={`animated-number${className ? ` ${className}` : ""}`} style={style} aria-label={value}>
       {parsed.prefix}
       {formatted}
       {parsed.suffix}
