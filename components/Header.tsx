@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 const links = [
   ["Home", "/"],
@@ -11,6 +14,38 @@ const links = [
 ] as const;
 
 export function Header() {
+  const mobileNavRef = useRef<HTMLDetailsElement>(null);
+
+  useEffect(() => {
+    const closeMenu = (event: PointerEvent) => {
+      const mobileNav = mobileNavRef.current;
+      if (!mobileNav?.open) return;
+
+      const target = event.target as Node | null;
+      if (target && !mobileNav.contains(target)) {
+        mobileNav.removeAttribute("open");
+      }
+    };
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        mobileNavRef.current?.removeAttribute("open");
+      }
+    };
+
+    document.addEventListener("pointerdown", closeMenu);
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeMenu);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  const closeMobileMenu = () => {
+    mobileNavRef.current?.removeAttribute("open");
+  };
+
   return (
     <header className="site-header">
       <div className="nav-shell">
@@ -53,11 +88,11 @@ export function Header() {
           ))}
         </nav>
 
-        <details className="mobile-nav">
+        <details ref={mobileNavRef} className="mobile-nav">
           <summary aria-label="Open navigation">Menu</summary>
           <div className="mobile-panel">
             {links.map(([label, href]) => (
-              <Link key={href} href={href}>
+              <Link key={href} href={href} onClick={closeMobileMenu}>
                 {label}
               </Link>
             ))}
