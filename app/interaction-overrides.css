@@ -59,11 +59,59 @@
   isolation: isolate;
 }
 
-/* Remove the older permanent drag/navigation hints. */
+/* Keep a quiet discovery prompt so visitors know there is more content horizontally. */
 .headliner-scroll-meta,
-.leaders-scroll-meta,
+.leaders-scroll-meta {
+  display: flex !important;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin: -18px 4px 14px 0;
+  color: rgba(255,255,255,0.46);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.headliner-scroll-meta b,
+.leaders-scroll-meta b,
+.years-scroll-meta b {
+  color: #d979ff;
+  font-size: 16px;
+  line-height: 1;
+  animation: carousel-hint-nudge 1.8s ease-in-out infinite;
+}
+
 .years-scroll-meta {
+  width: fit-content;
+  min-height: 0;
+  margin: 12px auto 0;
+  padding: 0;
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(255,255,255,0.46);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* The new progress line handles position, so keep only the old discovery text here. */
+.years-scroll-dots {
   display: none !important;
+}
+
+@keyframes carousel-hint-nudge {
+  0%, 100% { transform: translateX(0); opacity: 0.62; }
+  50% { transform: translateX(4px); opacity: 1; }
 }
 
 .horizontal-scroller-shell::before,
@@ -226,5 +274,18 @@
   .carousel-progress-line {
     width: min(150px, 44vw);
     margin-top: 13px;
+  }
+
+  .headliner-scroll-meta,
+  .leaders-scroll-meta {
+    margin: -12px 2px 12px 0;
+    font-size: 8px;
+    letter-spacing: 1.7px;
+  }
+
+  .years-scroll-meta {
+    margin-top: 10px;
+    font-size: 8px;
+    letter-spacing: 1.8px;
   }
 }
