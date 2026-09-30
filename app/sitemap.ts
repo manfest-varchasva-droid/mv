@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { events } from "@/lib/content";
 
+export const dynamic = "force-static";
+
 const baseUrl = "https://iiml-manfestvarchasva.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
