@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SectionTitle } from "@/components/SectionTitle";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
 import styles from "./city-run.module.css";
 
 export const metadata = { title: "Lucknow City Run 2026 Archive" };
@@ -102,15 +103,15 @@ export default function CityRunPage() {
       <section className={styles.highlights} aria-label="2026 City Run highlights">
         <div className={`page-shell ${styles.highlightGrid}`}>
           <div className={styles.highlight}>
-            <strong>5K</strong>
+            <strong><AnimatedNumber value="5K" /></strong>
             <span>Race distance</span>
           </div>
           <div className={styles.highlight}>
-            <strong>10K</strong>
+            <strong><AnimatedNumber value="10K" /></strong>
             <span>Race distance</span>
           </div>
           <div className={styles.highlight}>
-            <strong>₹1L</strong>
+            <strong><AnimatedNumber value="₹1L" /></strong>
             <span>Prize pool</span>
           </div>
           <div className={styles.highlight}>
