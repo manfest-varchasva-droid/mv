@@ -96,7 +96,15 @@ export function Header() {
 
           <nav className="desktop-nav" aria-label="Primary navigation">
             {links.map(([label, href]) => (
-              <Link key={href} href={href}>
+              <Link
+                key={href}
+                href={href}
+                onClick={() => {
+                  if (href === "/") {
+                    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+                  }
+                }}
+              >
                 {label}
               </Link>
             ))}
@@ -127,7 +135,12 @@ export function Header() {
                       href={href}
                       className={active ? "is-active" : undefined}
                       aria-current={active ? "page" : undefined}
-                      onClick={() => setMobileOpen(false)}
+                      onClick={() => {
+                        setMobileOpen(false);
+                        if (href === "/") {
+                          window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+                        }
+                      }}
                     >
                       <span>{label}</span>
                       <b aria-hidden="true">→</b>
