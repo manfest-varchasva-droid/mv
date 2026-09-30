@@ -11,6 +11,7 @@ import {
 import { SectionTitle } from "@/components/SectionTitle";
 import { Countdown } from "@/components/Countdown";
 import { HorizontalScroller } from "@/components/HorizontalScroller";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
 
 export function Hero() {
   return (
@@ -350,7 +351,7 @@ export function Highlights() {
                     zIndex: 1,
                   }}
                 >
-                  {item.value}
+                  <AnimatedNumber value={item.value} />
                 </strong>
 
                 <span
