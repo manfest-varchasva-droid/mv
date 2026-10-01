@@ -1106,3 +1106,103 @@ button, input, textarea, select { font: inherit; }
   pointer-events: none;
   will-change: transform;
 }
+
+
+/* Home section visual identities
+   Intentionally subtle: backgrounds and light only, no layout/card changes.
+   This block is isolated so the entire treatment can be reverted cleanly. */
+.section-identity-stage,
+.section-identity-ideas,
+.section-identity-experience,
+.section-identity-numbers,
+.section-identity-gallery,
+.section-identity-partners {
+  position: relative;
+  isolation: isolate;
+}
+
+.section-identity-stage::before,
+.section-identity-ideas::before,
+.section-identity-experience::before,
+.section-identity-numbers::before,
+.section-identity-gallery::before,
+.section-identity-partners::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.section-identity-stage {
+  border-top: 1px solid rgba(165, 91, 255, 0.08);
+  border-bottom: 1px solid rgba(165, 91, 255, 0.05);
+}
+.section-identity-stage::before {
+  background:
+    radial-gradient(ellipse 60% 55% at 8% 48%, rgba(129, 67, 255, 0.10), transparent 70%),
+    radial-gradient(ellipse 48% 50% at 92% 72%, rgba(255, 66, 133, 0.075), transparent 72%);
+}
+
+.section-identity-ideas {
+  border-top: 1px solid rgba(86, 149, 255, 0.065);
+  border-bottom: 1px solid rgba(86, 149, 255, 0.045);
+}
+.section-identity-ideas::before {
+  background:
+    radial-gradient(ellipse 52% 58% at 88% 20%, rgba(68, 123, 255, 0.10), transparent 72%),
+    radial-gradient(ellipse 44% 48% at 12% 82%, rgba(93, 75, 211, 0.07), transparent 72%);
+}
+
+.section-identity-experience {
+  border-top: 1px solid rgba(205, 107, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 79, 126, 0.055);
+}
+.section-identity-experience::before {
+  background:
+    radial-gradient(ellipse 58% 62% at 50% 38%, rgba(153, 73, 255, 0.085), transparent 70%),
+    radial-gradient(ellipse 40% 42% at 96% 82%, rgba(255, 67, 117, 0.065), transparent 72%);
+}
+
+.section-identity-numbers {
+  border-top: 1px solid rgba(128, 166, 255, 0.065);
+  border-bottom: 1px solid rgba(236, 77, 181, 0.055);
+}
+.section-identity-numbers::before {
+  background:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
+  opacity: 0.55;
+}
+
+.section-identity-gallery {
+  border-top: 1px solid rgba(255, 94, 154, 0.065);
+  border-bottom: 1px solid rgba(161, 93, 255, 0.05);
+}
+.section-identity-gallery::before {
+  background:
+    radial-gradient(ellipse 54% 62% at 18% 42%, rgba(255, 71, 143, 0.09), transparent 72%),
+    radial-gradient(ellipse 48% 55% at 84% 62%, rgba(121, 75, 255, 0.08), transparent 72%);
+}
+
+.section-identity-partners {
+  border-top: 1px solid rgba(120, 177, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: #080a12;
+}
+.section-identity-partners::before {
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 0%, rgba(94, 127, 255, 0.075), transparent 72%),
+    linear-gradient(180deg, rgba(255,255,255,0.012), transparent 45%);
+}
+
+@media (max-width: 640px) {
+  .section-identity-numbers::before {
+    background-size: 52px 52px;
+    opacity: 0.38;
+  }
+}
