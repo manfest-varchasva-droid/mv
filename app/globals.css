@@ -1289,12 +1289,14 @@ button, input, textarea, select { font: inherit; }
       0 0 26px rgba(177, 93, 255, 0.08);
   }
 
+  /* Keep stats hover on the card surface only. Avoid transforming the
+     parent while the animated number has its own compositing transform. */
   .stats-section .stat-card:hover {
-    transform: translateY(-4px) !important;
+    transform: none !important;
+    background: rgba(255,255,255,0.018) !important;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,.07),
-      0 22px 54px rgba(0,0,0,.34),
-      0 0 40px rgba(122, 168, 255, .13) !important;
+      0 0 28px rgba(122, 168, 255, .10) !important;
   }
 
   .eventCard:hover {
