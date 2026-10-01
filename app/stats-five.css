@@ -102,18 +102,17 @@
 }
 
 
-/* Enhanced stats animation: isolated so it can be reverted without touching the counters themselves. */
+/* Enhanced stats animation: isolated so it can be reverted without touching the counters themselves.
+   Loading blur removed; counters remain crisp while animating. */
 .stats-section .animated-number {
   transform: translateZ(0) scale(0.985);
-  filter: blur(2.2px);
-  transition:
-    filter 260ms ease,
-    transform 260ms cubic-bezier(.2,.8,.2,1);
-  will-change: filter, transform;
+  filter: none;
+  transition: transform 260ms cubic-bezier(.2,.8,.2,1);
+  will-change: transform;
 }
 
 .stats-section .animated-number--animating {
-  filter: blur(1.35px);
+  filter: none;
   transform: translateZ(0) scale(0.992);
 }
 
