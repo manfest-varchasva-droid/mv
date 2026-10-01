@@ -1090,3 +1090,19 @@ button, input, textarea, select { font: inherit; }
     transition: none;
   }
 }
+
+
+/* Reversible scroll-progress indicator. */
+.mv-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 2px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, #9c64ff 0%, #ec4db5 55%, #ff6278 100%);
+  box-shadow: 0 0 10px rgba(218, 91, 226, 0.34);
+  pointer-events: none;
+  will-change: transform;
+}
