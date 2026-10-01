@@ -1207,3 +1207,158 @@ button, input, textarea, select { font: inherit; }
     opacity: 0.38;
   }
 }
+
+
+/* Reversible hover polish — subtle lift, image motion and focus glow.
+   Desktop/pointer devices only so touch interactions remain unchanged. */
+@media (hover: hover) and (pointer: fine) {
+  .btn,
+  .categoryButton,
+  .logo-card,
+  .headliner-card,
+  .speaker-card,
+  .video-card,
+  .stat-card,
+  .eventCard,
+  .global-partner-logo,
+  .galleryItem,
+  .logoStage {
+    transition:
+      transform 220ms cubic-bezier(.2,.8,.2,1),
+      border-color 220ms ease,
+      box-shadow 220ms ease,
+      background 220ms ease;
+  }
+
+  .btn:hover,
+  .categoryButton:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:hover {
+    box-shadow:
+      0 17px 44px rgba(206, 67, 163, 0.34),
+      0 0 20px rgba(199, 124, 255, 0.08);
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(255, 255, 255, 0.58);
+    background: rgba(12, 13, 27, 0.48);
+  }
+
+  .desktop-nav a {
+    transition: color 180ms ease, transform 180ms ease;
+  }
+
+  .desktop-nav a:hover {
+    transform: translateY(-1px);
+  }
+
+  .text-link {
+    transition: color 180ms ease, transform 180ms ease;
+  }
+
+  .text-link:hover {
+    transform: translateX(3px);
+  }
+
+  .headliner-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(199, 124, 255, 0.34);
+    box-shadow:
+      0 20px 48px rgba(0, 0, 0, 0.34),
+      0 0 28px rgba(170, 92, 255, 0.09);
+  }
+
+  .headliner-card:hover .headliner-photo:not(.final-crop) {
+    transform: scale(1.025);
+    transition: transform 420ms cubic-bezier(.22,.61,.36,1);
+  }
+
+  .speaker-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(199, 124, 255, 0.34);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.26);
+  }
+
+  .video-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(199, 124, 255, 0.72);
+    box-shadow:
+      0 20px 48px rgba(0, 0, 0, 0.32),
+      0 0 26px rgba(177, 93, 255, 0.08);
+  }
+
+  .stats-section .stat-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.07),
+      0 22px 54px rgba(0,0,0,.34),
+      0 0 40px rgba(122, 168, 255, .13) !important;
+  }
+
+  .eventCard:hover {
+    transform: translateY(-3px);
+  }
+
+  .logo-card:hover,
+  .global-partner-logo:hover,
+  .logoStage:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 18px 42px rgba(0, 0, 0, 0.22),
+      0 0 24px rgba(199, 124, 255, 0.07);
+  }
+
+  .global-partner-logo img {
+    transition: transform 220ms cubic-bezier(.2,.8,.2,1);
+  }
+
+  .global-partner-logo:hover img {
+    transform: scale(1.025);
+  }
+
+  .galleryItem:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 18px 40px rgba(0, 0, 0, 0.28),
+      0 0 22px rgba(199, 124, 255, 0.06);
+  }
+
+  .galleryItem .galleryButton img {
+    transition: transform 420ms cubic-bezier(.22,.61,.36,1), filter 420ms ease;
+  }
+
+  .galleryItem:hover .galleryButton img {
+    transform: scale(1.022);
+  }
+
+  .scroll-cue {
+    transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+  }
+
+  .scroll-cue:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.68);
+    background: rgba(10,11,24,0.34);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .categoryButton,
+  .logo-card,
+  .headliner-card,
+  .speaker-card,
+  .video-card,
+  .stat-card,
+  .eventCard,
+  .global-partner-logo,
+  .galleryItem,
+  .logoStage,
+  .desktop-nav a,
+  .text-link,
+  .scroll-cue {
+    transition: none !important;
+  }
+}
