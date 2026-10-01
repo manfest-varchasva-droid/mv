@@ -993,3 +993,100 @@ button, input, textarea, select { font: inherit; }
     min-height: 0;
   }
 }
+
+
+/* Scroll-transform navbar: transparent at the hero, compact glass after scrolling. */
+.site-header .nav-shell {
+  transition:
+    min-height 320ms cubic-bezier(.2,.8,.2,1),
+    padding 320ms cubic-bezier(.2,.8,.2,1),
+    background 320ms ease,
+    border-color 320ms ease,
+    box-shadow 320ms ease,
+    backdrop-filter 320ms ease,
+    -webkit-backdrop-filter 320ms ease;
+  background: rgba(5, 7, 16, 0.16);
+  border-color: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.site-header.is-scrolled .nav-shell {
+  min-height: 64px;
+  padding-left: 22px;
+  padding-right: 22px;
+  background: rgba(5, 7, 16, 0.86);
+  border-color: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.30);
+  backdrop-filter: blur(22px) saturate(125%);
+  -webkit-backdrop-filter: blur(22px) saturate(125%);
+}
+
+.site-header .brand-logo {
+  transition: width 320ms cubic-bezier(.2,.8,.2,1), height 320ms cubic-bezier(.2,.8,.2,1);
+}
+
+.site-header.is-scrolled .brand-logo {
+  width: 44px;
+  height: 44px;
+}
+
+.site-header .brand-copy {
+  transition: gap 320ms ease;
+}
+
+.site-header.is-scrolled .brand-copy {
+  gap: 4px;
+}
+
+.site-header.is-scrolled .brand-name {
+  font-size: 13px !important;
+  letter-spacing: 2.3px !important;
+}
+
+.site-header.is-scrolled .brand-tagline {
+  font-size: 9px !important;
+  letter-spacing: 0.6px !important;
+}
+
+.site-header .desktop-nav {
+  transition: gap 320ms cubic-bezier(.2,.8,.2,1);
+}
+
+.site-header.is-scrolled .desktop-nav {
+  gap: 24px;
+}
+
+@media (max-width: 820px) {
+  .site-header .nav-shell {
+    transition:
+      min-height 280ms ease,
+      padding 280ms ease,
+      background 280ms ease,
+      border-color 280ms ease,
+      box-shadow 280ms ease,
+      backdrop-filter 280ms ease,
+      -webkit-backdrop-filter 280ms ease;
+  }
+
+  .site-header.is-scrolled .nav-shell {
+    min-height: 64px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .site-header.is-scrolled .brand-logo {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header .nav-shell,
+  .site-header .brand-logo,
+  .site-header .brand-copy,
+  .site-header .desktop-nav {
+    transition: none;
+  }
+}
