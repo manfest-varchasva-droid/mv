@@ -67,7 +67,7 @@ export function Hero() {
 
 export function Headliners() {
   return (
-    <section id="headliners" className="section section-dark">
+    <section id="headliners" className="section section-dark section-identity-stage">
       <div className="page-shell">
         <SectionTitle
           eyebrow="THE STAGE"
@@ -107,7 +107,7 @@ export function Headliners() {
 
 export function LeadersExpress() {
   return (
-    <section className="section section-ink">
+    <section className="section section-ink section-identity-ideas">
       <div className="page-shell">
         <SectionTitle
           eyebrow="IDEAS ON STAGE"
@@ -155,7 +155,7 @@ export function LeadersExpress() {
 
 export function OverTheYears() {
   return (
-    <section className="section years-section">
+    <section className="section years-section section-identity-experience">
       <div className="page-shell">
         <SectionTitle
           eyebrow="THE EXPERIENCE"
