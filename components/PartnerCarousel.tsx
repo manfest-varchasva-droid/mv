@@ -98,7 +98,7 @@ export function PartnerCarousel() {
   };
 
   return (
-    <section className="global-partners" aria-label="Our partners">
+    <section className="global-partners section-identity-partners" aria-label="Our partners">
       <div className="page-shell">
         <div className="global-partners-heading">
           <div className="global-partners-copy">
