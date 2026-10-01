@@ -41,7 +41,7 @@
   color: transparent;
 }
 
-.aboutStat span {
+.aboutStat > span {
   display: block;
   margin-top: 10px;
   color: rgba(229, 232, 244, 0.64);
