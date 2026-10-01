@@ -1109,6 +1109,7 @@ button, input, textarea, select { font: inherit; }
 
 
 /* Home section visual identities
+   Production deployment marker: current main includes all six section treatments.
    Intentionally subtle: backgrounds and light only, no layout/card changes.
    This block is isolated so the entire treatment can be reverted cleanly. */
 .section-identity-stage,
