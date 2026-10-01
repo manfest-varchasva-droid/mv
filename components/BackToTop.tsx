@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { CSSProperties } from "react";
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -52,7 +53,7 @@ export function BackToTop() {
       aria-label="Back to top"
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
-      style={{ "--mv-top-progress": progress } as React.CSSProperties}
+      style={{ "--mv-top-progress": progress } as CSSProperties}
     >
       <span className="mv-back-to-top-ring" aria-hidden="true" />
       <span className="mv-back-to-top-arrow" aria-hidden="true">↑</span>
