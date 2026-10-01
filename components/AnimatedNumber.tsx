@@ -97,7 +97,20 @@ export function AnimatedNumber({ value, className, style }: AnimatedNumberProps)
     : display.toFixed(1);
 
   return (
-    <span ref={elementRef} className={`animated-number${className ? ` ${className}` : ""}`} style={style} aria-label={value}>
+    <span
+      ref={elementRef}
+      className={`animated-number${className ? ` ${className}` : ""}`}
+      style={{
+        ...style,
+        display: "inline-block",
+        fontSize: "inherit",
+        fontWeight: "inherit",
+        lineHeight: "inherit",
+        letterSpacing: "inherit",
+        color: "inherit",
+      }}
+      aria-label={value}
+    >
       {parsed.prefix}
       {formatted}
       {parsed.suffix}
