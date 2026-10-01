@@ -246,7 +246,7 @@
   letter-spacing: -2px;
 }
 
-.highlight span {
+.highlight > span {
   display: block;
   margin-top: 10px;
   color: rgba(222, 225, 238, 0.52);
