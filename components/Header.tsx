@@ -63,6 +63,7 @@ export function Header() {
 
   return (
     <>
+      <ScrollProgress />
       {mobileOpen && (
         <button
           type="button"
