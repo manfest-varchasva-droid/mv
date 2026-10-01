@@ -17,6 +17,17 @@ const links = [
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const updateScrollState = () => {
+      setIsScrolled(window.scrollY > 70);
+    };
+
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrollState);
+  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -61,7 +72,7 @@ export function Header() {
         />
       )}
 
-      <header className="site-header">
+      <header className={`site-header${isScrolled ? " is-scrolled" : ""}`}>
         <div className="nav-shell">
           <Link href="/" className="brand" aria-label="Manfest Varchasva home">
             <Image className="brand-logo" src="/mv-logo.svg" alt="" width={52} height={52} priority />
