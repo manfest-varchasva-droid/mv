@@ -52,7 +52,7 @@ export function HomeGalleryMarquee() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section section-dark gallery-preview">
+    <section ref={sectionRef} className="section section-dark gallery-preview section-identity-gallery">
       <div className="page-shell">
         <div className="title-row">
           <SectionTitle
