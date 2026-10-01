@@ -100,3 +100,49 @@
     padding-right: 16px !important;
   }
 }
+
+
+/* Enhanced stats animation: isolated so it can be reverted without touching the counters themselves. */
+.stats-section .animated-number {
+  transform: translateZ(0) scale(0.985);
+  filter: blur(2.2px);
+  transition:
+    filter 260ms ease,
+    transform 260ms cubic-bezier(.2,.8,.2,1);
+  will-change: filter, transform;
+}
+
+.stats-section .animated-number--animating {
+  filter: blur(1.35px);
+  transform: translateZ(0) scale(0.992);
+}
+
+.stats-section .animated-number--complete {
+  filter: blur(0);
+  transform: translateZ(0) scale(1);
+  animation: stats-number-settle 420ms cubic-bezier(.2,.85,.25,1);
+}
+
+@keyframes stats-number-settle {
+  0% {
+    filter: blur(0) drop-shadow(0 0 0 rgba(122, 190, 255, 0));
+    transform: translateZ(0) scale(0.992);
+  }
+  55% {
+    filter: blur(0) drop-shadow(0 0 13px rgba(122, 190, 255, 0.20));
+    transform: translateZ(0) scale(1.012);
+  }
+  100% {
+    filter: blur(0) drop-shadow(0 0 0 rgba(122, 190, 255, 0));
+    transform: translateZ(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-section .animated-number {
+    filter: none;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+}
