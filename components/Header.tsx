@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { BackToTop } from "@/components/BackToTop";
 
 const links = [
   ["Home", "/"],
@@ -65,6 +66,7 @@ export function Header() {
   return (
     <>
       <ScrollProgress />
+      <BackToTop />
       {mobileOpen && (
         <button
           type="button"
