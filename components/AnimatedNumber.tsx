@@ -23,6 +23,7 @@ function splitValue(value: string) {
 export function AnimatedNumber({ value, className, style }: AnimatedNumberProps) {
   const parsed = useMemo(() => splitValue(value), [value]);
   const [display, setDisplay] = useState(0);
+  const [animationState, setAnimationState] = useState<"idle" | "animating" | "complete">("idle");
   const hasAnimated = useRef(false);
   const elementRef = useRef<HTMLSpanElement>(null);
 
@@ -38,10 +39,12 @@ export function AnimatedNumber({ value, className, style }: AnimatedNumberProps)
 
       if (reduceMotion) {
         setDisplay(parsed.number);
+        setAnimationState("complete");
         return;
       }
 
-      const duration = 2000;
+      setAnimationState("animating");
+      const duration = 2400;
       const start = performance.now();
 
       const tick = (now: number) => {
@@ -53,6 +56,7 @@ export function AnimatedNumber({ value, className, style }: AnimatedNumberProps)
           requestAnimationFrame(tick);
         } else {
           setDisplay(parsed.number);
+          setAnimationState("complete");
         }
       };
 
@@ -99,7 +103,7 @@ export function AnimatedNumber({ value, className, style }: AnimatedNumberProps)
   return (
     <span
       ref={elementRef}
-      className={`animated-number${className ? ` ${className}` : ""}`}
+      className={`animated-number animated-number--${animationState}${className ? ` ${className}` : ""}`}
       style={{
         ...style,
         display: "inline-block",
