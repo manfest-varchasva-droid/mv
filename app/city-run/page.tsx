@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SectionTitle } from "@/components/SectionTitle";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
@@ -6,11 +7,36 @@ import styles from "./city-run.module.css";
 export const metadata = { title: "Lucknow City Run 2026 Archive" };
 
 const partners = [
-  ["Presented by", "Axis Bank"],
-  ["Presented by", "Samaj Kalyan Vibhag"],
-  ["Co-presented by", "Flipkart Minutes"],
-  ["NGO partner", "Kiran Foundation"],
-  ["City Run partner", "LIC"],
+  {
+    role: "Presented by",
+    name: "Axis Bank",
+    logo: "/partners/axis-bank.svg",
+    alt: "Axis Bank logo",
+  },
+  {
+    role: "Presented by",
+    name: "Samaj Kalyan Vibhag",
+    logo: "/partners/Social Welfare (1).png",
+    alt: "Samaj Kalyan Vibhag logo",
+  },
+  {
+    role: "Co-presented by",
+    name: "Flipkart Minutes",
+    logo: "/partners/Flipkart minutes.jpg",
+    alt: "Flipkart Minutes logo",
+  },
+  {
+    role: "NGO partner",
+    name: "Kiran Foundation",
+    logo: "/partners/Kiran-Foundation.png",
+    alt: "Kiran Foundation logo",
+  },
+  {
+    role: "City Run partner",
+    name: "LIC",
+    logo: "/partners/LIC-Logo (1).jpg",
+    alt: "LIC logo",
+  },
 ];
 
 export default function CityRunPage() {
@@ -132,10 +158,20 @@ export default function CityRunPage() {
           </div>
 
           <div className={styles.partnerLine}>
-            {partners.map(([role, name]) => (
-              <div className={styles.partnerItem} key={`${role}-${name}`}>
-                <span>{role}</span>
-                <strong>{name}</strong>
+            {partners.map((partner) => (
+              <div className={styles.partnerItem} key={`${partner.role}-${partner.name}`}>
+                <span>{partner.role}</span>
+                <div className={styles.partnerLogoWrap}>
+                  <Image
+                    className={styles.partnerLogo}
+                    src={partner.logo}
+                    alt={partner.alt}
+                    width={190}
+                    height={82}
+                    sizes="(max-width: 620px) 160px, 190px"
+                  />
+                </div>
+                <strong>{partner.name}</strong>
               </div>
             ))}
           </div>
