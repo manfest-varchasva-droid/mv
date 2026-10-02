@@ -168,6 +168,18 @@ export function Header() {
       </header>
 
       <style>{`
+        .desktop-nav {
+          gap: 18px;
+          flex-shrink: 0;
+        }
+
+        .desktop-nav a {
+          white-space: nowrap;
+          text-align: center;
+          font-size: 10.5px;
+          letter-spacing: 1.45px;
+        }
+
         .mv-mobile-nav {
           display: none;
         }
