@@ -29,6 +29,50 @@ function formatMb(bytes) {
   return `${(bytes / 1024 / 1024).toFixed(2)} MB`;
 }
 
+// The core-team source photo is very large (~10 MB). Optimize the actual deployed
+// fallback file as well as its WebP variant so it stays fast even when Apache's
+// WebP rewrite is bypassed or a browser does not support WebP.
+const coreTeamPath = path.join(root, "events", "core team photo.JPG");
+try {
+  const originalStat = await fs.stat(coreTeamPath);
+  const tempJpeg = `${coreTeamPath}.optimized.jpg`;
+  const webpPath = `${coreTeamPath}.webp`;
+
+  await sharp(coreTeamPath)
+    .rotate()
+    .resize({
+      width: 1280,
+      height: 1280,
+      fit: "inside",
+      withoutEnlargement: true,
+    })
+    .jpeg({
+      quality: 74,
+      mozjpeg: true,
+      chromaSubsampling: "4:2:0",
+    })
+    .toFile(tempJpeg);
+
+  await fs.rename(tempJpeg, coreTeamPath);
+
+  await sharp(coreTeamPath)
+    .webp({
+      quality: 72,
+      effort: 5,
+      smartSubsample: true,
+    })
+    .toFile(webpPath);
+
+  const optimizedStat = await fs.stat(coreTeamPath);
+  const webpStat = await fs.stat(webpPath);
+  console.log(
+    `Core team photo: ${formatMb(originalStat.size)} -> ${formatMb(optimizedStat.size)} JPEG / ${formatMb(webpStat.size)} WebP.`,
+  );
+} catch (error) {
+  console.warn(`Could not specially optimize core team photo: ${error.message}`);
+  await fs.rm(`${coreTeamPath}.optimized.jpg`, { force: true });
+}
+
 const files = (await walk(root)).filter((file) => supported.has(path.extname(file)));
 
 let eligibleBytes = 0;
