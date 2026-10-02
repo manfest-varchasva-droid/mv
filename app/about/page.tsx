@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { CoreTeamDirectory } from "@/components/CoreTeamDirectory";
 import { SectionTitle } from "@/components/SectionTitle";
 import { stats } from "@/lib/content";
@@ -126,13 +125,13 @@ export default function AboutPage() {
           />
 
           <div className={styles.teamPhoto}>
-            <Image
+            <img
               src="/events/core team photo.JPG?v=core-team-fast-2026-10-02"
               alt="Manfest-Varchasva Core Team at IIM Lucknow"
               width={800}
               height={533}
-              sizes="(max-width: 820px) calc(100vw - 28px), 800px"
-              priority
+              loading="eager"
+              decoding="async"
               fetchPriority="high"
             />
           </div>
