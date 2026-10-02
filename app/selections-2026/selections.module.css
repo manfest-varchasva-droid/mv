@@ -1,0 +1,207 @@
+.page {
+  background: #f4f4f1;
+  padding: 96px 0 72px;
+  color: #1f2937;
+}
+
+.shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.bodyHeader,
+.bodyFooter {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bodyHeader {
+  border-radius: 18px 18px 0 0;
+}
+
+.bodyFooter {
+  border-radius: 0 0 18px 18px;
+}
+
+.contentCard {
+  background: #fff;
+  padding: 42px 48px 48px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+}
+
+.intro {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.intro p,
+.section p,
+.closing p {
+  margin: 0 0 16px;
+}
+
+.section {
+  margin-top: 34px;
+}
+
+.section h1,
+.section h2 {
+  margin: 0 0 18px;
+  color: #16253d;
+}
+
+.section h1 {
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+}
+
+.section h2 {
+  font-size: clamp(1.55rem, 2.5vw, 2rem);
+}
+
+.section p,
+.guidelines,
+.closing {
+  line-height: 1.75;
+}
+
+.guidelines {
+  margin: 18px 0 22px 22px;
+  padding-left: 18px;
+}
+
+.guidelines li {
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.example {
+  display: block;
+  margin-top: 7px;
+  color: #536174;
+  font-style: italic;
+}
+
+.noteBox {
+  margin: 20px 0 24px;
+  padding: 18px 20px;
+  background: #f7fbf4;
+  border-left: 4px solid #8bb06a;
+  border-radius: 8px;
+}
+
+.noteBox p:last-child {
+  margin-bottom: 0;
+}
+
+.tableScroll {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #d7dce2;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.taskTable {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.taskTable th,
+.taskTable td {
+  border-right: 1px solid #d7dce2;
+  border-bottom: 1px solid #d7dce2;
+  padding: 15px 16px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.taskTable tr > *:last-child {
+  border-right: 0;
+}
+
+.taskTable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.topHeader th {
+  background: #dcefd3;
+  color: #182235;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.topHeader th[colspan] {
+  text-align: center;
+}
+
+.timelineHeader th {
+  background: #d9edf8;
+  color: #1d2b3d;
+  font-weight: 700;
+}
+
+.verticalName {
+  width: 19%;
+  font-weight: 500;
+  color: #263445;
+}
+
+.verticalName sup {
+  margin-left: 2px;
+  font-weight: 700;
+}
+
+.taskTable a {
+  color: #00a7df;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.taskTable a:hover {
+  text-decoration: underline;
+}
+
+.closing {
+  margin-top: 38px;
+  padding-top: 28px;
+  border-top: 1px solid #e3e6e9;
+  font-size: 1.03rem;
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding-top: 76px;
+  }
+
+  .shell {
+    width: min(100% - 18px, 1180px);
+  }
+
+  .contentCard {
+    padding: 28px 20px 34px;
+  }
+
+  .bodyHeader {
+    border-radius: 12px 12px 0 0;
+  }
+
+  .bodyFooter {
+    border-radius: 0 0 12px 12px;
+  }
+
+  .intro,
+  .section p,
+  .guidelines,
+  .closing {
+    font-size: 0.97rem;
+  }
+
+  .noteBox {
+    padding: 15px 16px;
+  }
+}
