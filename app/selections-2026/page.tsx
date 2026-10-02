@@ -50,7 +50,7 @@ export default function Selections2026Page() {
             <p>Greetings from <strong>Team Manfest-Varchasva!</strong></p>
             <p>
               Further to your vertical selections, we invite you to a small task round (Round 2).
-              <strong> Deadline: 5:00 PM</strong>
+              <strong> Deadline: 19:00 PM</strong>
             </p>
           </section>
 
