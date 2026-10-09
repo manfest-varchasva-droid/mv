@@ -21,6 +21,7 @@ export function HorizontalScroller({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const drag = useRef({ active: false, startX: 0, scrollLeft: 0 });
+  const positionFrame = useRef(0);
   const itemCount = Children.count(children);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -35,22 +36,37 @@ export function HorizontalScroller({
     const nextProgress = maxScroll > 0 ? Math.min(1, Math.max(0, el.scrollLeft / maxScroll)) : 0;
     const nextIndex = itemCount > 1 ? Math.round(nextProgress * (itemCount - 1)) : 0;
 
-    setProgress(nextProgress);
-    setCurrentIndex(Math.min(itemCount - 1, Math.max(0, nextIndex)));
-    setCanPrevious(el.scrollLeft > 4);
-    setCanNext(el.scrollLeft < maxScroll - 4);
+    const boundedIndex = Math.min(itemCount - 1, Math.max(0, nextIndex));
+    const nextCanPrevious = el.scrollLeft > 4;
+    const nextCanNext = el.scrollLeft < maxScroll - 4;
+
+    setProgress((current) => Math.abs(current - nextProgress) < 0.002 ? current : nextProgress);
+    setCurrentIndex((current) => current === boundedIndex ? current : boundedIndex);
+    setCanPrevious((current) => current === nextCanPrevious ? current : nextCanPrevious);
+    setCanNext((current) => current === nextCanNext ? current : nextCanNext);
   }, [itemCount]);
+
+  const schedulePositionUpdate = useCallback(() => {
+    if (positionFrame.current) return;
+    positionFrame.current = requestAnimationFrame(() => {
+      positionFrame.current = 0;
+      updatePosition();
+    });
+  }, [updatePosition]);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
     updatePosition();
-    const observer = new ResizeObserver(updatePosition);
+    const observer = new ResizeObserver(schedulePositionUpdate);
     observer.observe(el);
 
-    return () => observer.disconnect();
-  }, [updatePosition]);
+    return () => {
+      observer.disconnect();
+      if (positionFrame.current) cancelAnimationFrame(positionFrame.current);
+    };
+  }, [schedulePositionUpdate, updatePosition]);
 
   function scrollToIndex(index: number) {
     const el = ref.current;
@@ -150,7 +166,7 @@ export function HorizontalScroller({
         onPointerCancel={endDrag}
         onWheel={onWheel}
         onKeyDown={onKeyDown}
-        onScroll={updatePosition}
+        onScroll={schedulePositionUpdate}
       >
         {children}
       </div>
