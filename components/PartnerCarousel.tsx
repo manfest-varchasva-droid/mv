@@ -35,7 +35,11 @@ export function PartnerCarousel() {
           </Link>
         </div>
 
-        <div className="global-partners-viewport partner-marquee-viewport">
+        <div
+          className="global-partners-viewport partner-marquee-viewport"
+          tabIndex={0}
+          aria-label="Partner logos. Focus or hover to pause the animation."
+        >
           <div
             className="global-partners-track partner-marquee-track"
             style={{ animationDuration: `${duration}s` }}
@@ -96,6 +100,29 @@ export function PartnerCarousel() {
           }
           to {
             transform: translate3d(-50%, 0, 0);
+          }
+        }
+
+        .partner-marquee-viewport:hover .partner-marquee-track,
+        .partner-marquee-viewport:focus .partner-marquee-track,
+        .partner-marquee-viewport:focus-within .partner-marquee-track {
+          animation-play-state: paused;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .partner-marquee-viewport {
+            overflow-x: auto;
+            -webkit-mask-image: none;
+            mask-image: none;
+          }
+
+          .partner-marquee-track {
+            animation: none;
+            will-change: auto;
+          }
+
+          .partner-marquee-strip[aria-hidden="true"] {
+            display: none;
           }
         }
 
