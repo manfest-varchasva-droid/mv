@@ -11,6 +11,7 @@ import { Header } from "@/components/Header";
 import { SitePartnerCarousel } from "@/components/SitePartnerCarousel";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
+import { WebVitals } from "@/components/WebVitals";
 
 const siteUrl = "https://iiml-manfestvarchasva.com";
 const siteDescription =
@@ -42,11 +43,19 @@ export const metadata: Metadata = {
     siteName: "Manfest-Varchasva",
     title: "Manfest-Varchasva 2027 | IIM Lucknow",
     description: siteDescription,
+    url: "/",
+    images: [
+      {
+        url: "/events/events hero.png",
+        alt: "Manfest-Varchasva at IIM Lucknow",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Manfest-Varchasva 2027 | IIM Lucknow",
     description: siteDescription,
+    images: ["/events/events hero.png"],
   },
   robots: {
     index: true,
@@ -124,7 +133,9 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en">
       <body>
+        <a className="skip-link" href="#main-content">Skip to main content</a>
         <Analytics />
+        <WebVitals />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -132,7 +143,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           }}
         />
         <Header />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <SitePartnerCarousel />
         <Footer />
       </body>
