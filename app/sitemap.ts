@@ -13,7 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/city-run/`, changeFrequency: "monthly", priority: 0.75 },
     { url: `${baseUrl}/gallery/`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/partners/`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/selections-2026/`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/terms-and-conditions/`, changeFrequency: "yearly", priority: 0.3 },
   ];
 
