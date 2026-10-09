@@ -41,11 +41,23 @@ jobs:
       - name: Generate lightweight WebP images
         run: node scripts/optimize-static-images.mjs out
 
-      - name: Add BigRock image and cache rules
+      - name: Add BigRock SEO, redirect, image and cache rules
         run: |
           cat > out/.htaccess <<'HTACCESS'
           <IfModule mod_rewrite.c>
             RewriteEngine On
+
+            # Consolidate old Joomla page URLs into the current Next.js site.
+            RewriteRule ^index\.php/?$ / [R=301,L,NC]
+            RewriteRule ^index\.php/about(?:/.*)?$ /about/ [R=301,L,NC]
+            RewriteRule ^index\.php/events(?:/.*)?$ /events/ [R=301,L,NC]
+            RewriteRule ^index\.php/gallery(?:/.*)?$ /gallery/ [R=301,L,NC]
+            RewriteRule ^index\.php/(?:partners|sponsors)(?:/.*)?$ /partners/ [R=301,L,NC]
+            RewriteRule ^index\.php/city-run(?:/.*)?$ /city-run/ [R=301,L,NC]
+            RewriteRule ^index\.php/selections(?:[-_/].*)?$ /selections-2026/ [R=301,L,NC]
+
+            # Any remaining Joomla route has been superseded by the current site.
+            RewriteRule ^index\.php/.*$ / [R=301,L,NC]
 
             # Transparently serve generated WebP versions to browsers that support them.
             RewriteCond %{HTTP_ACCEPT} image/webp [NC]
@@ -53,11 +65,18 @@ jobs:
             RewriteRule ^(.+\.(?:jpe?g|png))$ $1.webp [T=image/webp,L,NC]
           </IfModule>
 
+          <IfModule mod_setenvif.c>
+            # Keep legacy selection/rulebook files accessible, but remove them from search results.
+            SetEnvIf Request_URI "^/images/(?:Selection[0-9]{4}|rulebooks)/" legacy_archive=1
+          </IfModule>
+
           <IfModule mod_mime.c>
             AddType image/webp .webp
           </IfModule>
 
           <IfModule mod_headers.c>
+            Header always set X-Robots-Tag "noindex, noarchive" env=legacy_archive
+
             <FilesMatch "\.(?:jpe?g|png)$">
               Header append Vary Accept
             </FilesMatch>
@@ -70,7 +89,7 @@ jobs:
               Header set Cache-Control "public, max-age=31536000, immutable"
             </FilesMatch>
 
-            <FilesMatch "\.(?:html|txt)$">
+            <FilesMatch "\.(?:html|txt|xml)$">
               Header set Cache-Control "no-cache"
             </FilesMatch>
           </IfModule>
