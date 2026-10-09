@@ -21,13 +21,24 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    let frame = 0;
+
     const updateScrollState = () => {
-      setIsScrolled(window.scrollY > 70);
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const next = window.scrollY > 70;
+        setIsScrolled((current) => (current === next ? current : next));
+      });
     };
 
     updateScrollState();
     window.addEventListener("scroll", updateScrollState, { passive: true });
-    return () => window.removeEventListener("scroll", updateScrollState);
+
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateScrollState);
+    };
   }, []);
 
   useEffect(() => {
@@ -112,6 +123,7 @@ export function Header() {
               <Link
                 key={href}
                 href={href}
+                aria-current={isActive(href) ? "page" : undefined}
                 onClick={() => {
                   if (href === "/") {
                     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
