@@ -49,6 +49,16 @@ jobs:
           <IfModule mod_rewrite.c>
             RewriteEngine On
 
+            # Force one canonical production origin for users and search engines.
+            # 1) Redirect www or any alternate host to the canonical non-www domain.
+            RewriteCond %{HTTP_HOST} !^iiml-manfestvarchasva\.com$ [NC]
+            RewriteRule ^ https://iiml-manfestvarchasva.com%{REQUEST_URI} [R=301,L,NE]
+
+            # 2) Force HTTPS. X-Forwarded-Proto prevents redirect loops behind a proxy.
+            RewriteCond %{HTTPS} !=on
+            RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+            RewriteRule ^ https://iiml-manfestvarchasva.com%{REQUEST_URI} [R=301,L,NE]
+
             # Consolidate old Joomla page URLs into the current Next.js site.
             RewriteRule ^index\.php/?$ / [R=301,L,NC]
             RewriteRule ^index\.php/about(?:/.*)?$ /about/ [R=301,L,NC]
