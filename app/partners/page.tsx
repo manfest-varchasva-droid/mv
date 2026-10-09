@@ -1,7 +1,17 @@
 import Image from "next/image";
 import styles from "./partners.module.css";
 
-export const metadata = { title: "Our Partners" };
+export const metadata = {
+  title: "Our Partners",
+  description:
+    "Explore the organisations that have partnered with Manfest-Varchasva, IIM Lucknow's annual business, cultural and sports festival.",
+  alternates: {
+    canonical: "/partners/",
+  },
+  openGraph: {
+    url: "/partners/",
+  },
+};
 
 type Sponsor = {
   name: string;
