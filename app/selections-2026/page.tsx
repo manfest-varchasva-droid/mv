@@ -3,6 +3,12 @@ import styles from "./selections.module.css";
 export const metadata = {
   title: "Selections 2026",
   description: "Round 2 task guidelines and task list for Manfest-Varchasva selections 2026.",
+  alternates: {
+    canonical: "/selections-2026/",
+  },
+  openGraph: {
+    url: "/selections-2026/",
+  },
 };
 
 type TaskRow = {
