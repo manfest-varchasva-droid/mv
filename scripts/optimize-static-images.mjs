@@ -3,11 +3,18 @@ import path from "node:path";
 import sharp from "sharp";
 
 const root = path.resolve(process.argv[2] ?? "out");
-const MIN_SOURCE_BYTES = 180 * 1024;
-const MAX_EDGE = 2200;
-const WEBP_QUALITY = 84;
 
-const supported = new Set([".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG"]);
+// Only rewrite files where optimization is worth the build time.
+const MIN_SOURCE_BYTES = 180 * 1024;
+
+// 1920px is enough for full-width desktop imagery while avoiding multi-megapixel
+// downloads. The GitHub originals are never modified; this script only touches
+// the generated static export in out/.
+const MAX_EDGE = 1920;
+const JPEG_QUALITY = 79;
+const WEBP_QUALITY = 80;
+
+const supported = new Set([".jpg", ".jpeg", ".png"]);
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -29,104 +36,168 @@ function formatMb(bytes) {
   return `${(bytes / 1024 / 1024).toFixed(2)} MB`;
 }
 
-// The core-team source photo is very large (~10 MB). Optimize the actual deployed
-// fallback file as well as its WebP variant so it stays fast even when Apache's
-// WebP rewrite is bypassed or a browser does not support WebP.
-const coreTeamPath = path.join(root, "events", "core team photo.JPG");
-try {
-  const originalStat = await fs.stat(coreTeamPath);
-  const tempJpeg = `${coreTeamPath}.optimized.jpg`;
-  const webpPath = `${coreTeamPath}.webp`;
+function profileFor(file) {
+  const normalized = file.split(path.sep).join("/").toLowerCase();
 
-  await sharp(coreTeamPath)
+  // The team photo is displayed at ~800px wide. A tighter cap materially improves
+  // its LCP without changing the source asset kept in GitHub.
+  if (normalized.endsWith("/events/core team photo.jpg")) {
+    return {
+      maxEdge: 1280,
+      jpegQuality: 74,
+      webpQuality: 72,
+    };
+  }
+
+  return {
+    maxEdge: MAX_EDGE,
+    jpegQuality: JPEG_QUALITY,
+    webpQuality: WEBP_QUALITY,
+  };
+}
+
+async function optimizeFallback(file, ext, profile) {
+  const originalStat = await fs.stat(file);
+  const tempPath = `${file}.optimized.tmp`;
+
+  let pipeline = sharp(file)
     .rotate()
     .resize({
-      width: 1280,
-      height: 1280,
+      width: profile.maxEdge,
+      height: profile.maxEdge,
       fit: "inside",
       withoutEnlargement: true,
-    })
-    .jpeg({
-      quality: 74,
+    });
+
+  if (ext === ".jpg" || ext === ".jpeg") {
+    pipeline = pipeline.jpeg({
+      quality: profile.jpegQuality,
       mozjpeg: true,
       chromaSubsampling: "4:2:0",
-    })
-    .toFile(tempJpeg);
+    });
+  } else {
+    // Keep PNG as PNG so transparency and existing URLs remain safe. WebP is
+    // served to modern browsers by Apache; this optimized PNG is the fallback.
+    pipeline = pipeline.png({
+      compressionLevel: 9,
+      adaptiveFiltering: true,
+    });
+  }
 
-  await fs.rename(tempJpeg, coreTeamPath);
+  await pipeline.toFile(tempPath);
 
-  await sharp(coreTeamPath)
+  const optimizedStat = await fs.stat(tempPath);
+
+  // Avoid replacing an already-efficient source with a larger re-encode.
+  if (optimizedStat.size >= originalStat.size * 0.98) {
+    await fs.rm(tempPath, { force: true });
+    return {
+      originalBytes: originalStat.size,
+      fallbackBytes: originalStat.size,
+      replaced: false,
+    };
+  }
+
+  await fs.rename(tempPath, file);
+
+  return {
+    originalBytes: originalStat.size,
+    fallbackBytes: optimizedStat.size,
+    replaced: true,
+  };
+}
+
+async function generateWebp(file, profile) {
+  const fallbackStat = await fs.stat(file);
+  const webpPath = `${file}.webp`;
+
+  await sharp(file)
+    .rotate()
     .webp({
-      quality: 72,
+      quality: profile.webpQuality,
       effort: 5,
       smartSubsample: true,
     })
     .toFile(webpPath);
 
-  const optimizedStat = await fs.stat(coreTeamPath);
   const webpStat = await fs.stat(webpPath);
-  console.log(
-    `Core team photo: ${formatMb(originalStat.size)} -> ${formatMb(optimizedStat.size)} JPEG / ${formatMb(webpStat.size)} WebP.`,
-  );
-} catch (error) {
-  console.warn(`Could not specially optimize core team photo: ${error.message}`);
-  await fs.rm(`${coreTeamPath}.optimized.jpg`, { force: true });
+
+  // Only keep alternates that produce a meaningful network saving.
+  if (webpStat.size >= fallbackStat.size * 0.95) {
+    await fs.rm(webpPath, { force: true });
+    return { kept: false, bytes: 0 };
+  }
+
+  return { kept: true, bytes: webpStat.size };
 }
 
-const files = (await walk(root)).filter((file) => supported.has(path.extname(file)));
+const files = (await walk(root)).filter((file) =>
+  supported.has(path.extname(file).toLowerCase()),
+);
 
-let eligibleBytes = 0;
+let eligibleOriginalBytes = 0;
+let deployedFallbackBytes = 0;
 let webpBytes = 0;
-let optimizedCount = 0;
+let fallbackOptimizedCount = 0;
+let webpCount = 0;
 let skippedCount = 0;
 
 for (const file of files) {
-  const stat = await fs.stat(file);
-  if (stat.size < MIN_SOURCE_BYTES) {
+  const initialStat = await fs.stat(file);
+
+  if (initialStat.size < MIN_SOURCE_BYTES) {
     skippedCount += 1;
     continue;
   }
 
-  eligibleBytes += stat.size;
-  const webpPath = `${file}.webp`;
+  const ext = path.extname(file).toLowerCase();
+  const profile = profileFor(file);
+  const relative = path.relative(root, file);
 
   try {
-    await sharp(file)
-      .rotate()
-      .resize({
-        width: MAX_EDGE,
-        height: MAX_EDGE,
-        fit: "inside",
-        withoutEnlargement: true,
-      })
-      .webp({
-        quality: WEBP_QUALITY,
-        effort: 5,
-        smartSubsample: true,
-      })
-      .toFile(webpPath);
+    const fallback = await optimizeFallback(file, ext, profile);
 
-    const webpStat = await fs.stat(webpPath);
+    eligibleOriginalBytes += fallback.originalBytes;
+    deployedFallbackBytes += fallback.fallbackBytes;
+    if (fallback.replaced) fallbackOptimizedCount += 1;
 
-    // Keep the WebP only when it is materially smaller than the original.
-    if (webpStat.size >= stat.size * 0.92) {
-      await fs.unlink(webpPath);
-      skippedCount += 1;
-      continue;
+    const webp = await generateWebp(file, profile);
+    if (webp.kept) {
+      webpBytes += webp.bytes;
+      webpCount += 1;
     }
 
-    webpBytes += webpStat.size;
-    optimizedCount += 1;
+    const fallbackSaving =
+      fallback.originalBytes > 0
+        ? (1 - fallback.fallbackBytes / fallback.originalBytes) * 100
+        : 0;
+
+    console.log(
+      `${relative}: ${formatMb(fallback.originalBytes)} -> ${formatMb(fallback.fallbackBytes)} fallback` +
+        `${webp.kept ? ` / ${formatMb(webp.bytes)} WebP` : ""}` +
+        ` (${fallbackSaving.toFixed(1)}% fallback reduction)`,
+    );
   } catch (error) {
-    console.warn(`Could not optimize ${path.relative(root, file)}: ${error.message}`);
-    await fs.rm(webpPath, { force: true });
+    console.warn(`Could not optimize ${relative}: ${error.message}`);
+    await fs.rm(`${file}.optimized.tmp`, { force: true });
+    await fs.rm(`${file}.webp`, { force: true });
   }
 }
 
-const saving = eligibleBytes > 0 ? (1 - webpBytes / eligibleBytes) * 100 : 0;
+const fallbackSaving =
+  eligibleOriginalBytes > 0
+    ? (1 - deployedFallbackBytes / eligibleOriginalBytes) * 100
+    : 0;
 
-console.log(`Optimized ${optimizedCount} large images to WebP.`);
-console.log(`Skipped ${skippedCount} images that were already small or not worth converting.`);
-console.log(`Eligible source images: ${formatMb(eligibleBytes)}`);
-console.log(`Generated WebP payload: ${formatMb(webpBytes)}`);
-console.log(`Approximate payload reduction for optimized requests: ${saving.toFixed(1)}%.`);
+const webpSaving =
+  eligibleOriginalBytes > 0
+    ? (1 - webpBytes / eligibleOriginalBytes) * 100
+    : 0;
+
+console.log("");
+console.log(`Optimized ${fallbackOptimizedCount} deployed JPG/PNG fallbacks.`);
+console.log(`Generated ${webpCount} WebP alternates.`);
+console.log(`Skipped ${skippedCount} already-small images.`);
+console.log(`Large-image source payload: ${formatMb(eligibleOriginalBytes)}`);
+console.log(`Optimized fallback payload: ${formatMb(deployedFallbackBytes)} (${fallbackSaving.toFixed(1)}% smaller)`);
+console.log(`Generated WebP payload: ${formatMb(webpBytes)} (${webpSaving.toFixed(1)}% smaller than source)`);
