@@ -1,33 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export function ScrollProgress() {
-  const [progress, setProgress] = useState(0);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let frame = 0;
 
     const update = () => {
-      cancelAnimationFrame(frame);
+      if (frame) return;
+
       frame = requestAnimationFrame(() => {
-        const scrollable =
-          document.documentElement.scrollHeight - window.innerHeight;
-        const next =
+        frame = 0;
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progress =
           scrollable > 0
             ? Math.min(Math.max(window.scrollY / scrollable, 0), 1)
             : 0;
 
-        setProgress(next);
+        if (progressRef.current) {
+          progressRef.current.style.transform = `scaleX(${progress})`;
+        }
       });
     };
 
     update();
     window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    window.addEventListener("resize", update, { passive: true });
 
     return () => {
-      cancelAnimationFrame(frame);
+      if (frame) cancelAnimationFrame(frame);
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };
@@ -35,9 +38,10 @@ export function ScrollProgress() {
 
   return (
     <div
+      ref={progressRef}
       className="mv-scroll-progress"
       aria-hidden="true"
-      style={{ transform: `scaleX(${progress})` }}
+      style={{ transform: "scaleX(0)" }}
     />
   );
 }
