@@ -1,7 +1,16 @@
 import Link from "next/link";
 import styles from "./terms.module.css";
 
-export const metadata = { title: "Terms & Conditions" };
+export const metadata = {
+  title: "Terms & Conditions",
+  description: "Participation guidelines and terms for Manfest-Varchasva events and competitions.",
+  alternates: {
+    canonical: "/terms-and-conditions/",
+  },
+  openGraph: {
+    url: "/terms-and-conditions/",
+  },
+};
 
 const generalGuidelines = [
   "As all events will be conducted in a hybrid manner, some events will take place online and some will happen offline. Please check the specific event listing for complete details.",
