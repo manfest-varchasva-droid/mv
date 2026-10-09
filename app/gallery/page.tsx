@@ -1,7 +1,17 @@
 import { GalleryLightbox } from "./GalleryLightbox";
 import styles from "./gallery.module.css";
 
-export const metadata = { title: "Gallery" };
+export const metadata = {
+  title: "Gallery",
+  description:
+    "Explore photos and highlights from Manfest-Varchasva, IIM Lucknow's annual business, cultural and sports festival.",
+  alternates: {
+    canonical: "/gallery/",
+  },
+  openGraph: {
+    url: "/gallery/",
+  },
+};
 
 const galleryPhotos = [
   "B1.jpg",
