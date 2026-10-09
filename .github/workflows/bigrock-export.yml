@@ -35,8 +35,10 @@ jobs:
       - name: Build static website
         run: npm run build
 
-      - name: Remove unused raw event copies
-        run: rm -rf out/raw-events
+      - name: Remove non-production routes and unused raw event copies
+        run: |
+          rm -rf out/raw-events
+          rm -rf out/selections-2026
 
       - name: Generate lightweight WebP images
         run: node scripts/optimize-static-images.mjs out
@@ -54,7 +56,6 @@ jobs:
             RewriteRule ^index\.php/gallery(?:/.*)?$ /gallery/ [R=301,L,NC]
             RewriteRule ^index\.php/(?:partners|sponsors)(?:/.*)?$ /partners/ [R=301,L,NC]
             RewriteRule ^index\.php/city-run(?:/.*)?$ /city-run/ [R=301,L,NC]
-            RewriteRule ^index\.php/selections(?:[-_/].*)?$ /selections-2026/ [R=301,L,NC]
 
             # Any remaining Joomla route has been superseded by the current site.
             RewriteRule ^index\.php/.*$ / [R=301,L,NC]
@@ -125,5 +126,6 @@ jobs:
           set net:max-retries 2
           set net:timeout 30
           mirror --reverse --verbose --parallel=4 --only-newer out/ ./
+          rm -r -f selections-2026
           bye
           LFTP_CMDS
