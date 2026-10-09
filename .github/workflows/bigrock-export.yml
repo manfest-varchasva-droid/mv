@@ -88,6 +88,13 @@ jobs:
           <IfModule mod_headers.c>
             Header always set X-Robots-Tag "noindex, noarchive" env=legacy_archive
 
+            # Production security and privacy headers.
+            Header always set X-Content-Type-Options "nosniff"
+            Header always set Referrer-Policy "strict-origin-when-cross-origin"
+            Header always set X-Frame-Options "SAMEORIGIN"
+            Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+            Header always set Strict-Transport-Security "max-age=31536000"
+
             <FilesMatch "\.(?:jpe?g|png)$">
               Header append Vary Accept
             </FilesMatch>
