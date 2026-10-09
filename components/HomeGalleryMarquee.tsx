@@ -67,7 +67,11 @@ export function HomeGalleryMarquee() {
         </div>
       </div>
 
-      <div className={styles.viewport} aria-label="Manfest-Varchasva gallery highlights">
+      <div
+        className={styles.viewport}
+        tabIndex={0}
+        aria-label="Manfest-Varchasva gallery highlights. Focus or hover to pause the animation."
+      >
         <div className={`${styles.track} ${active ? styles.active : ""}`}>
           {movingPhotos.map((file, index) => (
             <div className={styles.item} key={`${file}-${index}`} aria-hidden={index >= galleryPhotos.length}>
