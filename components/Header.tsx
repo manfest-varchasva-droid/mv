@@ -87,7 +87,7 @@ export function Header() {
 
       <header className={`site-header${isScrolled ? " is-scrolled" : ""}`}>
         <div className="nav-shell">
-          <Link href="/" className="brand" aria-label="Manfest Varchasva home">
+          <Link href="/" className="brand" title="Home">
             <Image className="brand-logo" src="/mv-logo.svg" alt="" width={52} height={52} priority />
             <span className="brand-copy">
               <span
