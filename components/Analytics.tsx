@@ -76,7 +76,7 @@ export function Analytics() {
       <Script
         id="google-analytics"
         src={"https://www.googletagmanager.com/gtag/js?id=" + GA_MEASUREMENT_ID}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
       <Script id="google-analytics-config" strategy="afterInteractive">
         {"window.dataLayer = window.dataLayer || [];" +
