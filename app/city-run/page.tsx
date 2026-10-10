@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SectionTitle } from "@/components/SectionTitle";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 import styles from "./city-run.module.css";
+import { preload } from "react-dom";
 
 export const metadata = { title: "Lucknow City Run 2026 Archive" };
 
@@ -40,6 +41,8 @@ const partners = [
 ];
 
 export default function CityRunPage() {
+  preload("/events/city run hero.png", { as: "image" });
+
   return (
     <>
       <section className={styles.hero}>
