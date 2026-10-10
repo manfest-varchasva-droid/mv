@@ -14,13 +14,10 @@
   gap: 14px;
   padding-left: 14px;
   animation: galleryMarquee 24s linear infinite;
-  animation-play-state: paused;
+  animation-play-state: running;
   will-change: transform;
 }
 
-.active {
-  animation-play-state: running;
-}
 
 .viewport:hover .track,
 .viewport:focus .track,
