@@ -21,6 +21,8 @@ export default function TaalPage() {
               src="/events/taal_banner.png"
               alt="Taal Indian Classical and Folk group dance competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
