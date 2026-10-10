@@ -21,6 +21,8 @@ export default function IIMLucknowMUNPage() {
               src="/events/MUN poster.jpg"
               alt="IIM Lucknow Model United Nations poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
