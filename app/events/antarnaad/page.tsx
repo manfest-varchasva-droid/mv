@@ -21,6 +21,8 @@ export default function AntarnaadPage() {
               src="/events/antarnaad.png"
               alt="Antarnaad short film and vlog making competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
