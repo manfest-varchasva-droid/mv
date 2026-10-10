@@ -16,6 +16,9 @@ function getAlt(file: string, index: number) {
 export function GalleryLightbox({ photos }: GalleryLightboxProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const pointerStartX = useRef<number | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lightboxStageRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   const isOpen = activeIndex !== null;
 
@@ -37,12 +40,34 @@ export function GalleryLightbox({ photos }: GalleryLightboxProps) {
     if (!isOpen) return;
 
     const previousOverflow = document.body.style.overflow;
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
     document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => closeButtonRef.current?.focus());
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setActiveIndex(null);
       if (event.key === "ArrowLeft") showPrevious();
       if (event.key === "ArrowRight") showNext();
+
+      if (event.key === "Tab" && lightboxStageRef.current) {
+        const focusable = Array.from(
+          lightboxStageRef.current.querySelectorAll<HTMLElement>(
+            'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+          )
+        );
+        if (!focusable.length) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -50,6 +75,7 @@ export function GalleryLightbox({ photos }: GalleryLightboxProps) {
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
+      previousFocusRef.current?.focus();
     };
   }, [isOpen]);
 
@@ -101,12 +127,14 @@ export function GalleryLightbox({ photos }: GalleryLightboxProps) {
           onClick={() => setActiveIndex(null)}
         >
           <div
+            ref={lightboxStageRef}
             className={styles.lightboxStage}
             onClick={(event) => event.stopPropagation()}
             onPointerDown={handlePointerDown}
             onPointerUp={handlePointerUp}
           >
             <button
+              ref={closeButtonRef}
               type="button"
               className={styles.lightboxClose}
               aria-label="Close gallery image"
