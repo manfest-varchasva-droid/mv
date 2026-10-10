@@ -21,6 +21,8 @@ export default function RohanPage() {
               src="/events/rohan (1).jpeg"
               alt="Rohan spoken poetry competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
