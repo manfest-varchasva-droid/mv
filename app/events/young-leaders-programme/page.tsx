@@ -22,6 +22,8 @@ export default function YoungLeadersProgrammePage() {
               src="/events/ylp-banner.png"
               alt="Young Leaders Program YLP poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
