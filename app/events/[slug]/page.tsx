@@ -27,6 +27,8 @@ function CampusAmbassadorPage() {
               src="/events/campus_ambassador1920_x_560_px.jpg"
               alt="Campus Ambassador 9.0 poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
@@ -170,6 +172,8 @@ function VibesPage() {
               src="/events/vibes_banner.png"
               alt="Vibes solo freestyle dance competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
@@ -375,6 +379,8 @@ function ImperioPage() {
               src="/events/imperio_banner.png"
               alt="Imperio group Western dance competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
