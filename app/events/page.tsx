@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SectionTitle } from "@/components/SectionTitle";
 import { events } from "@/lib/content";
 import styles from "./events.module.css";
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 
 export const metadata: Metadata = {
   title: "Events",
@@ -16,6 +17,11 @@ export const metadata: Metadata = {
     title: "Events | Manfest-Varchasva 2027",
     description:
       "Explore cultural, literary, management and leadership events at Manfest-Varchasva 2027, IIM Lucknow.",
+    images: ["/events/events hero.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/events/events hero.png"],
   },
 };
 
@@ -66,6 +72,23 @@ export default function EventsPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Events", href: "/events/" }]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Manfest-Varchasva events",
+            itemListElement: events.map((event, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: event.name,
+              url: `https://iiml-manfestvarchasva.com/events/${event.slug}/`,
+            })),
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="subhero events-hero">
         <div className="page-shell subhero-content">
           <div className="eyebrow">THE LINE-UP</div>
