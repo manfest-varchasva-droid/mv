@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/events/events hero.png",
+        url: "/opengraph-image.png",
         alt: "Manfest-Varchasva at IIM Lucknow",
       },
     ],
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Manfest-Varchasva 2027 | IIM Lucknow",
     description: siteDescription,
-    images: ["/events/events hero.png"],
+    images: ["/opengraph-image.png"],
   },
   robots: {
     index: true,
