@@ -66,6 +66,9 @@ jobs:
             RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
             RewriteRule ^ https://iiml-manfestvarchasva.com%{REQUEST_URI} [R=301,L,NE]
 
+            # The 2026 selections route is intentionally retained in source only.
+            RewriteRule ^selections-2026(?:/.*)?$ - [R=410,L,NC]
+
             # Consolidate old Joomla page URLs into the current Next.js site.
             RewriteRule ^index\.php/?$ / [R=301,L,NC]
             RewriteRule ^index\.php/about(?:/.*)?$ /about/ [R=301,L,NC]
