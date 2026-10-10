@@ -21,6 +21,8 @@ export default function HallaBolPage() {
               src="/events/halla_bol.png"
               alt="Halla Bol street play competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
