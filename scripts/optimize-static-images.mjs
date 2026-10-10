@@ -39,6 +39,16 @@ function formatMb(bytes) {
 function profileFor(file) {
   const normalized = file.split(path.sep).join("/").toLowerCase();
 
+  // The homepage hero is the usual LCP element. Keep it visually crisp while
+  // avoiding a full-resolution decode/download on first paint.
+  if (normalized.endsWith("/headliners/salim-sulaiman.jpeg")) {
+    return {
+      maxEdge: 1600,
+      jpegQuality: 76,
+      webpQuality: 74,
+    };
+  }
+
   // The team photo is displayed at ~800px wide. A tighter cap materially improves
   // its LCP without changing the source asset kept in GitHub.
   if (normalized.endsWith("/events/core team photo.jpg")) {
