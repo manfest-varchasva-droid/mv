@@ -21,6 +21,8 @@ export default function TheJoustPage() {
               src="/events/joust_mobile (1).jpg"
               alt="The Joust debate competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
