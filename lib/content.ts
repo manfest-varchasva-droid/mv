@@ -142,7 +142,7 @@ export const leaders = [
     name: "Ashish Vidyarthi",
     role: "Actor, Motivational Speaker",
     image:
-      "https://avidlearning.in/uploads/faculty/069D865A-E2B7-44A9-9DFD-960569374F22.jpg",
+      "/leaders/ashish-vidyarthi-final.jpg",
   },
 ];
 
