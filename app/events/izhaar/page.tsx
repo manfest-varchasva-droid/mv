@@ -21,6 +21,8 @@ export default function IzhaarPage() {
               src="/events/izhaar_mobile_banner.png"
               alt="Izhaar mono-act competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
