@@ -21,6 +21,8 @@ export default function StairwayToHellPage() {
               src="/events/stairway_to_hell_700400.jpg"
               alt="Stairway to Hell band competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
