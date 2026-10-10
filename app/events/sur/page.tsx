@@ -21,6 +21,8 @@ export default function SurPage() {
               src="/events/SUR_MOBILE.jpg"
               alt="Sur solo singing competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
