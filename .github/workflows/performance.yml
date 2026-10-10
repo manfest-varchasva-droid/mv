@@ -1,0 +1,54 @@
+name: Performance Audit
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**/*.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: performance-audit
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    env:
+      STATIC_EXPORT: "1"
+
+    steps:
+      - name: Get website code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Remove non-production assets
+        run: |
+          rm -rf public/raw-events
+          rm -rf public/selections-2026
+
+      - name: Build static website
+        run: npm run build
+
+      - name: Run Lighthouse budgets
+        run: npx --yes @lhci/cli@0.14.0 autorun --config=.lighthouserc.json
+
+      - name: Keep Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-results
+          path: lighthouse-results/
+          if-no-files-found: ignore
+          retention-days: 14
