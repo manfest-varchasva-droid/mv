@@ -16,11 +16,13 @@ export const metadata: Metadata = {
     url: "/events/",
     title: "Events & Past Edition Archives | Manfest-Varchasva",
     description:
-      "Explore cultural, literary, management and leadership events at Manfest-Varchasva 2027, IIM Lucknow.",
+      "Explore cultural, literary, management and leadership event formats and past-edition archives from Manfest-Varchasva at IIM Lucknow.",
     images: ["/events/events hero.png"],
   },
   twitter: {
     card: "summary_large_image",
+    title: "Events & Past Edition Archives | Manfest-Varchasva",
+    description: "Explore cultural, literary, management and leadership event formats and past-edition archives from Manfest-Varchasva at IIM Lucknow.",
     images: ["/events/events hero.png"],
   },
 };
