@@ -21,6 +21,8 @@ export default function JashNPage() {
               src="/events/mobile_banner_new_JASHN.png"
               alt="JashN fashion parade poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
