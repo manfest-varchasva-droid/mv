@@ -32,10 +32,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Remove non-production assets before build
+        run: |
+          rm -rf public/raw-events
+          rm -rf public/selections-2026
+
       - name: Build static website
         run: npm run build
 
-      - name: Remove non-production routes and unused raw event copies
+      - name: Remove non-production routes
         run: |
           rm -rf out/raw-events
           rm -rf out/selections-2026
@@ -46,6 +51,8 @@ jobs:
       - name: Add BigRock SEO, redirect, image and cache rules
         run: |
           cat > out/.htaccess <<'HTACCESS'
+          ErrorDocument 404 /404.html
+
           <IfModule mod_rewrite.c>
             RewriteEngine On
 
