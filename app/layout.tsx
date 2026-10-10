@@ -9,6 +9,7 @@ import "./partner-carousel.css";
 import "./interaction-overrides.css";
 import { Header } from "@/components/Header";
 import { SitePartnerCarousel } from "@/components/SitePartnerCarousel";
+import { PartnerCarousel } from "@/components/PartnerCarousel";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { WebVitals } from "@/components/WebVitals";
@@ -144,7 +145,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         />
         <Header />
         <main id="main-content">{children}</main>
-        <SitePartnerCarousel />
+        <SitePartnerCarousel><PartnerCarousel /></SitePartnerCarousel>
         <Footer />
       </body>
     </html>
