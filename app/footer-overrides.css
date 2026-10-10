@@ -108,3 +108,22 @@
     align-items: flex-start;
   }
 }
+
+
+/* Lighthouse accessibility fixes */
+.site-footer .footer-bottom,
+.site-footer .footer-bottom span {
+  color: #b9bbc7;
+}
+
+.site-footer nav > a {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 820px) {
+  .site-footer nav > a {
+    min-height: 44px;
+  }
+}
