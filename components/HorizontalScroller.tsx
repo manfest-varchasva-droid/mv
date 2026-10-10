@@ -15,9 +15,11 @@ import {
 export function HorizontalScroller({
   className,
   children,
+  ariaLabel = "Scrollable carousel",
 }: {
   className?: string;
   children: ReactNode;
+  ariaLabel?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const drag = useRef({ active: false, startX: 0, scrollLeft: 0 });
@@ -158,7 +160,7 @@ export function HorizontalScroller({
         className={className}
         role="region"
         aria-roledescription="carousel"
-        aria-label="Scrollable carousel"
+        aria-label={ariaLabel}
         tabIndex={0}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
