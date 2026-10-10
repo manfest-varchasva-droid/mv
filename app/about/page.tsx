@@ -3,6 +3,7 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { stats } from "@/lib/content";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 import styles from "./about.module.css";
+import { preload } from "react-dom";
 
 export const metadata = { title: "About us" };
 
@@ -35,6 +36,8 @@ const history = [
 ];
 
 export default function AboutPage() {
+  preload("/events/about us hero.jpg", { as: "image" });
+
   return (
     <>
       <section
@@ -130,9 +133,9 @@ export default function AboutPage() {
               alt="Manfest-Varchasva Core Team at IIM Lucknow"
               width={800}
               height={533}
-              loading="eager"
+              loading="lazy"
               decoding="async"
-              fetchPriority="high"
+              fetchPriority="low"
             />
           </div>
 
