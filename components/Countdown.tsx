@@ -48,8 +48,19 @@ function getTimeLeft(now = new Date()): TimeLeft {
   return { months, days, hours, minutes, seconds, complete: false };
 }
 
+const INITIAL_TIME: TimeLeft = {
+  months: 0,
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  complete: false,
+};
+
 export function Countdown() {
-  const [time, setTime] = useState<TimeLeft>(() => getTimeLeft());
+  // Keep the server and first client render identical. The real countdown is
+  // filled immediately after hydration, avoiding a one-second text mismatch.
+  const [time, setTime] = useState<TimeLeft>(INITIAL_TIME);
 
   useEffect(() => {
     const tick = () => setTime(getTimeLeft());
