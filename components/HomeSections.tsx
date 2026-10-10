@@ -21,8 +21,9 @@ export function Hero() {
         alt=""
         fill
         sizes="100vw"
-        quality={75}
+        quality={72}
         preload
+        fetchPriority="high"
         aria-hidden="true"
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
@@ -81,7 +82,7 @@ export function Headliners() {
           <b>→</b>
         </div>
 
-        <HorizontalScroller className="headliner-grid">
+        <HorizontalScroller className="headliner-grid" ariaLabel="Past Manfest-Varchasva headliners">
           {headliners.map((artist, index) => (
             <article className="headliner-card" key={artist.name}>
               <Image
@@ -121,25 +122,16 @@ export function LeadersExpress() {
           <b>→</b>
         </div>
 
-        <HorizontalScroller className="leaders-grid">
+        <HorizontalScroller className="leaders-grid" ariaLabel="Leaders Express speakers">
           {leaders.map((speaker) => (
             <article className="speaker-card" key={speaker.name}>
               <div className={`speaker-image${speaker.name === "Justice D.Y. Chandrachud" || speaker.name === "Kapil Dev" || speaker.name === "Ashish Vidyarthi" ? " speaker-image-final" : ""}${speaker.name === "Dr. A.P.J. Abdul Kalam" ? " speaker-image-apj" : ""}`}>
-                {speaker.name === "Ashish Vidyarthi" ? (
-                  <img
-                    src={speaker.image}
-                    alt={speaker.name}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                ) : (
-                  <Image
+                <Image
                     src={speaker.image}
                     alt={speaker.name}
                     fill
                     sizes="(max-width: 800px) 42vw, 18vw"
                   />
-                )}
               </div>
               <div className="speaker-copy">
                 <h3>{speaker.name}</h3>
@@ -164,7 +156,7 @@ export function OverTheYears() {
           description="A look back at the moments, memories and milestones that have defined Manfest-Varchasva."
         />
 
-        <HorizontalScroller className="years-video-scroll">
+        <HorizontalScroller className="years-video-scroll" ariaLabel="Manfest-Varchasva videos over the years">
           <VideoCard id="l6qw-fCkYRM" title="Manfest Varchasva 2025-26" />
           <VideoCard id="OspT5n1DuOo" title="Manfest Varchasva 2024-25" />
           <VideoCard id="fg6NTY-Ut5Q" title="Manfest Varchasva 2023-24" />
