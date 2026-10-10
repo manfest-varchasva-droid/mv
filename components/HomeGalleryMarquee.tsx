@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import { SectionTitle } from "@/components/SectionTitle";
 import styles from "./home-gallery-marquee.module.css";
 
@@ -30,29 +27,8 @@ const galleryPhotos = [
 const movingPhotos = [...galleryPhotos, ...galleryPhotos];
 
 export function HomeGalleryMarquee() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [active, setActive] = useState(false);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setActive(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "500px 0px" },
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="section section-dark gallery-preview section-identity-gallery">
+    <section className="section section-dark gallery-preview section-identity-gallery">
       <div className="page-shell">
         <div className="title-row">
           <SectionTitle
@@ -72,7 +48,7 @@ export function HomeGalleryMarquee() {
         tabIndex={0}
         aria-label="Manfest-Varchasva gallery highlights. Focus or hover to pause the animation."
       >
-        <div className={`${styles.track} ${active ? styles.active : ""}`}>
+        <div className={styles.track}>
           {movingPhotos.map((file, index) => (
             <div className={styles.item} key={`${file}-${index}`} aria-hidden={index >= galleryPhotos.length}>
               <Image
