@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./partners.module.css";
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
+import { preload } from "react-dom";
 
 export const metadata = {
   title: "Our Partners",
@@ -185,8 +186,6 @@ const supportingPartners: PartnerGroup[] = [
 ];
 
 function LogoCard({ sponsor }: { sponsor: Sponsor }) {
-  const isAxisBank = sponsor.name === "Axis Bank";
-
   return (
     <div className={styles.logoStage}>
       <div className={styles.logoTile}>
@@ -197,8 +196,6 @@ function LogoCard({ sponsor }: { sponsor: Sponsor }) {
           height={300}
           sizes="(max-width: 520px) 92vw, (max-width: 720px) 88vw, (max-width: 1040px) 44vw, 30vw"
           quality={75}
-          preload={isAxisBank}
-          unoptimized={isAxisBank}
         />
       </div>
     </div>
@@ -234,6 +231,8 @@ function PartnerCard({ partner, className }: { partner: PartnerGroup; className:
 }
 
 export default function PartnersPage() {
+  preload("/events/partners hero.png", { as: "image" });
+
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Our Partners", href: "/partners/" }]} />
