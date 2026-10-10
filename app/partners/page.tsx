@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./partners.module.css";
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 
 export const metadata = {
   title: "Our Partners",
@@ -10,6 +11,11 @@ export const metadata = {
   },
   openGraph: {
     url: "/partners/",
+    images: ["/events/partners hero.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/events/partners hero.png"],
   },
 };
 
@@ -230,6 +236,7 @@ function PartnerCard({ partner, className }: { partner: PartnerGroup; className:
 export default function PartnersPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Our Partners", href: "/partners/" }]} />
       <section
         className={`subhero ${styles.partnersHero}`}
         style={{
