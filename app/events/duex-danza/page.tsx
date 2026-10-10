@@ -21,6 +21,8 @@ export default function DuexDanzaPage() {
               src="/events/FREESTYLE_DUET_DANCE_COMPETITION_1.png"
               alt="Duex Danza freestyle duet dance competition poster"
               className={styles.poster}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
