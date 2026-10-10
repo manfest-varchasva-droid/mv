@@ -19,20 +19,21 @@ export function Footer() {
           <p>IIM Lucknow&apos;s annual business, cultural and sports festival.</p>
         </div>
 
-        <div>
+        <nav aria-label="Explore Manfest-Varchasva">
           <h3>Explore</h3>
+          <Link href="/about">About us</Link>
           <Link href="/events">Events</Link>
+          <Link href="/city-run">City Run</Link>
           <Link href="/partners">Our Partners</Link>
           <Link href="/gallery">Gallery</Link>
-        </div>
+          <Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
+        </nav>
 
         <div className="footer-contact">
           <h3>Contact Us</h3>
           <a
             className="footer-email"
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=manfest-varchasva@iiml.ac.in"
-            target="_blank"
-            rel="noreferrer"
+            href="mailto:manfest-varchasva@iiml.ac.in"
           >
             manfest-varchasva@iiml.ac.in
           </a>
