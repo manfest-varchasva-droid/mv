@@ -1,5 +1,6 @@
 import { GalleryLightbox } from "./GalleryLightbox";
 import styles from "./gallery.module.css";
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 
 export const metadata = {
   title: "Gallery",
@@ -10,6 +11,11 @@ export const metadata = {
   },
   openGraph: {
     url: "/gallery/",
+    images: ["/gallery/B1.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/gallery/B1.jpg"],
   },
 };
 
@@ -54,6 +60,7 @@ const galleryPhotos = [
 export default function GalleryPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Gallery", href: "/gallery/" }]} />
       <section className="subhero gallery-hero">
         <div className="page-shell subhero-content">
           <div className="eyebrow">MV IN PICTURES</div>
