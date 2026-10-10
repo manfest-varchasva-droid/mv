@@ -289,3 +289,40 @@
     letter-spacing: 1.8px;
   }
 }
+
+
+/* Mobile rendering budget: preserve the look while reducing expensive paint work. */
+@media (max-width: 820px) {
+  .nav-shell {
+    -webkit-backdrop-filter: blur(11px);
+    backdrop-filter: blur(11px);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
+  }
+
+  .hero-glow {
+    filter: blur(90px);
+    opacity: 0.17;
+  }
+
+  .headliner-card,
+  .speaker-card {
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+  }
+
+  .mv-mobile-panel {
+    -webkit-backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(12px) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav-shell {
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+  }
+
+  .hero-glow {
+    filter: blur(72px);
+    opacity: 0.14;
+  }
+}
