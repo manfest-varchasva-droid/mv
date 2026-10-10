@@ -125,8 +125,9 @@
   text-transform: uppercase;
 }
 
-.historyItem > strong {
+.historyItem > h3 {
   display: block;
+  margin: 0;
   color: #f7f7fb;
   font-size: 17px;
   line-height: 1.22;
