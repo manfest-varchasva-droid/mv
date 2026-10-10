@@ -111,7 +111,7 @@ export default function AboutPage() {
               <article className={styles.historyItem} key={`${item.year}-${item.title}`}>
                 <div className={styles.historyMarker} aria-hidden="true" />
                 <span>{item.year}</span>
-                <strong>{item.title}</strong>
+                <h3>{item.title}</h3>
                 <p>{item.copy}</p>
               </article>
             ))}
