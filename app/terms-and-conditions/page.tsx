@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./terms.module.css";
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 
 export const metadata = {
   title: "Terms & Conditions",
@@ -9,6 +10,11 @@ export const metadata = {
   },
   openGraph: {
     url: "/terms-and-conditions/",
+    images: ["/opengraph-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/opengraph-image.png"],
   },
 };
 
@@ -71,6 +77,7 @@ function GuidelineSection({
 export default function TermsPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Terms & Conditions", href: "/terms-and-conditions/" }]} />
       <section className="subhero event-detail-hero">
         <div className="page-shell subhero-content">
           <div className="eyebrow">PARTICIPATION POLICY</div>
