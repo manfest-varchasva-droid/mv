@@ -1,15 +1,9 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
-const PartnerCarousel = dynamic(
-  () => import("@/components/PartnerCarousel").then((mod) => mod.PartnerCarousel),
-  { ssr: false }
-);
-
-export function SitePartnerCarousel() {
+export function SitePartnerCarousel({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const triggerRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
@@ -45,7 +39,7 @@ export function SitePartnerCarousel() {
 
   return (
     <div ref={triggerRef} className="global-partners-lazy-shell">
-      {ready ? <PartnerCarousel /> : null}
+      {ready ? children : null}
     </div>
   );
 }
