@@ -8,13 +8,13 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 export const metadata: Metadata = {
   title: "Events",
   description:
-    "Explore cultural, literary, management and leadership events at Manfest-Varchasva 2027, IIM Lucknow.",
+    "Explore cultural, literary, management and leadership event formats and past-edition archives from Manfest-Varchasva at IIM Lucknow.",
   alternates: {
     canonical: "/events/",
   },
   openGraph: {
     url: "/events/",
-    title: "Events | Manfest-Varchasva 2027",
+    title: "Events & Past Edition Archives | Manfest-Varchasva",
     description:
       "Explore cultural, literary, management and leadership events at Manfest-Varchasva 2027, IIM Lucknow.",
     images: ["/events/events hero.png"],
