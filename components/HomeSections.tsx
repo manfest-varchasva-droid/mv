@@ -73,7 +73,7 @@ export function Headliners() {
   return (
     <section id="headliners" className="section section-dark section-identity-stage">
       <div className="page-shell">
-        <SectionTitle
+        <SectionTitle masked
           eyebrow="THE STAGE"
           title="Past"
           accent="Headliners"
@@ -113,7 +113,7 @@ export function LeadersExpress() {
   return (
     <section className="section section-ink section-identity-ideas">
       <div className="page-shell">
-        <SectionTitle
+        <SectionTitle masked
           eyebrow="IDEAS ON STAGE"
           title="Leaders"
           accent="Express"
@@ -152,7 +152,7 @@ export function OverTheYears() {
   return (
     <section className="section years-section section-identity-experience">
       <div className="page-shell">
-        <SectionTitle
+        <SectionTitle masked
           eyebrow="THE EXPERIENCE"
           title="Manfest-Varchasva"
           accent="Over the Years"
@@ -235,7 +235,7 @@ export function Highlights() {
       }}
     >
       <div className="page-shell">
-        <SectionTitle
+        <SectionTitle masked
           eyebrow="BY THE NUMBERS"
           title="Manfest-Varchasva"
           accent="2025–26"
@@ -377,7 +377,7 @@ export function PartnersPreview() {
     <section className="section section-dark">
       <div className="page-shell">
         <div className="title-row">
-          <SectionTitle
+          <SectionTitle masked
             eyebrow="BACKED BY"
             title="Our"
             accent="Partners"
@@ -411,7 +411,7 @@ export function GalleryPreview() {
     <section className="section section-dark gallery-preview">
       <div className="page-shell">
         <div className="title-row">
-          <SectionTitle
+          <SectionTitle masked
             eyebrow="IN PICTURES"
             title="The"
             accent="MV Energy"
