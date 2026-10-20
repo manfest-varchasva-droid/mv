@@ -30,6 +30,7 @@ export function Hero() {
       <div className="hero-scrim" />
       <div className="hero-glow hero-glow-left" />
       <div className="hero-glow hero-glow-right" />
+      <div className="hero-cinematic-wash" aria-hidden="true" />
 
       <div className="hero-content page-shell">
         <Image className="hero-logo" src="/mv-logo.svg" alt="Manfest Varchasva" width={92} height={92} priority />
@@ -37,9 +38,11 @@ export function Hero() {
           <span className="hero-kicker-main">IIM LUCKNOW’S</span>
           <small>ANNUAL BUSINESS, CULTURAL AND SPORTS FEST</small>
         </div>
-        <h1>
-          MANFEST-<span>VARCHASVA</span>
-        </h1>
+        <div className="hero-title-window">
+          <h1>
+            <span className="hero-word hero-word-first">MANFEST-</span><span className="hero-word hero-word-second">VARCHASVA</span>
+          </h1>
+        </div>
         <div className="hero-year">{site.edition}</div>
 
         <div className="hero-info hero-info-date">
