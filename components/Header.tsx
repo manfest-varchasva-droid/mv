@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ScrollProgress } from "@/components/ScrollProgress";
 
 const links = [
@@ -18,6 +18,34 @@ const links = [
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Mount during closing so the exit animation is not cut off.
+  const [mobileMounted, setMobileMounted] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement>(null);
+
+  function closeMobileMenu() {
+    setMobileOpen(false);
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => {
+      setMobileMounted(false);
+      closeTimer.current = null;
+    }, 210);
+  }
+
+  function toggleMobileMenu() {
+    if (mobileOpen) {
+      closeMobileMenu();
+    } else {
+      if (closeTimer.current) window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+      setMobileMounted(true);
+      setMobileOpen(true);
+    }
+  }
+
+  useEffect(() => () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+  }, []);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -43,6 +71,9 @@ export function Header() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setMobileMounted(false);
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = null;
 
     // The Home navigation item should always return to the top of the homepage,
     // rather than restoring the previous scroll position.
@@ -53,13 +84,21 @@ export function Header() {
   }, [pathname]);
 
   useEffect(() => {
-    if (!mobileOpen) return;
+    if (!mobileMounted) return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMobileOpen(false);
+      if (event.key === "Escape") {
+        setMobileOpen(false);
+        mobileToggleRef.current?.focus();
+        if (closeTimer.current) window.clearTimeout(closeTimer.current);
+        closeTimer.current = window.setTimeout(() => {
+          setMobileMounted(false);
+          closeTimer.current = null;
+        }, 210);
+      }
     };
 
     document.addEventListener("keydown", closeOnEscape);
@@ -68,7 +107,7 @@ export function Header() {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", closeOnEscape);
     };
-  }, [mobileOpen]);
+  }, [mobileMounted]);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -76,12 +115,13 @@ export function Header() {
   return (
     <>
       <ScrollProgress />
-      {mobileOpen && (
+      {mobileMounted && (
         <button
           type="button"
-          className="mv-mobile-backdrop"
+          className={`mv-mobile-backdrop${mobileOpen ? "" : " is-closing"}`}
           aria-label="Close navigation"
-          onClick={() => setMobileOpen(false)}
+          onClick={closeMobileMenu}
+          tabIndex={mobileOpen ? 0 : -1}
         />
       )}
 
@@ -138,10 +178,11 @@ export function Header() {
           <div className="mv-mobile-nav">
             <button
               type="button"
+              ref={mobileToggleRef}
               className={`mv-mobile-toggle${mobileOpen ? " is-open" : ""}`}
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation-panel"
-              onClick={() => setMobileOpen((open) => !open)}
+              onClick={toggleMobileMenu}
             >
               <span>{mobileOpen ? "Close" : "Menu"}</span>
               <span className="mv-mobile-toggle-icon" aria-hidden="true">
@@ -150,8 +191,14 @@ export function Header() {
               </span>
             </button>
 
-            {mobileOpen && (
-              <nav id="mobile-navigation-panel" className="mv-mobile-panel" aria-label="Mobile navigation">
+            {mobileMounted && (
+              <nav
+                id="mobile-navigation-panel"
+                className={`mv-mobile-panel${mobileOpen ? "" : " is-closing"}`}
+                aria-label="Mobile navigation"
+                aria-hidden={!mobileOpen}
+                inert={!mobileOpen}
+              >
                 {links.map(([label, href]) => {
                   const active = isActive(href);
                   return (
@@ -161,7 +208,7 @@ export function Header() {
                       className={active ? "is-active" : undefined}
                       aria-current={active ? "page" : undefined}
                       onClick={() => {
-                        setMobileOpen(false);
+                        closeMobileMenu();
                         if (href === "/") {
                           window.scrollTo({ top: 0, left: 0, behavior: "auto" });
                         }
@@ -180,15 +227,15 @@ export function Header() {
 
       <style>{`
         .desktop-nav {
-          gap: 18px;
+          gap: clamp(11px, 1.05vw, 17px);
           flex-shrink: 0;
         }
 
         .desktop-nav a {
           white-space: nowrap;
           text-align: center;
-          font-size: 10.5px;
-          letter-spacing: 1.45px;
+          font-size: 12px;
+          letter-spacing: 1.05px;
         }
 
         .mv-mobile-nav {
@@ -213,6 +260,22 @@ export function Header() {
         @keyframes mvBackdropIn {
           from { opacity: 0; }
           to { opacity: 1; }
+        }
+        @keyframes mvBackdropOut {
+          from { opacity: 1; }
+          to { opacity: 0; }
+        }
+        @keyframes mvPanelOut {
+          from { opacity: 1; transform: translateY(0) scale(1); }
+          to { opacity: 0; transform: translateY(-6px) scale(.985); }
+        }
+        .mv-mobile-backdrop.is-closing {
+          animation: mvBackdropOut 210ms ease-in both;
+          pointer-events: none;
+        }
+        .mv-mobile-panel.is-closing {
+          animation: mvPanelOut 210ms ease-in both;
+          pointer-events: none;
         }
 
         @keyframes mvPanelIn {
@@ -345,7 +408,9 @@ export function Header() {
 
         @media (prefers-reduced-motion: reduce) {
           .mv-mobile-backdrop,
-          .mv-mobile-panel {
+          .mv-mobile-panel,
+          .mv-mobile-backdrop.is-closing,
+          .mv-mobile-panel.is-closing {
             animation: none;
           }
 
