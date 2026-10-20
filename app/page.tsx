@@ -11,6 +11,7 @@ import { PartnerCarousel } from "@/components/PartnerCarousel";
 import styles from "./home-lovelo.module.css";
 import titleFix from "./home-title-fix.module.css";
 import cinematic from "./home-cinematic.module.css";
+import { CinematicHero } from "@/components/CinematicHero";
 
 export const metadata: Metadata = {
   alternates: {
@@ -24,9 +25,9 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <div className={`${styles.loveloHero} ${titleFix.titlePaintFix} ${cinematic.cinematicHero}`}>
+      <CinematicHero className={`${styles.loveloHero} ${titleFix.titlePaintFix} ${cinematic.cinematicHero}`}>
         <Hero />
-      </div>
+      </CinematicHero>
       <Headliners />
       <LeadersExpress />
       <OverTheYears />
