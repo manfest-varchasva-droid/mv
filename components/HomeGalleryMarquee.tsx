@@ -31,7 +31,7 @@ export function HomeGalleryMarquee() {
     <section className="section section-dark gallery-preview section-identity-gallery">
       <div className="page-shell">
         <div className="title-row">
-          <SectionTitle
+          <SectionTitle masked
             eyebrow="IN PICTURES"
             title="The"
             accent="MV Energy"
