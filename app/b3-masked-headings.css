@@ -1,0 +1,78 @@
+/*
+ * B3 — editorial heading reveals.
+ *
+ * Opt-in SectionTitle headings: each text run rises from a clipping window.
+ * Animation only starts after the existing A20 IntersectionObserver arms it.
+ * No-JS, above-the-fold and reduced-motion headings are always visible.
+ */
+.section-title h2 .b3-heading-mask {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  vertical-align: bottom;
+  padding: .12em .045em .135em;
+  margin: -.12em -.045em -.135em;
+  white-space: normal;
+  color: inherit;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+}
+
+.section-title h2 .b3-heading-ink {
+  display: block;
+  max-width: 100%;
+  color: inherit;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition:
+    transform 860ms cubic-bezier(.16, 1, .3, 1),
+    opacity 650ms cubic-bezier(.16, 1, .3, 1);
+}
+
+/* Preserve the original MV purple-to-red title-accent gradient. */
+.section-title h2 .b3-heading-accent .b3-heading-ink {
+  background: linear-gradient(90deg, var(--purple), var(--red));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  transition-delay: 130ms;
+}
+
+/* True masked reveal: first title, then the accent, only when scrolling in. */
+.b3-section-title.b3-armed:not(.is-visible) .b3-heading-ink {
+  transform: translate3d(0, 112%, 0);
+  opacity: .12;
+}
+
+.b3-section-title.b3-armed.is-visible .b3-heading-ink {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .section-title h2 .b3-heading-mask {
+    overflow-wrap: anywhere;
+  }
+  .section-title h2 .b3-heading-ink {
+    transition-duration: 700ms;
+  }
+  .section-title h2 .b3-heading-accent .b3-heading-ink {
+    transition-delay: 95ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  .b3-section-title .b3-heading-ink {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
