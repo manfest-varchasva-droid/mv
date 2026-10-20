@@ -4,7 +4,7 @@ type Props = {
   accent?: string;
   description?: string;
   align?: "left" | "center";
-  /** Opt-in masked reveal; currently enabled for homepage editorial headings only. */
+  /** Sitewide by default; pass masked={false} for an intentional static exception. */
   masked?: boolean;
 };
 
@@ -14,7 +14,7 @@ export function SectionTitle({
   accent,
   description,
   align = "left",
-  masked = false,
+  masked = true,
 }: Props) {
   return (
     <div className={`section-title section-title-${align}${masked ? " b3-section-title" : ""}`}>
