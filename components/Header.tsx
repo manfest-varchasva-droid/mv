@@ -20,7 +20,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   // Mount during closing so the exit animation is not cut off.
   const [mobileMounted, setMobileMounted] = useState(false);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const closeTimer = useRef<number | null>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
 
   function closeMobileMenu() {
@@ -70,10 +70,14 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    setMobileOpen(false);
-    setMobileMounted(false);
-    if (closeTimer.current) window.clearTimeout(closeTimer.current);
-    closeTimer.current = null;
+    // Close asynchronously when the route changes, rather than setting state
+    // synchronously within an effect.
+    const closeFrame = requestAnimationFrame(() => {
+      setMobileOpen(false);
+      setMobileMounted(false);
+      if (closeTimer.current) window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    });
 
     // The Home navigation item should always return to the top of the homepage,
     // rather than restoring the previous scroll position.
@@ -81,6 +85,7 @@ export function Header() {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
       requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
     }
+    return () => cancelAnimationFrame(closeFrame);
   }, [pathname]);
 
   useEffect(() => {
