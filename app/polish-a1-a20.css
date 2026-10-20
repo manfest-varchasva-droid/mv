@@ -1,0 +1,153 @@
+/* A1–A20: interaction-polish layer. Keep scoped so it can be reverted in one commit. */
+:root {
+  --mv-polish-ease: cubic-bezier(.22, .61, .36, 1);
+  --mv-polish-border: rgba(255,255,255,.14);
+}
+
+html { scroll-padding-top: 114px; }
+[id^="category-"], .section[id], .section-title[id] { scroll-margin-top: 114px; }
+
+/* A4: progress follows the scroll position in a composited layer, not by resizing layout. */
+.carousel-progress-line > span {
+  width: 100%;
+  min-width: 0;
+  transform-origin: left center;
+  transition: transform 90ms linear;
+}
+
+/* A5 / A6: discoverable navigation on touch; gradual edge fades remain non-interactive. */
+.horizontal-scroller-shell::before,
+.horizontal-scroller-shell::after { width: clamp(28px, 4vw, 60px); }
+@media (hover: none), (pointer: coarse) {
+  .horizontal-scroller-shell .carousel-edge-button:not(:disabled) {
+    display: grid;
+    opacity: .82;
+    pointer-events: auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transform: translateY(-50%) scale(1);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+  .horizontal-scroller-shell .carousel-edge-button-left { left: 4px; }
+  .horizontal-scroller-shell .carousel-edge-button-right { right: 4px; }
+}
+@media (max-width: 700px) {
+  .horizontal-scroller-shell .carousel-edge-button:not(:disabled) {
+    display: grid;
+    opacity: .86;
+    pointer-events: auto;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* A18: once the visitor explores the carousel, stop prompting them repeatedly. */
+.section.mv-carousel-used :is(.headliner-scroll-meta, .leaders-scroll-meta, .years-scroll-meta) b {
+  animation: none;
+  opacity: .72;
+}
+
+/* A8/A9: enhance the existing transforming navbar without introducing layout jumps. */
+.site-header .nav-shell {
+  transition-duration: 270ms;
+  transition-timing-function: var(--mv-polish-ease);
+}
+.site-header.is-scrolled .nav-shell {
+  -webkit-backdrop-filter: blur(16px) saturate(125%);
+  backdrop-filter: blur(16px) saturate(125%);
+}
+@media (max-width: 820px) {
+  .site-header.is-scrolled .nav-shell {
+    -webkit-backdrop-filter: blur(10px) saturate(115%);
+    backdrop-filter: blur(10px) saturate(115%);
+  }
+  .mv-mobile-backdrop {
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
+}
+
+/* A10–A12: tactile, interruptible interaction feedback; no layout-affecting animations. */
+.btn {
+  transition-property: transform, box-shadow, border-color, background-position, background-color;
+  transition-duration: 200ms;
+  transition-timing-function: var(--mv-polish-ease);
+}
+.btn-primary { background-size: 145% 100%; background-position: 0 50%; }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 38px rgba(174, 76, 188, .28);
+  }
+  .btn-primary:hover { background-position: 90% 50%; }
+  .btn-ghost:hover { background-color: rgba(25, 22, 43, .62); }
+}
+.btn:active {
+  transform: translateY(0) scale(.96);
+  transition-duration: 120ms;
+}
+.btn > span,
+.text-link > span {
+  display: inline-block;
+  transition: transform 180ms var(--mv-polish-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover > span,
+  .text-link:hover > span { transform: translateX(3px); }
+}
+
+/* A13/A14: deliberate line breaks and stable numeral widths. */
+:where(h1, h2, h3, .section-title h2, .subhero h1) { text-wrap: balance; }
+:where(p, .section-title p) { text-wrap: pretty; }
+.countdown-unit strong,
+.animated-number,
+.stat-card strong { font-variant-numeric: tabular-nums lining-nums; }
+
+/* A15: a common motion language across the site's card families. */
+:is(.headliner-card, .speaker-card, .stat-card, .logo-card, .event-card, .video-card) {
+  transition-timing-function: var(--mv-polish-ease);
+}
+:where(.headliner-card, .speaker-card) { border-radius: 22px; }
+:where(.stat-card, .video-card) { border-radius: 24px; }
+
+/* A17: accessible visual feedback across keyboard and pointer interaction. */
+:where(.btn, .text-link, .desktop-nav a, .footer-social-links a,
+       .carousel-edge-button, .scroll-cue):focus-visible {
+  outline: 2px solid #f0a8ff;
+  outline-offset: 4px;
+}
+@media (hover: hover) and (pointer: fine) {
+  :where(.btn, .text-link, .desktop-nav a, .carousel-edge-button):hover {
+    filter: brightness(1.045);
+  }
+}
+
+/* A19: anchors settle under the fixed header; reduced-motion always wins. */
+:where([id]) { scroll-margin-top: 114px; }
+
+/* A20: observer-enabled once-only reveal. No JS = unchanged and fully visible. */
+.mv-reveal {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  transition:
+    opacity 520ms var(--mv-polish-ease),
+    transform 520ms var(--mv-polish-ease);
+}
+.mv-reveal.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  :where(.btn, .btn > span, .text-link > span, .carousel-progress-line > span,
+    .site-header .nav-shell, .carousel-edge-button, .mv-reveal) {
+    transition-duration: 0ms !important;
+    animation: none !important;
+  }
+  .mv-reveal { opacity: 1; transform: none; }
+  :where(.btn):hover, :where(.btn):active { transform: none; }
+  .section :is(.headliner-scroll-meta, .leaders-scroll-meta, .years-scroll-meta) b {
+    animation: none !important;
+  }
+}
