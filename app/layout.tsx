@@ -7,12 +7,14 @@ import "./hero-overrides.css";
 import "./footer-overrides.css";
 import "./partner-carousel.css";
 import "./interaction-overrides.css";
+import "./polish-a1-a20.css";
 import { Header } from "@/components/Header";
 import { SitePartnerCarousel } from "@/components/SitePartnerCarousel";
 import { PartnerCarousel } from "@/components/PartnerCarousel";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { WebVitals } from "@/components/WebVitals";
+import { SectionEntrance } from "@/components/SectionEntrance";
 
 const siteUrl = "https://iiml-manfestvarchasva.com";
 const siteDescription =
@@ -137,6 +139,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <Analytics />
         <WebVitals />
+        <SectionEntrance />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
