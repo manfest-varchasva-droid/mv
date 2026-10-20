@@ -10,6 +10,7 @@ import { HomeGalleryMarquee } from "@/components/HomeGalleryMarquee";
 import { PartnerCarousel } from "@/components/PartnerCarousel";
 import styles from "./home-lovelo.module.css";
 import titleFix from "./home-title-fix.module.css";
+import cinematic from "./home-cinematic.module.css";
 
 export const metadata: Metadata = {
   alternates: {
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <div className={`${styles.loveloHero} ${titleFix.titlePaintFix}`}>
+      <div className={`${styles.loveloHero} ${titleFix.titlePaintFix} ${cinematic.cinematicHero}`}>
         <Hero />
       </div>
       <Headliners />
