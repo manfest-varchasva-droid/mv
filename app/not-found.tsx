@@ -18,7 +18,7 @@ export default function NotFound() {
       <div className="page-shell mv-not-found-content">
         <span className="eyebrow">404 · OFF STAGE</span>
         <p className="mv-not-found-code" aria-hidden="true">404</p>
-        <h1>This page has left the stage.</h1>
+        <h1 className="b3-page-heading">This page has left the stage.</h1>
         <p className="mv-not-found-copy">
           The link may be outdated or the page may have moved. Head back to Manfest-Varchasva or explore the events archive.
         </p>
