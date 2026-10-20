@@ -8,6 +8,7 @@ import "./footer-overrides.css";
 import "./partner-carousel.css";
 import "./interaction-overrides.css";
 import "./polish-a1-a20.css";
+import "./b3-masked-headings.css";
 import { Header } from "@/components/Header";
 import { SitePartnerCarousel } from "@/components/SitePartnerCarousel";
 import { PartnerCarousel } from "@/components/PartnerCarousel";
