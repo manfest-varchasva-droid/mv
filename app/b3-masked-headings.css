@@ -1,7 +1,7 @@
 /*
  * B3 — editorial heading reveals.
  *
- * Opt-in SectionTitle headings: each text run rises from a clipping window.
+ * Sitewide SectionTitle headings: each text run rises from a clipping window.
  * Animation only starts after the existing A20 IntersectionObserver arms it.
  * No-JS, above-the-fold and reduced-motion headings are always visible.
  */
@@ -71,6 +71,74 @@
 
 @media (prefers-reduced-motion: reduce), print {
   .b3-section-title .b3-heading-ink {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+
+/* B3 sitewide: standalone h2 headings on Events, City Run, Partners,
+   event details, policies and other pages receive an upward masked reveal.
+   CSS only activates after the shared observer marks an offscreen heading. */
+main h2.b3-plain-heading {
+  transition:
+    clip-path 780ms cubic-bezier(.16, 1, .3, 1),
+    transform 780ms cubic-bezier(.16, 1, .3, 1),
+    opacity 550ms ease-out;
+}
+
+main h2.b3-plain-heading.b3-armed:not(.is-visible) {
+  clip-path: inset(100% 0 0 0);
+  transform: translate3d(0, 19px, 0);
+  opacity: .15;
+}
+
+main h2.b3-plain-heading.b3-armed.is-visible {
+  clip-path: inset(0 0 0 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+/* First-fold page heroes enter on load, without JS or a second observer.
+   B1's custom GSAP hero is intentionally excluded. */
+main .subhero-content > h1,
+main h1.b3-page-heading {
+  animation: b3-page-heading-rise 830ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes b3-page-heading-rise {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translate3d(0, 20px, 0);
+    opacity: .22;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  main .subhero-content > h1,
+  main h1.b3-page-heading {
+    animation-duration: 650ms;
+  }
+  main h2.b3-plain-heading {
+    transition-duration: 640ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  main .subhero-content > h1,
+  main h1.b3-page-heading {
+    animation: none !important;
+    clip-path: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  main h2.b3-plain-heading {
+    clip-path: none !important;
     transform: none !important;
     opacity: 1 !important;
     transition: none !important;
