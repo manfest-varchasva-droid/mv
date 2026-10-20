@@ -1,0 +1,68 @@
+/*
+ * B5 — compact, keyboard-accessible desktop comparison control.
+ * The button is intentionally absent on touch and reduced-motion devices.
+ */
+.comparator {
+  position: fixed;
+  z-index: 75;
+  left: clamp(14px, 2.2vw, 30px);
+  bottom: clamp(16px, 2.4vw, 30px);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 5px;
+  border: 1px solid rgba(217, 169, 255, .30);
+  border-radius: 999px;
+  background: rgba(13, 10, 25, .91);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .31);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.label {
+  padding: 0 11px 0 10px;
+  color: rgba(255, 255, 255, .70);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .095em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.choice {
+  min-height: 38px;
+  min-width: 63px;
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 13px;
+  background: transparent;
+  color: rgba(255, 255, 255, .75);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.choice[data-selected="true"] {
+  background: linear-gradient(105deg, #8e4de8, #d554a2);
+  box-shadow: 0 2px 8px rgba(182, 63, 181, .2);
+  color: #fff;
+}
+
+.choice:hover:not([data-selected="true"]) {
+  background: rgba(255, 255, 255, .10);
+  color: #fff;
+}
+
+.choice:focus-visible {
+  outline: 2px solid #f1baff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 959px), (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .comparator { display: none; }
+}
