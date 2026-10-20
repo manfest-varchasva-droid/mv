@@ -1,0 +1,57 @@
+/*
+ * B1 sitewide — atmosphere and compositor-friendly inner-page entrances.
+ * Created only while SitewideHeroEntrance runs (no JS = no overlay).
+ * B1 V2 homepage and B2 pinned storytelling are deliberately unaffected.
+ */
+#main-content > .b1-page-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+/* The temporary wash makes the existing image emerge from near-black.
+   A pure opacity transition on a separate layer avoids animating background-size. */
+#main-content > .b1-page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 45% 60%, rgba(46, 20, 76, .74), rgba(6, 5, 18, .96) 80%),
+    linear-gradient(180deg, #080711, #120716);
+  animation: b1-page-wash 2.35s cubic-bezier(.3, .5, .3, 1) both;
+}
+
+/* City Run previously disabled its ::before; the added scoped class only
+   enables it while the new intro is active. Keep real content above the wash. */
+#main-content > .b1-page-hero :is(.subhero-content, [data-b1-page-content]) {
+  position: relative;
+  z-index: 3;
+}
+
+@keyframes b1-page-wash {
+  0% { opacity: .94; }
+  33% { opacity: .80; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 700px) {
+  #main-content > .b1-page-hero::before {
+    animation-duration: 1.85s;
+  }
+}
+
+/* The JS timeline is skipped entirely when a user requests less motion. */
+@media (prefers-reduced-motion: reduce), print {
+  #main-content > .b1-page-hero::before {
+    content: none !important;
+    animation: none !important;
+  }
+  #main-content > .b1-page-hero :is(h1, .eyebrow, [data-b1-eyebrow], p, nav, [data-b1-details], [data-b1-actions]) {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    clip-path: none !important;
+    animation: none !important;
+  }
+}

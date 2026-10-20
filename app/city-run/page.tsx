@@ -45,20 +45,20 @@ export default function CityRunPage() {
 
   return (
     <>
-      <section className={styles.hero}>
-        <div className={`page-shell ${styles.heroInner}`}>
-          <p className={styles.kicker}>2026 ARCHIVE • MANFEST-VARCHASVA</p>
+      <section className={styles.hero} data-b1-page-hero>
+        <div className={`page-shell ${styles.heroInner}`} data-b1-page-content>
+          <p className={styles.kicker} data-b1-eyebrow>2026 ARCHIVE • MANFEST-VARCHASVA</p>
           <h1 className="b3-page-heading">Lucknow City Run</h1>
           <p className={styles.heroLead}>
             On 1 February 2026, Lucknow came together for a morning of running,
             community and shared energy across the city.
           </p>
-          <div className={styles.heroMeta}>
+          <div className={styles.heroMeta} data-b1-details>
             <span>1 February 2026</span>
             <span>Lohia Park &amp; Gomti Riverfront</span>
             <span>5K &amp; 10K</span>
           </div>
-          <Link className="text-link light-link" href="/terms-and-conditions">
+          <Link className="text-link light-link" href="/terms-and-conditions" data-b1-actions>
             Terms &amp; Conditions →
           </Link>
         </div>

@@ -9,6 +9,7 @@ import "./partner-carousel.css";
 import "./interaction-overrides.css";
 import "./polish-a1-a20.css";
 import "./b3-masked-headings.css";
+import "./b1-sitewide-hero.css";
 import { Header } from "@/components/Header";
 import { SitePartnerCarousel } from "@/components/SitePartnerCarousel";
 import { PartnerCarousel } from "@/components/PartnerCarousel";
@@ -16,6 +17,7 @@ import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { WebVitals } from "@/components/WebVitals";
 import { SectionEntrance } from "@/components/SectionEntrance";
+import { SitewideHeroEntrance } from "@/components/SitewideHeroEntrance";
 
 const siteUrl = "https://iiml-manfestvarchasva.com";
 const siteDescription =
@@ -141,6 +143,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <Analytics />
         <WebVitals />
         <SectionEntrance />
+        <SitewideHeroEntrance />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
