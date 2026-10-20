@@ -48,7 +48,7 @@ export default function CityRunPage() {
       <section className={styles.hero}>
         <div className={`page-shell ${styles.heroInner}`}>
           <p className={styles.kicker}>2026 ARCHIVE • MANFEST-VARCHASVA</p>
-          <h1>Lucknow City Run</h1>
+          <h1 className="b3-page-heading">Lucknow City Run</h1>
           <p className={styles.heroLead}>
             On 1 February 2026, Lucknow came together for a morning of running,
             community and shared energy across the city.
