@@ -81,16 +81,6 @@
   padding: 92px clamp(28px, 7.5vw, 132px) clamp(45px, 8vw, 108px);
 }
 
-.chapter {
-  margin-bottom: clamp(17px, 2.4vw, 38px);
-  color: #e4a7ff;
-  font-size: clamp(11px, 1vw, 14px);
-  font-weight: 900;
-  letter-spacing: .28em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
 .copy h2 {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -100,6 +90,26 @@
   line-height: .94;
   text-wrap: balance;
   text-shadow: 0 16px 55px rgba(0,0,0,.3);
+}
+
+/* One luminous, legible accent per chapter without overwhelming the copy. */
+.titleAccent {
+  display: inline-block;
+  color: #f3a5db;
+  background: linear-gradient(100deg, #d3a4ff 4%, #ff88ad 78%, #ffd0ac);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ideasChapter .titleAccent {
+  color: #a4cdff;
+  background-image: linear-gradient(100deg, #8bd2ff, #afa4ff 56%, #e4afff);
+}
+
+.momentsChapter .titleAccent {
+  color: #ffabd7;
+  background-image: linear-gradient(100deg, #ffbd93, #fc8dbf 58%, #cba8ff);
 }
 
 .copy p {
@@ -155,12 +165,12 @@
 }
 
 .stageTop { top: 40px; }
-.stageBottom { display: none; bottom: 34px; }
+.stageBottom { display: none; bottom: 34px; justify-content: center; gap: 22px; }
 .stageTop span:last-child { color: rgba(255,255,255,.53); }
 
 .track {
   position: relative;
-  width: min(240px, 26vw);
+  width: min(280px, 28vw);
   height: 3px;
   overflow: hidden;
   border-radius: 20px;
@@ -203,6 +213,7 @@
 .enhanced .copy { min-height: 100%; padding-bottom: clamp(110px, 13vh, 170px); }
 .enhanced .stageBottom { display: flex; }
 .enhanced .picture { will-change: transform; }
+.enhanced .panel { will-change: opacity; }
 
 @media (hover: hover) and (pointer: fine) {
   .galleryLink:hover span { transform: translate(3px, -3px); }
