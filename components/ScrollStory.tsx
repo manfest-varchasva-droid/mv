@@ -47,27 +47,35 @@ export function ScrollStory() {
         trigger: root,
         pin: stage,
         start: "top top",
-        end: () => "+=" + Math.round(window.innerHeight * 2.2),
-        scrub: 0.65,
+        // More distance for each story beat, especially the second chapter.
+        end: () => "+=" + Math.round(window.innerHeight * 3.7),
+        scrub: 0.85,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         pinSpacing: true,
       },
     });
 
+    // Three deliberate holds and two soft crossfades. The middle chapter
+    // remains fully visible for ~1.45 timeline units instead of flashing past.
+    // Keep the progress indicator in sync with the final animation time (5.65).
     timeline
-      .fromTo(progress, { scaleX: 0 }, { scaleX: 1, duration: 3, ease: "none" }, 0)
-      .to(pictures[0], { scale: 1.085, duration: 1.05, ease: "none" }, 0)
-      .to(panels[0], { autoAlpha: 0, scale: 0.975, duration: 0.24 }, 0.84)
-      .fromTo(panels[1], { autoAlpha: 0, scale: 1.04 }, {
-        autoAlpha: 1, scale: 1, duration: 0.32,
-      }, 0.93)
-      .to(pictures[1], { scale: 1.08, duration: 1.1, ease: "none" }, 0.98)
-      .to(panels[1], { autoAlpha: 0, scale: 0.975, duration: 0.24 }, 1.82)
-      .fromTo(panels[2], { autoAlpha: 0, scale: 1.04 }, {
-        autoAlpha: 1, scale: 1, duration: 0.32,
-      }, 1.91)
-      .to(pictures[2], { scale: 1.07, duration: 1.06, ease: "none" }, 1.94);
+      .fromTo(progress, { scaleX: 0 }, { scaleX: 1, duration: 5.65, ease: "none" }, 0)
+      .to(pictures[0], { scale: 1.06, duration: 2, ease: "none" }, 0)
+      .to(panels[0], { autoAlpha: 0, duration: 0.65, ease: "sine.inOut" }, 1.35)
+      .fromTo(panels[1], { autoAlpha: 0 }, {
+        autoAlpha: 1, duration: 0.65, ease: "sine.inOut",
+      }, 1.35)
+      .fromTo(pictures[1], { scale: 1.07 }, {
+        scale: 1, duration: 2.65, ease: "none",
+      }, 1.35)
+      .to(panels[1], { autoAlpha: 0, duration: 0.65, ease: "sine.inOut" }, 3.45)
+      .fromTo(panels[2], { autoAlpha: 0 }, {
+        autoAlpha: 1, duration: 0.65, ease: "sine.inOut",
+      }, 3.45)
+      .fromTo(pictures[2], { scale: 1.07 }, {
+        scale: 1, duration: 2.2, ease: "none",
+      }, 3.45);
 
     // The useGSAP context automatically reverts the GSAP timeline & pin.
     return () => root.classList.remove(styles.enhanced);
@@ -99,8 +107,7 @@ export function ScrollStory() {
             </div>
             <div className={styles.shade} />
             <div className={styles.copy}>
-              <span className={styles.chapter}>01 / THE STAGE</span>
-              <h2>THE NIGHTS<br />WE REMEMBER.</h2>
+              <h2>THE NIGHTS<br /><span className={styles.titleAccent}>WE REMEMBER.</span></h2>
               <p>Music, momentum and unforgettable performances across editions.</p>
               <span className={styles.source}>Featuring {headliners[0].name} · {headliners[0].edition}</span>
             </div>
@@ -120,8 +127,7 @@ export function ScrollStory() {
             </div>
             <div className={styles.shade} />
             <div className={styles.copy}>
-              <span className={styles.chapter}>02 / LEADERS EXPRESS</span>
-              <h2>IDEAS THAT<br />MOVE US.</h2>
+              <h2>IDEAS THAT<br /><span className={styles.titleAccent}>MOVE US.</span></h2>
               <p>A stage for conversations spanning leadership, public life and business.</p>
               <span className={styles.source}>Featuring {leaders[0].name}</span>
             </div>
@@ -130,7 +136,7 @@ export function ScrollStory() {
           <article className={[styles.panel, styles.momentsChapter].join(" ")} data-story-panel>
             <div className={styles.picture} data-story-picture>
               <Image
-                src="/gallery/B1.jpg"
+                src="/events/events hero.png"
                 alt=""
                 fill
                 sizes="100vw"
@@ -141,8 +147,7 @@ export function ScrollStory() {
             </div>
             <div className={styles.shade} />
             <div className={styles.copy}>
-              <span className={styles.chapter}>03 / THE EXPERIENCE</span>
-              <h2>BEYOND THE<br />SPOTLIGHT.</h2>
+              <h2>BEYOND THE<br /><span className={styles.titleAccent}>SPOTLIGHT.</span></h2>
               <p>{participants} participants. {events} events. An experience that reaches far beyond the stage.</p>
               <span className={styles.source}>Manfest-Varchasva 2025–26 · Historical highlights</span>
               <Link className={styles.galleryLink} href="/gallery">
@@ -157,7 +162,6 @@ export function ScrollStory() {
           <div className={styles.track}>
             <span className={styles.trackFill} data-story-progress />
           </div>
-          <span>01 — 03</span>
         </div>
       </div>
     </section>
