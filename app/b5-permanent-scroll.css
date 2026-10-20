@@ -1,0 +1,8 @@
+/* B5 permanent: Lenis owns wheel interpolation when active.
+ * Keep native anchor/keyboard/touch scrolling unchanged if Lenis is inactive.
+ * Prevent the existing global html { scroll-behavior: smooth } rule from
+ * stacking an additional browser-level easing onto Lenis's scroll updates.
+ */
+html.lenis {
+  scroll-behavior: auto;
+}

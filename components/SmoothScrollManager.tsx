@@ -5,28 +5,26 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type Lenis from "lenis";
-import styles from "./SmoothScrollExperiment.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * B5: deliberately opt-in desktop wheel scrolling.
+ * B5 permanent: automatically enable the proven smooth-scroll experience
+ * on all routes for desktop wheel/trackpad input.
  *
- * Native scrolling is the default so visitors and performance tests are not
- * silently opted into an animation library. Lenis is code-split and loaded
- * only if the visitor selects Smooth. Toggling back destroys the instance.
+ * Native touch scrolling and prefers-reduced-motion are preserved, with
+ * graceful native fallback if loading Lenis fails. No visitor-facing toggle.
  *
  * The GSAP ticker drives Lenis and its scroll event updates ScrollTrigger,
  * keeping B2's pinned, scrubbed chapters synchronized.
  */
-export function SmoothScrollExperiment() {
+export function SmoothScrollManager() {
   const pathname = usePathname();
   const [supported, setSupported] = useState(false);
-  const [enabled, setEnabled] = useState(false);
-  const active = supported && enabled;
 
   useEffect(() => {
-    // No touch takeover, low-width scroll hijack, or reduced-motion override.
+    // Enable automatically on desktop with precise pointer input.
+    // Phones, touch-only tablets and reduced-motion users remain native.
     const device = window.matchMedia(
       "(min-width: 960px) and (hover: hover) and (pointer: fine)",
     );
@@ -35,9 +33,9 @@ export function SmoothScrollExperiment() {
     );
     const update = () => setSupported(device.matches && motion.matches);
     const firstFrame = window.requestAnimationFrame(update);
+
     device.addEventListener("change", update);
     motion.addEventListener("change", update);
-
     return () => {
       window.cancelAnimationFrame(firstFrame);
       device.removeEventListener("change", update);
@@ -46,7 +44,7 @@ export function SmoothScrollExperiment() {
   }, []);
 
   useEffect(() => {
-    if (!active) return;
+    if (!supported) return;
 
     let disposed = false;
     let lenis: Lenis | null = null;
@@ -54,7 +52,8 @@ export function SmoothScrollExperiment() {
     const ticker = (seconds: number) => lenis?.raf(seconds * 1000);
     const syncScrollTrigger = () => ScrollTrigger.update();
 
-    // Keep native scrolling entirely dependency-free until opt-in.
+    // Load only where it improves scroll feel, without adding Lenis to the
+    // initial bundle for mobile/touch/reduced-motion visitors.
     void import("lenis").then(({ default: LenisConstructor }) => {
       if (disposed) return;
 
@@ -67,7 +66,7 @@ export function SmoothScrollExperiment() {
         anchors: { offset: -114 },
         stopInertiaOnNavigate: true,
         respectReducedMotion: true,
-        // Horizontal card navigation and nested overlays remain native.
+        // Preserve native controls for carousels and any nested overlays.
         prevent: (node) =>
           Boolean(node.closest(
             ".horizontal-scroller-shell, [data-lenis-prevent], [role='dialog']",
@@ -78,8 +77,7 @@ export function SmoothScrollExperiment() {
       gsap.ticker.add(ticker);
       refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
     }).catch(() => {
-      // Loading failures must never interfere with normal scrolling.
-      if (!disposed) setEnabled(false);
+      // A failed optional enhancement must not block normal page scrolling.
     });
 
     return () => {
@@ -90,34 +88,9 @@ export function SmoothScrollExperiment() {
         lenis.off("scroll", syncScrollTrigger);
         lenis.destroy();
       }
-      // Restore GSAP's scroll offsets after returning to native scrolling.
       ScrollTrigger.refresh();
     };
-  }, [active, pathname]);
+  }, [supported, pathname]);
 
-  if (!supported) return null;
-
-  return (
-    <div className={styles.comparator} role="group" aria-label="Compare native and smooth scrolling">
-      <span className={styles.label}>Scroll feel</span>
-      <button
-        className={styles.choice}
-        type="button"
-        aria-pressed={!active}
-        data-selected={!active}
-        onClick={() => setEnabled(false)}
-      >
-        Native
-      </button>
-      <button
-        className={styles.choice}
-        type="button"
-        aria-pressed={active}
-        data-selected={active}
-        onClick={() => setEnabled(true)}
-      >
-        Smooth
-      </button>
-    </div>
-  );
+  return null;
 }
