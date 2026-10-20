@@ -4,10 +4,15 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 /**
- * A20 reveal observer, extended for B3 masked homepage headings.
+ * Shared A20/B3 reveal observer across every public page.
  *
- * B3 and A20 share one observer. A masked heading never also receives the
- * old whole-section fade; content stays fully visible before JS loads.
+ * - SectionTitle uses the two-beat masked-word B3 reveal.
+ * - Other standalone h2 headings get one restrained upward clip reveal.
+ * - Hero h1 titles have a CSS-only entrance; the B1 hero is unchanged.
+ * - B2's pinned stage is excluded to avoid fighting ScrollTrigger.
+ *
+ * No JS, reduced-motion or initially visible below-the-fold content remains
+ * readable; no DOM rewriting or changes to heading semantics.
  */
 export function SectionEntrance() {
   const pathname = usePathname();
@@ -30,29 +35,38 @@ export function SectionEntrance() {
     }, { threshold: 0.06, rootMargin: "0px 0px -6% 0px" });
 
     const targets = document.querySelectorAll<HTMLElement>(
-      ".section-title, .subhero-content > h1, .title-row",
+      ".section-title, .title-row, main h2",
     );
 
     targets.forEach((element) => {
-      // Gallery titles are nested in a .title-row. Avoid double animation.
+      // SectionTitle animates as a unit. Never animate its h2 a second time.
+      if (element.matches("h2") &&
+          element.closest(".section-title, [data-story-stage]")) return;
+
+      // Gallery has a title-row wrapping a SectionTitle: animate only the latter.
       if (element.classList.contains("title-row") &&
           element.querySelector(".b3-section-title")) return;
 
-      // Titles already on screen should stay visible, never flash or jump.
-      if (element.getBoundingClientRect().top > window.innerHeight * 0.90) {
-        element.classList.add(
-          element.classList.contains("b3-section-title")
-            ? "b3-armed"
-            : "mv-reveal",
-        );
-        observer.observe(element);
+      // Do not touch content already onscreen when React hydrates.
+      if (element.getBoundingClientRect().top <= window.innerHeight * 0.90) return;
+
+      if (element.classList.contains("b3-section-title")) {
+        element.classList.add("b3-armed");
+      } else if (element.matches("h2")) {
+        element.classList.add("b3-plain-heading", "b3-armed");
+      } else {
+        // Retain A20 for unmasked headings/rows elsewhere in the site.
+        element.classList.add("mv-reveal");
       }
+      observer.observe(element);
     });
 
     return () => {
       observer.disconnect();
       targets.forEach((element) => {
-        element.classList.remove("mv-reveal", "b3-armed", "is-visible");
+        element.classList.remove(
+          "mv-reveal", "b3-plain-heading", "b3-armed", "is-visible",
+        );
       });
     };
   }, [pathname]);
