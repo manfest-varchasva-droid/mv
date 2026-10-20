@@ -68,6 +68,10 @@ html { scroll-padding-top: 114px; }
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
   }
+  .mv-mobile-panel {
+    -webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(8px) !important;
+  }
 }
 
 /* A10–A12: tactile, interruptible interaction feedback; no layout-affecting animations. */
