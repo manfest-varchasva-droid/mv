@@ -130,9 +130,6 @@ export function HistoryTimeline({ milestones }: { milestones: HistoryMilestone[]
               </div>
               <h3>{milestone.title}</h3>
               <p>{milestone.copy}</p>
-              <span className={styles.milestoneProgress} aria-hidden="true">
-                {String(i + 1).padStart(2, "0")} / {String(milestones.length).padStart(2, "0")}
-              </span>
             </div>
           </article>
         ))}
