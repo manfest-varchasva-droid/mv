@@ -105,13 +105,15 @@ export function GalleryLightbox({ photos }: GalleryLightboxProps) {
               aria-label={`Open image ${index + 1} of ${photos.length}`}
               onClick={() => setActiveIndex(index)}
             >
-              <img
-                src={`/gallery/${file}`}
-                alt={getAlt(file, index)}
-                loading={index < 3 ? "eager" : "lazy"}
-                fetchPriority={index < 3 ? "high" : "auto"}
-                decoding="async"
-              />
+              <span className="b6-gallery-photo-layer" data-b6-parallax={index < 6 ? "gallery" : undefined}>
+                <img
+                  src={`/gallery/${file}`}
+                  alt={getAlt(file, index)}
+                  loading={index < 3 ? "eager" : "lazy"}
+                  fetchPriority={index < 3 ? "high" : "auto"}
+                  decoding="async"
+                />
+              </span>
               <span className={styles.zoomHint} aria-hidden="true">View</span>
             </button>
           </figure>
