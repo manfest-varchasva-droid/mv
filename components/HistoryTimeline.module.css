@@ -267,7 +267,7 @@
 
 @media (max-width: 560px) {
   .chapters { gap: 14px; padding-left: 15px; }
-  .card::before { left: -23px; }
+  .card::before { left: 0; }
   .cardContent { padding: 24px 21px 29px; }
   .yearRow { margin-bottom: 44px; }
   .festivalLabel { display: none; }
