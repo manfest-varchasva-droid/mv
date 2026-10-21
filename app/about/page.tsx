@@ -1,5 +1,6 @@
 import { CoreTeamDirectory } from "@/components/CoreTeamDirectory";
 import { SectionTitle } from "@/components/SectionTitle";
+import { HistoryTimeline } from "@/components/HistoryTimeline";
 import { stats } from "@/lib/content";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 import styles from "./about.module.css";
@@ -101,16 +102,7 @@ export default function AboutPage() {
             accent="Manfest-Varchasva."
           />
 
-          <div className={styles.historyGrid}>
-            {history.map((item) => (
-              <article className={styles.historyItem} key={`${item.year}-${item.title}`}>
-                <div className={styles.historyMarker} aria-hidden="true" />
-                <span>{item.year}</span>
-                <h3>{item.title}</h3>
-                <p>{item.copy}</p>
-              </article>
-            ))}
-          </div>
+          <HistoryTimeline milestones={history} />
         </div>
       </section>
 
