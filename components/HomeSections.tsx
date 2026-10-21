@@ -126,7 +126,7 @@ export function LeadersExpress() {
         </div>
 
         <HorizontalScroller className="leaders-grid" ariaLabel="Leaders Express speakers">
-          {leaders.map((speaker) => (
+          {leaders.map((speaker, index) => (
             <article className="speaker-card" key={speaker.name}>
               <div className={`speaker-image${speaker.name === "Justice D.Y. Chandrachud" || speaker.name === "Kapil Dev" || speaker.name === "Ashish Vidyarthi" ? " speaker-image-final" : ""}${speaker.name === "Dr. A.P.J. Abdul Kalam" ? " speaker-image-apj" : ""}`}>
                 <Image
