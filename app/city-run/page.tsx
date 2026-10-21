@@ -45,7 +45,8 @@ export default function CityRunPage() {
 
   return (
     <>
-      <section className={styles.hero} data-b1-page-hero>
+      <section className={styles.hero} data-b1-page-hero data-b6-trigger>
+        <div className="b6-hero-photo b6-hero-photo--city-run" data-b6-parallax="hero" aria-hidden="true" />
         <div className={`page-shell ${styles.heroInner}`} data-b1-page-content>
           <p className={styles.kicker} data-b1-eyebrow>2026 ARCHIVE • MANFEST-VARCHASVA</p>
           <h1 className="b3-page-heading">Lucknow City Run</h1>
