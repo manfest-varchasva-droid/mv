@@ -114,7 +114,7 @@ export function HistoryTimeline({ milestones }: { milestones: HistoryMilestone[]
       </aside>
 
       <div className={styles.chapters}>
-        {milestones.map((milestone, i) => (
+        {milestones.map((milestone) => (
           <article
             className={styles.card}
             data-history-card
