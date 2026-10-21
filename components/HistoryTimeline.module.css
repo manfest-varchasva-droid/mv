@@ -249,7 +249,7 @@
     content: "";
     position: absolute;
     z-index: 5;
-    left: calc(-1 * clamp(17px, 3.5vw, 26px) - 8px);
+    left: 0;
     top: 44px;
     width: 12px;
     height: 12px;
