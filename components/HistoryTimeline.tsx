@@ -45,8 +45,6 @@ export function HistoryTimeline({ milestones }: { milestones: HistoryMilestone[]
           cards.forEach((card, i) => card.classList.toggle(styles.active, i === index));
           years.forEach((year, i) => {
             year.classList.toggle(styles.active, i === index);
-            if (i === index) year.setAttribute("aria-current", "step");
-            else year.removeAttribute("aria-current");
           });
         };
 
@@ -55,8 +53,8 @@ export function HistoryTimeline({ milestones }: { milestones: HistoryMilestone[]
         cards.forEach((card, index) => {
           ScrollTrigger.create({
             trigger: card,
-            start: "top 62%",
-            end: "bottom 42%",
+            start: "top 67%",
+            end: "bottom 38%",
             onEnter: () => activate(index),
             onEnterBack: () => activate(index),
           });
@@ -83,7 +81,6 @@ export function HistoryTimeline({ milestones }: { milestones: HistoryMilestone[]
           cards.forEach((card) => card.classList.remove(styles.active));
           years.forEach((year) => {
             year.classList.remove(styles.active);
-            year.removeAttribute("aria-current");
           });
         };
       },
@@ -96,8 +93,8 @@ export function HistoryTimeline({ milestones }: { milestones: HistoryMilestone[]
     <div ref={scope} className={styles.timeline} aria-label="Milestones in the history of Manfest-Varchasva">
       <aside className={styles.rail} aria-hidden="true">
         <div className={styles.railInner}>
-          <span className={styles.railKicker}>A LEGACY IN MOTION</span>
-          <span className={styles.railHeadline}>THE STORY<br /><em>SO FAR.</em></span>
+          <span className={styles.railKicker}>THE EVOLUTION</span>
+          <span className={styles.railHeadline}>YEARS THAT<br /><em>SHAPED US.</em></span>
           <div className={styles.railList}>
             <div className={styles.railTrack}>
               <span className={styles.railFill} data-history-fill />
@@ -109,7 +106,6 @@ export function HistoryTimeline({ milestones }: { milestones: HistoryMilestone[]
               </div>
             ))}
           </div>
-          <span className={styles.railCaption}>Scroll through our evolution</span>
         </div>
       </aside>
 
@@ -120,16 +116,21 @@ export function HistoryTimeline({ milestones }: { milestones: HistoryMilestone[]
             data-history-card
             key={`${milestone.year}-${milestone.title}`}
           >
-            <div className={styles.cardGlow} aria-hidden="true" />
-            <span className={styles.watermark} aria-hidden="true">{milestone.year}</span>
+            <div className={styles.artwork} aria-hidden="true">
+              <span className={styles.artRing} />
+              <span className={styles.artRingInner} />
+              <span className={styles.artCore} />
+              <span className={styles.artStreak} />
+            </div>
             <div className={styles.cardContent}>
-              <div className={styles.yearRow}>
-                <span className={styles.yearChip}>{milestone.year}</span>
-                <span className={styles.dividerLine} aria-hidden="true" />
-                <span className={styles.festivalLabel}>MANFEST — VARCHASVA</span>
+              <div className={styles.cardHeading}>
+                <span className={styles.year}>{milestone.year}</span>
+                <span className={styles.yearRule} aria-hidden="true" />
               </div>
-              <h3>{milestone.title}</h3>
-              <p>{milestone.copy}</p>
+              <div className={styles.cardBody}>
+                <h3>{milestone.title}</h3>
+                <p>{milestone.copy}</p>
+              </div>
             </div>
           </article>
         ))}
