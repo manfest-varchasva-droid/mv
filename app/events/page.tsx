@@ -91,7 +91,8 @@ export default function EventsPage() {
           }).replace(/</g, "\\u003c"),
         }}
       />
-      <section className="subhero events-hero">
+      <section className="subhero events-hero" data-b6-trigger>
+        <div className="b6-hero-photo b6-hero-photo--events" data-b6-parallax="hero" aria-hidden="true" />
         <div className="page-shell subhero-content">
           <div className="eyebrow">THE LINE-UP</div>
           <h1>Find your stage.</h1>
