@@ -223,14 +223,6 @@
   font-size: clamp(14px, 1.25vw, 17px);
   line-height: 1.67;
 }
-.milestoneProgress {
-  display: block;
-  margin-top: clamp(27px, 4vh, 50px);
-  color: rgba(224, 210, 241, .45);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .16em;
-}
 .enhanced .card:not(.active) {
   opacity: .56;
   transform: translate3d(0, 14px, 0) scale(.98);
