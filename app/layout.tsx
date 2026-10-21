@@ -12,6 +12,7 @@ import "./b3-masked-headings.css";
 import "./b1-sitewide-hero.css";
 import "lenis/dist/lenis.css";
 import "./b5-permanent-scroll.css";
+import "./b6-photo-parallax.css";
 import { Header } from "@/components/Header";
 import { SitePartnerCarousel } from "@/components/SitePartnerCarousel";
 import { PartnerCarousel } from "@/components/PartnerCarousel";
@@ -21,6 +22,7 @@ import { WebVitals } from "@/components/WebVitals";
 import { SectionEntrance } from "@/components/SectionEntrance";
 import { SitewideHeroEntrance } from "@/components/SitewideHeroEntrance";
 import { SmoothScrollManager } from "@/components/SmoothScrollManager";
+import { PhotoParallax } from "@/components/PhotoParallax";
 
 const siteUrl = "https://iiml-manfestvarchasva.com";
 const siteDescription =
@@ -148,6 +150,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <SectionEntrance />
         <SitewideHeroEntrance />
         <SmoothScrollManager />
+        <PhotoParallax />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
