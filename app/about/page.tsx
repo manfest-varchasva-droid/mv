@@ -42,15 +42,10 @@ export default function AboutPage() {
     <>
       <section
         className="subhero subhero-about"
-        style={{
-          minHeight: "100svh",
-          backgroundImage:
-            'linear-gradient(90deg, rgba(6, 7, 15, 0.88) 0%, rgba(6, 7, 15, 0.62) 48%, rgba(6, 7, 15, 0.34) 100%), url("/events/about us hero.jpg")',
-          backgroundSize: "cover",
-          backgroundPosition: "left center",
-          backgroundRepeat: "no-repeat",
-        }}
+        data-b6-trigger
+        style={{ minHeight: "100svh" }}
       >
+        <div className="b6-hero-photo b6-hero-photo--about" data-b6-parallax="hero" aria-hidden="true" />
         <div className="page-shell subhero-content">
           <div className="eyebrow">ABOUT US</div>
           <h1>Where business, culture and sport meet.</h1>
@@ -127,8 +122,9 @@ export default function AboutPage() {
             accent="Manfest-Varchasva Core Team"
           />
 
-          <div className={styles.teamPhoto}>
+          <div className={styles.teamPhoto} data-b6-trigger>
             <img
+              data-b6-parallax="team"
               src="/events/core team photo.JPG?v=core-team-fast-2026-10-02"
               alt="Manfest-Varchasva Core Team at IIM Lucknow"
               width={800}

@@ -126,15 +126,17 @@ export function LeadersExpress() {
         </div>
 
         <HorizontalScroller className="leaders-grid" ariaLabel="Leaders Express speakers">
-          {leaders.map((speaker) => (
+          {leaders.map((speaker, index) => (
             <article className="speaker-card" key={speaker.name}>
-              <div className={`speaker-image${speaker.name === "Justice D.Y. Chandrachud" || speaker.name === "Kapil Dev" || speaker.name === "Ashish Vidyarthi" ? " speaker-image-final" : ""}${speaker.name === "Dr. A.P.J. Abdul Kalam" ? " speaker-image-apj" : ""}`}>
-                <Image
+              <div className={`speaker-image${speaker.name === "Justice D.Y. Chandrachud" || speaker.name === "Kapil Dev" || speaker.name === "Ashish Vidyarthi" ? " speaker-image-final" : ""}${speaker.name === "Dr. A.P.J. Abdul Kalam" ? " speaker-image-apj" : ""}`} data-b6-trigger>
+                <div className="b6-speaker-photo-layer" data-b6-parallax={index < 3 ? "card" : undefined}>
+                  <Image
                     src={speaker.image}
                     alt={speaker.name}
                     fill
                     sizes="(max-width: 800px) 42vw, 18vw"
                   />
+                </div>
               </div>
               <div className="speaker-copy">
                 <h3>{speaker.name}</h3>

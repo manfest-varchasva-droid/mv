@@ -1,0 +1,67 @@
+/*
+ * B6: scroll-linked photographic depth; each image is isolated in an
+ * overflow-clipped frame. This layer stays visible even without JS.
+ *
+ * It is not used for the B1 homepage title/photo animation or for the B2
+ * pinned photographic chapters, because those already own their transforms.
+ */
+.b6-hero-photo {
+  position: absolute;
+  z-index: 0;
+  inset: -44px 0;
+  pointer-events: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.b6-hero-photo--about {
+  background-image:
+    linear-gradient(90deg, rgba(6, 7, 15, .88) 0%, rgba(6, 7, 15, .62) 48%, rgba(6, 7, 15, .34) 100%),
+    url("/events/about us hero.jpg");
+  background-position: left center;
+}
+
+.b6-hero-photo--events {
+  background-image:
+    linear-gradient(180deg, rgba(5, 6, 14, .28) 0%, rgba(5, 6, 14, .5) 48%, rgba(5, 6, 14, .86) 100%),
+    url("/events/events hero.png");
+  background-position: center, center 45%;
+}
+
+.b6-hero-photo--partners {
+  background-image:
+    linear-gradient(90deg, rgba(6, 7, 15, .60) 0%, rgba(6, 7, 15, .30) 46%, rgba(6, 7, 15, .10) 100%),
+    linear-gradient(180deg, rgba(6, 7, 15, .02) 0%, rgba(6, 7, 15, .24) 100%),
+    url("/events/partners hero.png");
+  background-position: center center;
+}
+
+.b6-hero-photo--city-run {
+  background-image:
+    linear-gradient(180deg, rgba(5, 7, 12, .12) 0%, rgba(5, 7, 12, .2) 42%, rgba(5, 7, 12, .84) 100%),
+    linear-gradient(90deg, rgba(5, 7, 12, .48) 0%, rgba(5, 7, 12, .08) 52%, rgba(5, 7, 12, .18) 100%),
+    url("/events/city run hero.png");
+  background-position: center, center, center 44%;
+}
+
+.b6-speaker-photo-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.b6-gallery-photo-layer {
+  display: block;
+  width: 100%;
+}
+
+/* Hero photographic layers must be clipped by their parent. */
+.subhero[data-b6-trigger] {
+  position: relative;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-b6-parallax] {
+    transform: none !important;
+  }
+}

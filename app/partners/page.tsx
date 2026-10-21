@@ -238,15 +238,10 @@ export default function PartnersPage() {
       <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Our Partners", href: "/partners/" }]} />
       <section
         className={`subhero ${styles.partnersHero}`}
-        style={{
-          minHeight: "100svh",
-          backgroundImage:
-            'linear-gradient(90deg, rgba(6, 7, 15, 0.60) 0%, rgba(6, 7, 15, 0.30) 46%, rgba(6, 7, 15, 0.10) 100%), linear-gradient(180deg, rgba(6, 7, 15, 0.02) 0%, rgba(6, 7, 15, 0.24) 100%), url("/events/partners hero.png")',
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
-        }}
+        data-b6-trigger
+        style={{ minHeight: "100svh" }}
       >
+        <div className="b6-hero-photo b6-hero-photo--partners" data-b6-parallax="hero" aria-hidden="true" />
         <div className="page-shell subhero-content">
           <div className="eyebrow">OUR PARTNERS</div>
           <h1>Partners who power Manfest-Varchasva.</h1>
