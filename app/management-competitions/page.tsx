@@ -8,7 +8,7 @@ const previousEditionOnUnstop =
   "https://unstop.com/college-fests/manfest-varchasva-2025-26-indian-institute-of-management-iim-lucknow-430632";
 
 export const metadata: Metadata = {
-  title: "Management Competitions at IIM Lucknow | Manfest",
+  title: "Management Competitions at IIM Lucknow",
   description: "Explore the history of Manfest management events at IIM Lucknow: business case competitions, quizzes, simulations and leadership challenges at Manfest-Varchasva.",
   alternates: { canonical: "/management-competitions/" },
   openGraph: {
