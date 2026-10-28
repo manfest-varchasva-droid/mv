@@ -59,6 +59,23 @@ jobs:
           <IfModule mod_rewrite.c>
             RewriteEngine On
 
+            # BEGIN DIRECT NEW PREFIX REDIRECTS
+            # On the main domain only, redirect directly requested /new/ copies.
+            # The Joomla-root .htaccess internally rewrites clean paths into
+            # /new/; THE_REQUEST distinguishes that from a browser-visible /new/ URL.
+            RewriteCond %{HTTP_HOST} ^(?:www\.)?iiml-manfestvarchasva\.com$ [NC]
+            RewriteCond %{THE_REQUEST} \s/+new(?:[/?\s]|$) [NC]
+            RewriteRule ^$ https://iiml-manfestvarchasva.com/ [R=301,L,NC,NE]
+
+            RewriteCond %{HTTP_HOST} ^(?:www\.)?iiml-manfestvarchasva\.com$ [NC]
+            RewriteCond %{THE_REQUEST} \s/+new(?:[/?\s]|$) [NC]
+            RewriteRule ^events/(campus-ambassador|vibes|imperio|duex-danza|taal|jashn|antarnaad|halla-bol|izhaar|stairway-to-hell|sur|the-joust|rohan|iim-lucknow-mun|young-leaders-programme)/?$ https://iiml-manfestvarchasva.com/events/$1/ [R=301,L,NC,NE]
+
+            RewriteCond %{HTTP_HOST} ^(?:www\.)?iiml-manfestvarchasva\.com$ [NC]
+            RewriteCond %{THE_REQUEST} \s/+new(?:[/?\s]|$) [NC]
+            RewriteRule ^(about|events|gallery|partners|city-run|terms-and-conditions|concerts|leadership|management-competitions)/?$ https://iiml-manfestvarchasva.com/$1/ [R=301,L,NC,NE]
+            # END DIRECT NEW PREFIX REDIRECTS
+
             # BEGIN SEO MIGRATION 2026-10-28: exact replacements before host redirects
             # Do not send unrelated retired URLs to the homepage.
             # These legacy paths have been permanently withdrawn from publication.
