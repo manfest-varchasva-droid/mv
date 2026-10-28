@@ -84,7 +84,8 @@ function resolveDirectNewRequest(path, host = "iiml-manfestvarchasva.com") {
   const relativePath = path.replace(/^\/new\/?/, "");
   const values = { HTTP_HOST: host, THE_REQUEST: "GET " + path + " HTTP/1.1" };
   let conditions = [];
-  for (const original of section.split("\n")) {
+  const directPrefixSection = source.split("# BEGIN DIRECT NEW PREFIX REDIRECTS")[1]?.split("# END DIRECT NEW PREFIX REDIRECTS")[0] ?? "";
+  for (const original of (directPrefixSection + "\n" + section).split("\n")) {
     const line = original.trim();
     const condition = line.match(/^RewriteCond %\{(HTTP_HOST|THE_REQUEST)\} (\S+)(?: \[([^\]]+)\])?$/);
     if (condition) {
