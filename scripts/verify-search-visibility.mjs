@@ -17,6 +17,8 @@ assert.match(home, /#festival-2027/, "Homepage must identify scheduled festival"
 assert.match(home, /Discover Manfest-Varchasva:/, "Homepage needs a visible topic guide");
 assert.ok(home.includes("<meta name=\"description\""), "Homepage must have a search snippet");
 assert.ok(home.includes(`<link rel="canonical" href="${base}/"`), "Homepage must have a canonical URL");
+assert.doesNotMatch(home, /THE NIGHTS|IDEAS THAT|BEYOND THE/, "Retired three-chapter scroll story must not appear on the homepage");
+assert.match(home, /<h2[^>]*>Our\s*<span>Partners<\/span><\/h2>/, "Homepage partner marquee needs an accessible Our Partners heading");
 for (const [slug, terms] of topics) {
   const html = readFileSync(`out/${slug}/index.html`, "utf8");
   const title = html.match(/<title>(.*?)<\/title>/)?.[1] ?? "";
