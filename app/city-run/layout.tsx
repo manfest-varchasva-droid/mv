@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 
 export const metadata: Metadata = {
-  title: "City Run",
+  title: "Lucknow City Run — Past Editions at IIM Lucknow",
   description:
-    "Discover the Manfest-Varchasva City Run, part of IIM Lucknow's annual business, cultural and sports festival.",
+    "Explore past editions of the Manfest-Varchasva City Run, part of IIM Lucknow's annual business, cultural and sports festival.",
   alternates: {
     canonical: "/city-run/",
   },
