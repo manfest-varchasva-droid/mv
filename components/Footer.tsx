@@ -23,6 +23,9 @@ export function Footer() {
           <h3>Explore</h3>
           <Link href="/about">About us</Link>
           <Link href="/events">Events</Link>
+          <Link href="/concerts">Concerts &amp; Pro-Nights</Link>
+          <Link href="/leadership">Leadership Talks</Link>
+          <Link href="/management-competitions">Management Competitions</Link>
           <Link href="/city-run">City Run</Link>
           <Link href="/partners">Our Partners</Link>
           <Link href="/gallery">Gallery</Link>
