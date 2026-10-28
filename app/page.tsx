@@ -12,7 +12,6 @@ import styles from "./home-lovelo.module.css";
 import titleFix from "./home-title-fix.module.css";
 import cinematic from "./home-cinematic.module.css";
 import { CinematicHero } from "@/components/CinematicHero";
-import { ScrollStory } from "@/components/ScrollStory";
 import { FestivalDiscover } from "@/components/FestivalDiscover";
 
 export const metadata: Metadata = {
@@ -65,7 +64,6 @@ export default function HomePage() {
       <Headliners />
       <LeadersExpress />
       <OverTheYears />
-      <ScrollStory />
       <Highlights />
       <FestivalDiscover />
       <HomeGalleryMarquee />
