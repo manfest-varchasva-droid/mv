@@ -6,7 +6,7 @@ import { headliners } from "@/lib/content";
 import styles from "../festival-topics.module.css";
 
 export const metadata: Metadata = {
-  title: "Concerts & Pro-Nights at IIM Lucknow | Manfest-Varchasva",
+  title: "Concerts & Pro-Nights at IIM Lucknow",
   description: "Explore past Manfest-Varchasva concerts, pro-nights and music performances at IIM Lucknow, including Seedhe Maut, Papon, Amit Trivedi and more. Discover the 2027 festival.",
   alternates: { canonical: "/concerts/" },
   openGraph: {
