@@ -3,7 +3,7 @@ import styles from "./gallery.module.css";
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 
 export const metadata = {
-  title: "Gallery",
+  title: "Festival Gallery & Concert Photos at IIM Lucknow",
   description:
     "Explore photos and highlights from Manfest-Varchasva, IIM Lucknow's annual business, cultural and sports festival.",
   alternates: {

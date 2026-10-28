@@ -3,10 +3,11 @@ import Link from "next/link";
 import { SectionTitle } from "@/components/SectionTitle";
 import { events } from "@/lib/content";
 import styles from "./events.module.css";
+import topics from "../festival-topics.module.css";
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 
 export const metadata: Metadata = {
-  title: "Events",
+  title: "IIM Lucknow Fest Events & Competitions",
   description:
     "Explore cultural, literary, management and leadership event formats and past-edition archives from Manfest-Varchasva at IIM Lucknow.",
   alternates: {
@@ -26,9 +27,6 @@ export const metadata: Metadata = {
     images: ["/events/events hero.png"],
   },
 };
-
-const managementUnstopUrl =
-  "https://unstop.com/college-fests/manfest-varchasva-2025-26-indian-institute-of-management-iim-lucknow-430632";
 
 const cardDescriptions: Record<string, string> = {
   "campus-ambassador":
@@ -95,8 +93,8 @@ export default function EventsPage() {
         <div className="b6-hero-photo b6-hero-photo--events" data-b6-parallax="hero" aria-hidden="true" />
         <div className="page-shell subhero-content">
           <div className="eyebrow">THE LINE-UP</div>
-          <h1>Find your stage.</h1>
-          <p>Cultural, literary, management and leadership formats under one roof.</p>
+          <h1>IIM Lucknow fest events and competitions</h1>
+          <p>Explore Manfest-Varchasva cultural events, management competitions, music, theatre and leadership formats. The event listings include previous-edition archives; 2027 registrations will be confirmed separately.</p>
 
           <nav className={styles.categoryNav} aria-label="Event categories">
             {categories.map((category) => (
@@ -113,6 +111,9 @@ export default function EventsPage() {
       </section>
 
       <section className={`section section-dark ${styles.listingSection}`}>
+        <div className={topics.shell} style={{ paddingTop: 20 }}>
+          <p className={topics.introText}>Looking for a specific part of the IIM Lucknow festival? Explore <Link href="/concerts/">concerts and pro-nights</Link>, <Link href="/leadership/">Leaders Express and leadership talks</Link>, or <Link href="/management-competitions/">management challenges</Link>.</p>
+        </div>
         <div className="page-shell">
           <SectionTitle eyebrow="EXPLORE" title="All" accent="Events" />
 
@@ -120,19 +121,17 @@ export default function EventsPage() {
             {categories.flatMap((category) => {
               if (category === "Management") {
                 return [
-                  <a
+                  <Link
                     className={styles.eventCard}
-                    href={managementUnstopUrl}
-                    target="_blank"
-                    rel="noreferrer"
+                    href="/management-competitions/"
                     id={categoryId(category)}
                     key="management-events"
                   >
                     <span>Management</span>
                     <h3>Management Events</h3>
-                    <p>Explore the complete management competition line-up, details and registrations on Unstop.</p>
-                    <b>Unstop Link &gt;&gt;</b>
-                  </a>,
+                    <p>Learn about IIM Lucknow management case competitions and previous-edition formats. See the historical Unstop listing from the guide.</p>
+                    <b>Explore management competitions →</b>
+                  </Link>,
                 ];
               }
 

@@ -26,3 +26,5 @@ jobs:
         run: npm run lint
       - name: Production static export
         run: npm run build
+      - name: Verify Google-visible SEO HTML and internal links
+        run: node scripts/verify-search-visibility.mjs

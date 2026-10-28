@@ -5,7 +5,7 @@ import { AnimatedNumber } from "@/components/AnimatedNumber";
 import styles from "./city-run.module.css";
 import { preload } from "react-dom";
 
-export const metadata = { title: "Lucknow City Run 2026 Archive" };
+export const metadata = { title: "Lucknow City Run — Past Editions at IIM Lucknow" };
 
 const partners = [
   {

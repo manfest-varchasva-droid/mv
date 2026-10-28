@@ -5,7 +5,7 @@ import { AnimatedNumber } from "@/components/AnimatedNumber";
 import styles from "./about.module.css";
 import { preload } from "react-dom";
 
-export const metadata = { title: "About us" };
+export const metadata = { title: "History of Manfest-Varchasva at IIM Lucknow" };
 
 const history = [
   {
