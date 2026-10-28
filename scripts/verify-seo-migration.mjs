@@ -75,4 +75,62 @@ for (const [oldUrl, destination] of cases) {
 }
 assert.ok(!source.includes("RewriteRule ^index\\.php/.*$ / [R=301"), "Broad homepage redirect regression");
 assert.match(source, /SetEnvIfNoCase Request_URI "\^\/images\/\(\?:Selection/, "Missing historical file noindex rule");
+
+// Simulate Apache's per-directory RewriteRule input for direct requests to
+// /new/: inside public_html/new/.htaccess the leading "new/" is stripped.
+// Unlike the legacy table above, this also evaluates host/request guards.
+function resolveDirectNewRequest(path, host = "iiml-manfestvarchasva.com") {
+  assert.match(path, /^\/new(?:\/|$)/);
+  const relativePath = path.replace(/^\/new\/?/, "");
+  const values = { HTTP_HOST: host, THE_REQUEST: "GET " + path + " HTTP/1.1" };
+  let conditions = [];
+  for (const original of section.split("\n")) {
+    const line = original.trim();
+    const condition = line.match(/^RewriteCond %\{(HTTP_HOST|THE_REQUEST)\} (\S+)(?: \[([^\]]+)\])?$/);
+    if (condition) {
+      conditions.push({ variable: condition[1], regex: condition[2], flags: condition[3] ?? "" });
+      continue;
+    }
+    const rule = line.match(/^RewriteRule (\S+) (\S+) (\[[^\]]+\])$/);
+    if (!rule) continue;
+    const matches = relativePath.match(new RegExp(rule[1], rule[3].includes("NC") ? "i" : ""));
+    const allowed = conditions.every(({ variable, regex, flags }) => {
+      const negated = regex.startsWith("!");
+      const expression = negated ? regex.slice(1) : regex;
+      const result = new RegExp(expression, flags.includes("NC") ? "i" : "").test(values[variable]);
+      return negated ? !result : result;
+    });
+    conditions = [];
+    if (!matches || !allowed) continue;
+    if (rule[3].includes("G,")) return "410";
+    return rule[2].replace(/\$(\d+)/g, (_, i) => matches[Number(i)] ?? "");
+  }
+  return "unchanged";
+}
+const directNewCases = [
+  ["/new/", "/"],
+  ["/new/about/", "/about/"],
+  ["/new/events/", "/events/"],
+  ["/new/events/jashn/", "/events/jashn/"],
+  ["/new/partners/", "/partners/"],
+  ["/new/gallery/", "/gallery/"],
+  ["/new/concerts/", "/concerts/"],
+  ["/new/leadership/", "/leadership/"],
+  ["/new/management-competitions/", "/management-competitions/"],
+  ["/new/city-run/", "/city-run/"],
+  ["/new/terms-and-conditions/", "/terms-and-conditions/"],
+  ["/new/selections-2026/example.pdf", "410"],
+  ["/new/_next/static/example.js", "unchanged"],
+  ["/new/unknown-retired-page/", "unchanged"],
+];
+for (const [path, destination] of directNewCases) {
+  const expected = destination.startsWith("/") ? base + destination : destination;
+  assert.equal(resolveDirectNewRequest(path), expected, "Direct /new/ request: " + path);
+}
+assert.equal(
+  resolveDirectNewRequest("/new/about/", "new.iiml-manfestvarchasva.com"),
+  "unchanged",
+  "New-prefix migration rules must not intercept the separate new. subdomain",
+);
+
 console.log("SEO migration checks passed: " + rules.length + " rules, " + cases.length + " representative URLs.");
