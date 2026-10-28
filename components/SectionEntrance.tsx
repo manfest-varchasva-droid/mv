@@ -43,6 +43,10 @@ export function SectionEntrance() {
       if (element.matches("h2") &&
           element.closest(".section-title, [data-story-stage]")) return;
 
+      // The lazy partner marquee can skip intersection updates; keep its h2
+      // permanently visible instead of arming a potentially stuck clip reveal.
+      if (element.matches("h2") && element.closest(".global-partners-heading")) return;
+
       // Gallery has a title-row wrapping a SectionTitle: animate only the latter.
       if (element.classList.contains("title-row") &&
           element.querySelector(".b3-section-title")) return;
