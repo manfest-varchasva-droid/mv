@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  title: "Festival Gallery & Concert Photos at IIM Lucknow",
   description:
-    "Explore performances, speakers and memorable moments from Manfest-Varchasva at IIM Lucknow.",
+    "Browse Manfest-Varchasva festival photos from IIM Lucknow, including concert memories, performances, leaders, competitions and campus moments from past editions.",
   alternates: {
     canonical: "/gallery/",
   },
