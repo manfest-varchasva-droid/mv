@@ -13,6 +13,7 @@ import titleFix from "./home-title-fix.module.css";
 import cinematic from "./home-cinematic.module.css";
 import { CinematicHero } from "@/components/CinematicHero";
 import { ScrollStory } from "@/components/ScrollStory";
+import { FestivalDiscover } from "@/components/FestivalDiscover";
 
 export const metadata: Metadata = {
   alternates: {
@@ -34,6 +35,7 @@ export default function HomePage() {
       <OverTheYears />
       <ScrollStory />
       <Highlights />
+      <FestivalDiscover />
       <HomeGalleryMarquee />
       <PartnerCarousel />
     </>
