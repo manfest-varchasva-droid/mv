@@ -28,9 +28,6 @@ export const metadata: Metadata = {
   },
 };
 
-const managementUnstopUrl =
-  "https://unstop.com/college-fests/manfest-varchasva-2025-26-indian-institute-of-management-iim-lucknow-430632";
-
 const cardDescriptions: Record<string, string> = {
   "campus-ambassador":
     "Represent Manfest-Varchasva on your campus, drive participation and expand the fest’s reach through your student network.",
