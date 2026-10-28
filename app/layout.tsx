@@ -26,12 +26,12 @@ import { PhotoParallax } from "@/components/PhotoParallax";
 
 const siteUrl = "https://iiml-manfestvarchasva.com";
 const siteDescription =
-  "Manfest-Varchasva 2027, IIM Lucknow's annual business, cultural and sports festival, taking place 5–7 February 2027.";
+  "Explore Manfest-Varchasva 2027 at IIM Lucknow, 5–7 February: management competitions, leadership talks, concerts, culture, sport and City Run.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Manfest-Varchasva 2027 | IIM Lucknow",
+    default: "Manfest-Varchasva 2027 at IIM Lucknow | Fest & Events",
     template: "%s | Manfest-Varchasva",
   },
   description: siteDescription,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Manfest-Varchasva",
-    title: "Manfest-Varchasva 2027 | IIM Lucknow",
+    title: "Manfest-Varchasva 2027 at IIM Lucknow | Fest & Events",
     description: siteDescription,
     url: "/",
     images: [
@@ -90,13 +90,16 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": siteUrl + "/#organization",
     name: "Manfest-Varchasva",
+    alternateName: ["Manfest Varchasva", "MV IIM Lucknow"],
     url: siteUrl,
     logo: siteUrl + "/mv-logo.svg",
     email: "manfest-varchasva@iiml.ac.in",
     parentOrganization: {
       "@type": "CollegeOrUniversity",
       name: "Indian Institute of Management Lucknow",
+      url: "https://www.iiml.ac.in/",
     },
     address: {
       "@type": "PostalAddress",
@@ -113,32 +116,15 @@ const structuredData = [
   },
   {
     "@context": "https://schema.org",
-    "@type": "Event",
-    name: "Manfest-Varchasva 2027",
-    description: siteDescription,
+    "@type": "WebSite",
+    "@id": siteUrl + "/#website",
+    name: "Manfest-Varchasva",
+    alternateName: ["Manfest Varchasva", "IIM Lucknow Manfest"],
     url: siteUrl,
-    startDate: "2027-02-05",
-    endDate: "2027-02-07",
-    eventStatus: "https://schema.org/EventScheduled",
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    location: {
-      "@type": "Place",
-      name: "Indian Institute of Management Lucknow",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Prabandh Nagar",
-        addressLocality: "Lucknow",
-        postalCode: "226013",
-        addressCountry: "IN",
-      },
-    },
-    organizer: {
-      "@type": "Organization",
-      name: "Manfest-Varchasva, IIM Lucknow",
-      url: siteUrl,
-    },
-  },
-];
+    description: siteDescription,
+    publisher: { "@id": siteUrl + "/#organization" },
+    inLanguage: "en-IN",
+  },];
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
