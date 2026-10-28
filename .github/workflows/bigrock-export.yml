@@ -56,29 +56,56 @@ jobs:
           <IfModule mod_rewrite.c>
             RewriteEngine On
 
-            # Force one canonical production origin for users and search engines.
-            # 1) Redirect www or any alternate host to the canonical non-www domain.
+            # BEGIN SEO MIGRATION 2026-10-28: exact replacements before host redirects
+            # Do not send unrelated retired URLs to the homepage.
+            # These legacy paths have been permanently withdrawn from publication.
+            RewriteRule ^(?:new/)?selections-2026(?:/.*)?$ - [G,L,NC]
+
+            # Obsolete /new/ copies: redirect only known current routes.
+            RewriteRule ^new/events/(campus-ambassador|vibes|imperio|duex-danza|taal|jashn|antarnaad|halla-bol|izhaar|stairway-to-hell|sur|the-joust|rohan|iim-lucknow-mun|young-leaders-programme)/?$ https://iiml-manfestvarchasva.com/events/$1/ [R=301,L,NC,NE]
+            RewriteRule ^new/(about|events|gallery|partners|city-run|terms-and-conditions)/?$ https://iiml-manfestvarchasva.com/$1/ [R=301,L,NC,NE]
+            # Older /new/ copies of published rulebooks and selections have an /images/ equivalent.
+            RewriteRule ^new/images/(Selection[0-9]{4}|rulebooks)/(.+)$ https://iiml-manfestvarchasva.com/images/$1/$2 [R=301,L,NC,NE]
+
+            # Joomla homepage and primary public navigation: exact matches only.
+            RewriteRule ^index\.php(?:/index\.php)?/?$ https://iiml-manfestvarchasva.com/ [R=301,L,NC,NE]
+            RewriteRule ^index/?$ https://iiml-manfestvarchasva.com/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/about(?:-us)?/?$ https://iiml-manfestvarchasva.com/about/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/(?:our-partners|partners|sponsors)/?$ https://iiml-manfestvarchasva.com/partners/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/city-run/?$ https://iiml-manfestvarchasva.com/city-run/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/gallery/?$ https://iiml-manfestvarchasva.com/gallery/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/events/?$ https://iiml-manfestvarchasva.com/events/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/events/(?:cultural-events|culturalevents|management-events)/?$ https://iiml-manfestvarchasva.com/events/ [R=301,L,NC,NE]
+
+            # Joomla competitions with genuine current archive/detail equivalents.
+            RewriteRule ^index\.php/events/(?:cultural-events|culturalevents)/theatre/(antarnaad|halla-bol|izhaar)/?$ https://iiml-manfestvarchasva.com/events/$1/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/events/(?:cultural-events|culturalevents)/dance/(vibes|imperio|duex-danza|taal)/?$ https://iiml-manfestvarchasva.com/events/$1/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/events/(?:cultural-events|culturalevents)/fashion-parade/jashn/?$ https://iiml-manfestvarchasva.com/events/jashn/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/events/(?:cultural-events|culturalevents)/music/(sur|stairway-to-hell)/?$ https://iiml-manfestvarchasva.com/events/$1/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/events/(?:cultural-events|culturalevents)/literary/joust/?$ https://iiml-manfestvarchasva.com/events/the-joust/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/events/(?:cultural-events|culturalevents)/literary/rohan/?$ https://iiml-manfestvarchasva.com/events/rohan/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/events/iiml-mun/?$ https://iiml-manfestvarchasva.com/events/iim-lucknow-mun/ [R=301,L,NC,NE]
+            RewriteRule ^index\.php/events/leaders-express/ylp/?$ https://iiml-manfestvarchasva.com/events/young-leaders-programme/ [R=301,L,NC,NE]
+
+            # Drupal-era aliases with clearly equivalent present-day information.
+            RewriteRule ^pages/about/?$ https://iiml-manfestvarchasva.com/about/ [R=301,L,NC,NE]
+            RewriteRule ^content/lucknow-city-run/?$ https://iiml-manfestvarchasva.com/city-run/ [R=301,L,NC,NE]
+            RewriteRule ^content/jashn-fashion-parade/?$ https://iiml-manfestvarchasva.com/events/jashn/ [R=301,L,NC,NE]
+            RewriteRule ^content/(?:ylp|registration-young-leaders-program)/?$ https://iiml-manfestvarchasva.com/events/young-leaders-programme/ [R=301,L,NC,NE]
+            RewriteRule ^event/dance/vibes/?$ https://iiml-manfestvarchasva.com/events/vibes/ [R=301,L,NC,NE]
+            RewriteRule ^event/theatre/hallabol/?$ https://iiml-manfestvarchasva.com/events/halla-bol/ [R=301,L,NC,NE]
+
+            # The old Joomla catch-all redirected unrelated pages to Home, causing soft-404s.
+            # Unmatched Joomla pages have no true replacement: report Gone, not a fake success.
+            RewriteRule ^index\.php(?:/.*)?$ - [G,L,NC]
+            # END SEO MIGRATION 2026-10-28
+
+            # Canonical origin: normalize only after known legacy aliases, avoiding two-hop redirects.
             RewriteCond %{HTTP_HOST} !^iiml-manfestvarchasva\.com$ [NC]
             RewriteRule ^ https://iiml-manfestvarchasva.com%{REQUEST_URI} [R=301,L,NE]
-
-            # 2) Force HTTPS. X-Forwarded-Proto prevents redirect loops behind a proxy.
             RewriteCond %{HTTPS} !=on
             RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
             RewriteRule ^ https://iiml-manfestvarchasva.com%{REQUEST_URI} [R=301,L,NE]
-
-            # The 2026 selections route is intentionally retained in source only.
-            RewriteRule ^selections-2026(?:/.*)?$ - [R=410,L,NC]
-
-            # Consolidate old Joomla page URLs into the current Next.js site.
-            RewriteRule ^index\.php/?$ / [R=301,L,NC]
-            RewriteRule ^index\.php/about(?:/.*)?$ /about/ [R=301,L,NC]
-            RewriteRule ^index\.php/events(?:/.*)?$ /events/ [R=301,L,NC]
-            RewriteRule ^index\.php/gallery(?:/.*)?$ /gallery/ [R=301,L,NC]
-            RewriteRule ^index\.php/(?:partners|sponsors)(?:/.*)?$ /partners/ [R=301,L,NC]
-            RewriteRule ^index\.php/city-run(?:/.*)?$ /city-run/ [R=301,L,NC]
-
-            # Any remaining Joomla route has been superseded by the current site.
-            RewriteRule ^index\.php/.*$ / [R=301,L,NC]
 
             # Transparently serve generated WebP versions to browsers that support them.
             RewriteCond %{HTTP_ACCEPT} image/webp [NC]
@@ -87,8 +114,10 @@ jobs:
           </IfModule>
 
           <IfModule mod_setenvif.c>
-            # Keep legacy selection/rulebook files accessible, but remove them from search results.
-            SetEnvIf Request_URI "^/images/(?:Selection[0-9]{4}|rulebooks)/" legacy_archive=1
+            # Keep legacy selection/rulebook files downloadable, but not indexed.
+            SetEnvIfNoCase Request_URI "^/images/(?:Selection[0-9]{4}|rulebooks)/" legacy_archive=1
+            # Mailing-list archives may exist on this vhost; indexing is never a substitute for access controls.
+            SetEnvIfNoCase Request_URI "^/(?:pipermail|mailman|webmail)/" legacy_archive=1
           </IfModule>
 
           <IfModule mod_mime.c>
@@ -130,6 +159,7 @@ jobs:
             </FilesMatch>
           </IfModule>
           HTACCESS
+          node scripts/verify-seo-migration.mjs --generated
 
       - name: Keep downloadable backup artifact
         uses: actions/upload-artifact@v4
