@@ -159,6 +159,7 @@ jobs:
             </FilesMatch>
           </IfModule>
           HTACCESS
+          node scripts/verify-seo-migration.mjs --generated
 
       - name: Keep downloadable backup artifact
         uses: actions/upload-artifact@v4
