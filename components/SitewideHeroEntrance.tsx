@@ -54,7 +54,7 @@ export function SitewideHeroEntrance() {
     if (eyebrow) {
       intro.fromTo(eyebrow,
         { autoAlpha: 0, y: mobile ? 17 : 32 },
-        { autoAlpha: 1, y: 0, duration: .61, ease: "power3.out" }, .20);
+        { autoAlpha: 1, y: 0, duration: .36, ease: "power3.out" }, .04);
     }
 
     // A distinct central moment: title rises through a clipping mask while
@@ -66,14 +66,14 @@ export function SitewideHeroEntrance() {
         y: 0,
         clipPath: "inset(0% 0% 0% 0%)",
         scale: 1,
-        duration: mobile ? .83 : 1.08,
+        duration: mobile ? .50 : .56,
         ease: "expo.out",
-      }, .54);
+      }, .18);
 
     if (description) {
       intro.fromTo(description,
         { autoAlpha: 0, y: 24 },
-        { autoAlpha: 1, y: 0, duration: .68 }, 1.22);
+        { autoAlpha: 1, y: 0, duration: .42 }, .51);
     }
 
     if (details.length) {
@@ -82,13 +82,13 @@ export function SitewideHeroEntrance() {
         {
           autoAlpha: 1,
           y: 0,
-          duration: .68,
-          stagger: .12,
+          duration: .42,
+          stagger: .06,
           ease: "power3.out",
-        }, 1.52);
+        }, .67);
     }
 
-    // Mobile remains cinematic without delaying access to the page actions.
+    // Let visitors see the page title and actions promptly on every viewport.
     if (mobile) intro.timeScale(1.27);
 
     // useGSAP automatically reverts all inline animation styles and timelines.
