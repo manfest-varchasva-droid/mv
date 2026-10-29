@@ -6,7 +6,6 @@ import {
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
   type ReactNode,
-  type WheelEvent as ReactWheelEvent,
   useCallback,
   useEffect,
   useRef,
@@ -217,20 +216,6 @@ export function HorizontalScroller({
     event.stopPropagation();
   }
 
-  function onWheel(event: ReactWheelEvent<HTMLDivElement>) {
-    const el = ref.current;
-    if (!el || Math.abs(event.deltaX) > Math.abs(event.deltaY) ||
-      Math.abs(event.deltaY) < 1) return;
-    const maxScroll = el.scrollWidth - el.clientWidth;
-    const canMove = event.deltaY > 0
-      ? el.scrollLeft < maxScroll - 1
-      : el.scrollLeft > 1;
-    if (!canMove) return;
-    event.preventDefault();
-    markInteracted();
-    el.scrollLeft += event.deltaY;
-  }
-
   function onKeyDown(event: ReactKeyboardEvent<HTMLDivElement>) {
     if (event.target !== event.currentTarget) return;
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
@@ -255,7 +240,6 @@ export function HorizontalScroller({
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
         onClickCapture={onClickCapture}
-        onWheel={onWheel}
         onKeyDown={onKeyDown}
         onScroll={schedulePositionUpdate}
       >
