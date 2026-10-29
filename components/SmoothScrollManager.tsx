@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type Lenis from "lenis";
@@ -21,6 +21,19 @@ gsap.registerPlugin(ScrollTrigger);
 export function SmoothScrollManager() {
   const pathname = usePathname();
   const [supported, setSupported] = useState(false);
+
+  const previousPathname = useRef(pathname);
+
+  // The shared footer stays mounted between App Router pages. Reset the
+  // viewport after an actual route change, otherwise a link clicked at the
+  // bottom can show the destination's footer instead of its content.
+  // Leave initial loads and same-page hash navigation untouched.
+  useLayoutEffect(() => {
+    if (previousPathname.current === pathname) return;
+    previousPathname.current = pathname;
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname]);
+
 
   useEffect(() => {
     // Enable automatically on desktop with precise pointer input.
