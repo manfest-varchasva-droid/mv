@@ -82,7 +82,7 @@ export function SmoothScrollManager() {
         // Preserve native controls for carousels and any nested overlays.
         prevent: (node) =>
           Boolean(node.closest(
-            ".horizontal-scroller-shell, [data-lenis-prevent], [role='dialog']",
+            "[data-lenis-prevent], [role='dialog']",
           )),
       });
 
