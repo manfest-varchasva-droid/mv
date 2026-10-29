@@ -116,6 +116,11 @@
   color: #b9bbc7;
 }
 
+/* Keep the love mark red despite the accessible footer text override. */
+.site-footer .footer-bottom .footer-heart {
+  color: #ff5368;
+}
+
 .site-footer nav > a {
   min-height: 40px;
   display: flex;
