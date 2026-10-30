@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Omit<Props, "children">): Pro
   const image = eventImages[event.slug] ?? "/opengraph-image.png";
 
   return {
-    title: `${event.name} — 2025–26 Archive`,
+    title: `${event.name} - 2025–26 Archive`,
     description: event.blurb,
     alternates: {
       canonical,
