@@ -2,7 +2,9 @@
  * Keep native anchor/keyboard/touch scrolling unchanged if Lenis is inactive.
  * Prevent the existing global html { scroll-behavior: smooth } rule from
  * stacking an additional browser-level easing onto Lenis's scroll updates.
+ * Next route transitions can set an inline scroll-behavior: smooth; override
+ * that inline value while Lenis is active to prevent moving click targets.
  */
 html.lenis {
-  scroll-behavior: auto;
+  scroll-behavior: auto !important;
 }
