@@ -50,7 +50,11 @@
 .categoryButton:hover,
 .categoryButton:focus-visible {
   transform: translateY(-2px);
-  outline: none;
+}
+
+.categoryButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
 }
 
 .termsLink {
@@ -103,6 +107,13 @@
   border-color: rgba(191, 115, 255, 0.52);
   background: linear-gradient(145deg, rgba(156,100,255,0.09), rgba(255,79,104,0.045));
   outline: none;
+}
+
+/* Category links jump to a real card; spotlight it so the action has feedback. */
+.eventCard:target {
+  border-color: rgba(222, 161, 255, 0.9);
+  background: linear-gradient(145deg, rgba(156, 100, 255, 0.23), rgba(255, 79, 104, 0.10));
+  box-shadow: 0 0 0 3px rgba(206, 129, 255, 0.16), 0 16px 38px rgba(3, 3, 10, 0.28);
 }
 
 .eventCard > span {

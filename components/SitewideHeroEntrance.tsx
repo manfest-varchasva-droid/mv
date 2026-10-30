@@ -53,39 +53,39 @@ export function SitewideHeroEntrance() {
 
     if (eyebrow) {
       intro.fromTo(eyebrow,
-        { autoAlpha: 0, y: mobile ? 17 : 32 },
-        { autoAlpha: 1, y: 0, duration: .36, ease: "power3.out" }, .04);
+        { autoAlpha: 0, y: mobile ? 12 : 22 },
+        { autoAlpha: 1, y: 0, duration: .25, ease: "power3.out" }, 0);
     }
 
     // A distinct central moment: title rises through a clipping mask while
     // the background washes from deep purple/black to the existing photograph.
     intro.fromTo(title,
-      { autoAlpha: 0, y: mobile ? 45 : 72, clipPath: "inset(100% 0% 0% 0%)", scale: 1.035 },
+      { autoAlpha: 0, y: mobile ? 30 : 46, clipPath: "inset(100% 0% 0% 0%)", scale: 1.02 },
       {
         autoAlpha: 1,
         y: 0,
         clipPath: "inset(0% 0% 0% 0%)",
         scale: 1,
-        duration: mobile ? .50 : .56,
+        duration: mobile ? .38 : .44,
         ease: "expo.out",
-      }, .18);
+      }, .08);
 
     if (description) {
       intro.fromTo(description,
-        { autoAlpha: 0, y: 24 },
-        { autoAlpha: 1, y: 0, duration: .42 }, .51);
+        { autoAlpha: 0, y: 15 },
+        { autoAlpha: 1, y: 0, duration: .30 }, .32);
     }
 
     if (details.length) {
       intro.fromTo(details,
-        { autoAlpha: 0, y: 27 },
+        { autoAlpha: 0, y: 17 },
         {
           autoAlpha: 1,
           y: 0,
-          duration: .42,
-          stagger: .06,
+          duration: .31,
+          stagger: .035,
           ease: "power3.out",
-        }, .67);
+        }, .40);
     }
 
     // Let visitors see the page title and actions promptly on every viewport.
