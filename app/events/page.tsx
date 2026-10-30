@@ -118,39 +118,38 @@ export default function EventsPage() {
           <SectionTitle eyebrow="EXPLORE" title="All" accent="Events" />
 
           <div className={styles.eventDirectory}>
-            {categories.flatMap((category) => {
-              if (category === "Management") {
-                return [
+            {categories.map((category) => (
+              <div className={styles.categoryGroup} key={category}>
+                {category === "Management" ? (
                   <Link
                     className={styles.eventCard}
                     href="/management-competitions/"
                     id={categoryId(category)}
-                    key="management-events"
                   >
                     <span>Management</span>
                     <h3>Management Events</h3>
                     <p>Learn about IIM Lucknow management case competitions and previous-edition formats. See the historical Unstop listing from the guide.</p>
                     <b>Explore management competitions →</b>
-                  </Link>,
-                ];
-              }
-
-              return events
-                .filter((event) => event.category === category)
-                .map((event, index) => (
-                  <Link
-                    className={styles.eventCard}
-                    href={`/events/${event.slug}`}
-                    id={index === 0 ? categoryId(category) : undefined}
-                    key={event.slug}
-                  >
-                    <span>{event.category}</span>
-                    <h3>{event.name}</h3>
-                    <p>{cardDescriptions[event.slug] ?? event.blurb}</p>
-                    <b>View event →</b>
                   </Link>
-                ));
-            })}
+                ) : (
+                  events
+                    .filter((event) => event.category === category)
+                    .map((event, index) => (
+                      <Link
+                        className={styles.eventCard}
+                        href={`/events/${event.slug}`}
+                        id={index === 0 ? categoryId(category) : undefined}
+                        key={event.slug}
+                      >
+                        <span>{event.category}</span>
+                        <h3>{event.name}</h3>
+                        <p>{cardDescriptions[event.slug] ?? event.blurb}</p>
+                        <b>View event →</b>
+                      </Link>
+                    ))
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>

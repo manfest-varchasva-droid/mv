@@ -89,6 +89,11 @@
   gap: 14px;
 }
 
+.categoryGroup {
+  /* Preserve the existing four/three/two/one-column grid while keeping categories grouped. */
+  display: contents;
+}
+
 .eventCard {
   min-height: 178px;
   display: flex;
@@ -109,7 +114,8 @@
   outline: none;
 }
 
-/* Category links jump to a real card; spotlight it so the action has feedback. */
+/* Jump to the first card, then spotlight every event in that category. */
+.categoryGroup:has(> .eventCard:target) > .eventCard,
 .eventCard:target {
   border-color: rgba(222, 161, 255, 0.9);
   background: linear-gradient(145deg, rgba(156, 100, 255, 0.23), rgba(255, 79, 104, 0.10));

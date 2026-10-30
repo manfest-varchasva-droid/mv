@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-html-link-for-pages -- These footer links intentionally use native navigation to remain responsive when the client router is busy. */
 import Image from "next/image";
-import Link from "next/link";
 
 export function Footer() {
   return (
@@ -21,15 +21,15 @@ export function Footer() {
 
         <nav aria-label="Explore Manfest-Varchasva">
           <h3>Explore</h3>
-          <Link href="/about">About us</Link>
-          <Link href="/events">Events</Link>
-          <Link href="/concerts">Concerts &amp; Pro-Nights</Link>
-          <Link href="/leadership">Leadership Talks</Link>
-          <Link href="/management-competitions">Management Competitions</Link>
-          <Link href="/city-run">City Run</Link>
-          <Link href="/partners">Our Partners</Link>
-          <Link href="/gallery">Gallery</Link>
-          <Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
+          <a href="/about/">About us</a>
+          <a href="/events/">Events</a>
+          <a href="/concerts/">Concerts &amp; Pro-Nights</a>
+          <a href="/leadership/">Leadership Talks</a>
+          <a href="/management-competitions/">Management Competitions</a>
+          <a href="/city-run/">City Run</a>
+          <a href="/partners/">Our Partners</a>
+          <a href="/gallery/">Gallery</a>
+          <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
         </nav>
 
         <div className="footer-contact">
