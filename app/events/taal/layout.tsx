@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 const description = "An Indian Classical and Folk group dance competition where technical precision, tradition and expressive storytelling come together.";
 
 export const metadata: Metadata = {
-  title: "Taal — 2025–26 Archive",
+  title: "Taal - 2025–26 Archive",
   description,
   alternates: {
     canonical: "/events/taal/",

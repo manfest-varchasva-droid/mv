@@ -112,7 +112,7 @@ export default function TaalPage() {
               </article>
               <article className={styles.roleCard}>
                 <b>03</b>
-                <p>Rounds: 2 — Online preliminary round + Offline final round.</p>
+                <p>Rounds: 2 - Online preliminary round + Offline final round.</p>
               </article>
               <article className={styles.roleCard}>
                 <b>04</b>

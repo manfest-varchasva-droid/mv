@@ -62,7 +62,7 @@ export default function YoungLeadersProgrammePage() {
               <article className={styles.roleCard}>
                 <b>A LEADER SHOWS THE WAY</b>
                 <p>
-                  “A leader is one who knows the way, goes the way, and shows the way.” — John Maxwell
+                  “A leader is one who knows the way, goes the way, and shows the way.” - John Maxwell
                 </p>
               </article>
 
@@ -155,7 +155,7 @@ export default function YoungLeadersProgrammePage() {
               <article className={styles.roleCard}>
                 <b>REGISTRATION</b>
                 <p>
-                  Kindly fill the Google Form for registration — <strong>Register Here</strong>.
+                  Kindly fill the Google Form for registration - <strong>Register Here</strong>.
                 </p>
               </article>
             </div>

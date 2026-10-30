@@ -7,7 +7,7 @@ import n from "./city-run-2027.module.css";
 import { preload } from "react-dom";
 
 export const metadata = {
-  title: "Lucknow City Run 2027 — 31 January",
+  title: "Lucknow City Run 2027 - 31 January",
   description:
     "City Run 2027 is on 31 January 2027. Registrations will open soon. See the 2026 highlights.",
 };

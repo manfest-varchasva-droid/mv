@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 const description = "IIM Lucknow's Model United Nations platform for diplomacy, public speaking, negotiation and leadership.";
 
 export const metadata: Metadata = {
-  title: "IIM Lucknow MUN — 2025–26 Archive",
+  title: "IIM Lucknow MUN - 2025–26 Archive",
   description,
   alternates: {
     canonical: "/events/iim-lucknow-mun/",

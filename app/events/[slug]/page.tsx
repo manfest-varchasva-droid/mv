@@ -237,7 +237,7 @@ function VibesPage() {
               </article>
               <article className={styles.roleCard}>
                 <b>02</b>
-                <p>Rounds: 2 — Online preliminary round + Offline final round.</p>
+                <p>Rounds: 2 - Online preliminary round + Offline final round.</p>
               </article>
               <article className={styles.roleCard}>
                 <b>03</b>
@@ -421,7 +421,7 @@ function ImperioPage() {
               <article className={styles.roleCard}>
                 <b>BRING THE ENERGY</b>
                 <p>
-                  The bass is dropping, the lights are pulsing, and the floor is yours for the taking. Manfest-Varchasva brings you Imperio — the ultimate arena for Western group dance.
+                  The bass is dropping, the lights are pulsing, and the floor is yours for the taking. Manfest-Varchasva brings you Imperio - the ultimate arena for Western group dance.
                 </p>
               </article>
               <article className={styles.roleCard}>
@@ -466,7 +466,7 @@ function ImperioPage() {
               </article>
               <article className={styles.roleCard}>
                 <b>02</b>
-                <p>Rounds: 2 — Online preliminary round + Offline final round.</p>
+                <p>Rounds: 2 - Online preliminary round + Offline final round.</p>
               </article>
               <article className={styles.roleCard}>
                 <b>03</b>

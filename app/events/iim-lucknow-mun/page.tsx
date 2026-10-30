@@ -106,19 +106,19 @@ export default function IIMLucknowMUNPage() {
               <article className={styles.roleCard}>
                 <b>LOK SABHA</b>
                 <p>
-                  Agenda — Addressing India&apos;s unemployment crisis amidst upcoming automation &amp; AI.
+                  Agenda - Addressing India&apos;s unemployment crisis amidst upcoming automation &amp; AI.
                 </p>
               </article>
               <article className={styles.roleCard}>
                 <b>UNITED NATIONS GENERAL ASSEMBLY (UNGA)</b>
                 <p>
-                  Agenda — Addressing the weaponization of food and energy supply chains.
+                  Agenda - Addressing the weaponization of food and energy supply chains.
                 </p>
               </article>
               <article className={styles.roleCard}>
                 <b>UNITED NATIONS HUMAN RIGHTS COUNCIL (UNHRC)</b>
                 <p>
-                  Agenda — Examining the human rights implications of migration and displacement.
+                  Agenda - Examining the human rights implications of migration and displacement.
                 </p>
               </article>
             </div>

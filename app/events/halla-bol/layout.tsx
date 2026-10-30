@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 const description = "A street-play competition where teams use performance, emotion and message to turn everyday spaces into powerful stages.";
 
 export const metadata: Metadata = {
-  title: "Halla Bol — 2025–26 Archive",
+  title: "Halla Bol - 2025–26 Archive",
   description,
   alternates: {
     canonical: "/events/halla-bol/",

@@ -116,7 +116,7 @@ export default function AntarnaadPage() {
               </article>
               <article className={styles.roleCard}>
                 <b>04</b>
-                <p>Participants have the freedom to participate in any of the 2 formats — Short Film Making or Vlog Making.</p>
+                <p>Participants have the freedom to participate in any of the 2 formats - Short Film Making or Vlog Making.</p>
               </article>
               <article className={styles.roleCard}>
                 <b>05</b>

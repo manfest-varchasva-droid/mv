@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 const description = "A solo singing competition where vocalists take the spotlight with their voice, musicality and individual performance style.";
 
 export const metadata: Metadata = {
-  title: "Sur — 2025–26 Archive",
+  title: "Sur - 2025–26 Archive",
   description,
   alternates: {
     canonical: "/events/sur/",

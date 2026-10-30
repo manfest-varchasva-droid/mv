@@ -12,7 +12,7 @@ import styles from "./ScrollStory.module.css";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 /**
- * B2 — an immersive three-chapter history of MV.
+ * B2 - an immersive three-chapter history of MV.
  *
  * Desktop: one pinned stage, 3 photographic chapters scrubbed by natural page
  * scrolling. Mobile, reduced motion, or no JS: three normal readable cards.
@@ -88,7 +88,7 @@ export function ScrollStory() {
     <section ref={scope} className={styles.story} aria-label="The Manfest-Varchasva story in three chapters">
       <div className={styles.stage} data-story-stage>
         <div className={styles.stageTop} aria-hidden="true">
-          <span>MANFEST — VARCHASVA</span>
+          <span>MANFEST - VARCHASVA</span>
           <span>ONE FEST. MANY WORLDS.</span>
         </div>
 

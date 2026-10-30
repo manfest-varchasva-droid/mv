@@ -69,7 +69,7 @@ export default function DuexDanzaPage() {
               <article className={styles.roleCard}>
                 <b>YOUR MOMENT</b>
                 <p>
-                  Set the stage ablaze with your partner, as the rhythm becomes your muse. It&apos;s time to sync to the beat, turn up the heat, and showcase a dance spectacle that transcends boundaries. Hurry, register now, and prepare to elevate your dancing skills in a thrilling face-off against the best! This is your moment to shine — Duex Danza awaits your artistic prowess.
+                  Set the stage ablaze with your partner, as the rhythm becomes your muse. It&apos;s time to sync to the beat, turn up the heat, and showcase a dance spectacle that transcends boundaries. Hurry, register now, and prepare to elevate your dancing skills in a thrilling face-off against the best! This is your moment to shine - Duex Danza awaits your artistic prowess.
                 </p>
               </article>
             </div>
@@ -112,7 +112,7 @@ export default function DuexDanzaPage() {
               </article>
               <article className={styles.roleCard}>
                 <b>03</b>
-                <p>Rounds: 2 — Online preliminary round + Offline final round.</p>
+                <p>Rounds: 2 - Online preliminary round + Offline final round.</p>
               </article>
               <article className={styles.roleCard}>
                 <b>04</b>

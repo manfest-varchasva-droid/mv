@@ -63,7 +63,7 @@ export default function IzhaarPage() {
               <article className={styles.roleCard}>
                 <b>ALL THE WORLD&apos;S A STAGE</b>
                 <p>
-                  “All the world&apos;s a stage, and all the men and women, merely players.” — William Shakespeare
+                  “All the world&apos;s a stage, and all the men and women, merely players.” - William Shakespeare
                 </p>
               </article>
               <article className={styles.roleCard}>
@@ -128,7 +128,7 @@ export default function IzhaarPage() {
               </article>
               <article className={styles.roleCard}>
                 <b>04</b>
-                <p>Participants have the freedom to choose their act from either of the two forms — Narration or Method Acting.</p>
+                <p>Participants have the freedom to choose their act from either of the two forms - Narration or Method Acting.</p>
               </article>
             </div>
           </section>

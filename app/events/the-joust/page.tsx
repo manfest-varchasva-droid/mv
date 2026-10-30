@@ -63,7 +63,7 @@ export default function TheJoustPage() {
               <article className={styles.roleCard}>
                 <b>FREEDOM THROUGH DEBATE</b>
                 <p>
-                  “Freedom is hammered out on the anvil of discussion, dissent and debate.” — Hubert H. Humphrey
+                  “Freedom is hammered out on the anvil of discussion, dissent and debate.” - Hubert H. Humphrey
                 </p>
               </article>
               <article className={styles.roleCard}>

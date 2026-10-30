@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 const description = "A three-day leadership programme to learn from distinguished leaders, exchange ideas and build a network of aspiring changemakers.";
 
 export const metadata: Metadata = {
-  title: "Young Leaders Program (YLP) — 2025–26 Archive",
+  title: "Young Leaders Program (YLP) - 2025–26 Archive",
   description,
   alternates: {
     canonical: "/events/young-leaders-programme/",
