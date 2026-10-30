@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 const description = "A spoken-poetry competition where original Hindi or English verse becomes a platform for voice, emotion and expression.";
 
 export const metadata: Metadata = {
-  title: "Rohan — 2025–26 Archive",
+  title: "Rohan - 2025–26 Archive",
   description,
   alternates: {
     canonical: "/events/rohan/",
