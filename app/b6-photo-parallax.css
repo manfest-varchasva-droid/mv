@@ -30,8 +30,8 @@
 
 .b6-hero-photo--partners {
   background-image:
-    linear-gradient(90deg, rgba(6, 7, 15, .60) 0%, rgba(6, 7, 15, .30) 46%, rgba(6, 7, 15, .10) 100%),
-    linear-gradient(180deg, rgba(6, 7, 15, .02) 0%, rgba(6, 7, 15, .24) 100%),
+    linear-gradient(90deg, rgba(6, 7, 15, .86) 0%, rgba(6, 7, 15, .63) 46%, rgba(6, 7, 15, .18) 100%),
+    linear-gradient(180deg, rgba(6, 7, 15, .08) 0%, rgba(6, 7, 15, .34) 100%),
     url("/events/partners hero.png");
   background-position: center center;
 }
