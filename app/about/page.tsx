@@ -11,22 +11,22 @@ const history = [
   {
     year: "1988",
     title: "Manfest begins",
-    copy: "Manfest started as IIM Lucknow's management festival, bringing together leadership competitions, paper presentations, debates and industry-student interactions.",
+    copy: "Manfest started as IIM Lucknow's management fest, bringing together leadership competitions, paper presentations, debates and industry-student interactions.",
   },
   {
     year: "2007–2009",
     title: "Scale and recognition",
-    copy: "Manfest received ISO 9001:2000 certification for event management in 2007. By 2009, it had grown into one of Asia's largest B-school festivals by prize money and participation.",
+    copy: "Manfest received ISO 9001:2000 certification for event management in 2007. By 2009, it had grown into one of Asia's largest B-school fests by prize money and participation.",
   },
   {
     year: "2009",
     title: "Varchasva is born",
-    copy: "Varchasva began as IIM Lucknow's cultural and sports festival, spanning dance, fashion, theatre, music, literature and sport.",
+    copy: "Varchasva began as IIM Lucknow's cultural and sports fest, spanning dance, fashion, theatre, music, literature and sport.",
   },
   {
     year: "2014",
-    title: "Two festivals become one",
-    copy: "Manfest and Varchasva merged to create Manfest-Varchasva, combining the intensity of business competition with culture, sport and entertainment in one campus-wide festival.",
+    title: "Two fests become one",
+    copy: "Manfest and Varchasva merged to create Manfest-Varchasva, combining the intensity of business competition with culture, sport and entertainment in one campus-wide fest.",
   },
   {
     year: "Today",
@@ -50,7 +50,7 @@ export default function AboutPage() {
           <div className="eyebrow">ABOUT US</div>
           <h1>Where business, culture and sport meet.</h1>
           <p>
-            Manfest-Varchasva is IIM Lucknow&apos;s official annual business, cultural and sports festival.
+            Manfest-Varchasva is IIM Lucknow&apos;s official annual business, cultural and sports fest.
           </p>
         </div>
       </section>
@@ -59,15 +59,15 @@ export default function AboutPage() {
         <div className="page-shell split-copy">
           <SectionTitle
             eyebrow="WHO WE ARE"
-            title="One festival."
+            title="One fest."
             accent="Three worlds."
           />
           <div className="prose-block">
             <p>
-              Manfest-Varchasva is the official annual Business, Cultural and Sports Festival of IIM Lucknow. The three-day event brings together Manfest, the Business Conclave, and Varchasva, the Cultural and Sports Festival.
+              Manfest-Varchasva is the official annual Business, Cultural and Sports Fest of IIM Lucknow. The three-day event brings together Manfest, the Business Conclave, and Varchasva, the Cultural and Sports Fest.
             </p>
             <p>
-              The festival has welcomed more than 30,000 participants in a single edition and has hosted leaders from public life, business and academia alongside some of India&apos;s most recognised performers.
+              The fest has welcomed more than 30,000 participants in a single edition and has hosted leaders from public life, business and academia alongside some of India&apos;s most recognised performers.
             </p>
             <p>
               Across the three days, the campus comes alive with sports, speaker sessions, management competitions, cultural showcases, pro-shows and community initiatives such as the Lucknow City Run.
