@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 const description = "A live band competition built around musicianship, stage energy and performance at Manfest-Varchasva.";
 
 export const metadata: Metadata = {
-  title: "Stairway to Hell — 2025–26 Archive",
+  title: "Stairway to Hell - 2025–26 Archive",
   description,
   alternates: {
     canonical: "/events/stairway-to-hell/",
