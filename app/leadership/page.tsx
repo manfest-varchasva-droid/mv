@@ -7,7 +7,7 @@ import styles from "../festival-topics.module.css";
 
 export const metadata: Metadata = {
   title: "Leadership Talks & Leaders Express at IIM Lucknow",
-  description: "Discover Leaders Express, the Young Leaders Programme and past speakers at IIM Lucknow's Manfest-Varchasva festival, from Dr. A.P.J. Abdul Kalam to business leaders.",
+  description: "Discover Leaders Express, the Young Leaders Programme and past speakers at IIM Lucknow's Manfest-Varchasva fest, from Dr. A.P.J. Abdul Kalam to business leaders.",
   alternates: { canonical: "/leadership/" },
   openGraph: {
     title: "IIM Lucknow Leadership Talks | Manfest-Varchasva",
@@ -30,7 +30,7 @@ export default function LeadershipPage() {
             <p>Manfest-Varchasva connects students with voices from public life, business, entrepreneurship and culture. Discover the people and ideas behind its leadership tradition.</p>
             <div className={styles.linkRow} data-b1-actions>
               <Link className={styles.primaryLink} href="/events/young-leaders-programme/">Young Leaders Programme archive</Link>
-              <Link className={styles.secondaryLink} href="/about/">About the festival</Link>
+              <Link className={styles.secondaryLink} href="/about/">About the fest</Link>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default function LeadershipPage() {
           <div className={styles.contentHeader}>
             <span className={styles.smallCaps}>Leaders Express</span>
             <h2>Conversations beyond the classroom</h2>
-            <p>IIM Lucknow&apos;s annual business, cultural and sports festival has welcomed speakers whose work spans leadership, policy, entrepreneurship, science and the arts. Leaders Express gives students a way to encounter different perspectives and connect management education with the world beyond campus.</p>
+            <p>IIM Lucknow&apos;s annual business, cultural and sports fest has welcomed speakers whose work spans leadership, policy, entrepreneurship, science and the arts. Leaders Express gives students a way to encounter different perspectives and connect management education with the world beyond campus.</p>
           </div>
           <div className={styles.grid}>
             {leaders.slice(0, 6).map((person) => (
@@ -66,7 +66,7 @@ export default function LeadershipPage() {
           <div className={styles.contentHeader}>
             <span className={styles.smallCaps}>Student leadership experience</span>
             <h2>Young Leaders Programme and management conversations</h2>
-            <p>Alongside guest talks, the festival&apos;s historical event archive includes the Young Leaders Programme, a format focused on ideas, learning and interaction among aspiring changemakers. Management case competitions, business debates and simulations form another part of the festival&apos;s legacy.</p>
+            <p>Alongside guest talks, the fest&apos;s historical event archive includes the Young Leaders Programme, a format focused on ideas, learning and interaction among aspiring changemakers. Management case competitions, business debates and simulations form another part of the fest&apos;s legacy.</p>
           </div>
           <div className={styles.featureGrid}>
             <article className={styles.feature}>
@@ -76,14 +76,14 @@ export default function LeadershipPage() {
             </article>
             <article className={styles.feature}>
               <h3>Management competitions</h3>
-              <p>Explore how case-based problem solving, business knowledge and presentation skills feature in the IIM Lucknow festival experience.</p>
+              <p>Explore how case-based problem solving, business knowledge and presentation skills feature in the IIM Lucknow fest experience.</p>
               <Link href="/management-competitions/">Explore management events →</Link>
             </article>
           </div>
-          <nav className={styles.nextNav} aria-label="Discover more festival experiences">
+          <nav className={styles.nextNav} aria-label="Discover more fest experiences">
             <Link href="/concerts/">Concerts and pro-nights →</Link>
             <Link href="/events/">Browse the event directory →</Link>
-            <Link href="/gallery/">Festival photographs →</Link>
+            <Link href="/gallery/">Fest photographs →</Link>
           </nav>
         </div>
       </section>

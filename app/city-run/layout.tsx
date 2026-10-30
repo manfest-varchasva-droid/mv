@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 export const metadata: Metadata = {
   title: "Lucknow City Run — Past Editions at IIM Lucknow",
   description:
-    "Explore past editions of the Manfest-Varchasva City Run, part of IIM Lucknow's annual business, cultural and sports festival.",
+    "Explore past editions of the Manfest-Varchasva City Run, part of IIM Lucknow's annual business, cultural and sports fest.",
   alternates: {
     canonical: "/city-run/",
   },

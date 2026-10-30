@@ -15,7 +15,7 @@ const journeys = [
     href: "/leadership/",
     kicker: "IDEAS & CONVERSATIONS",
     title: "Leaders Express",
-    description: "Discover past speakers and the festival's leadership conversations.",
+    description: "Discover past speakers and the fest's leadership conversations.",
     image: "/leaders/kapil-dev-final.jpg",
     alt: "Kapil Dev, a featured speaker in Manfest-Varchasva's Leaders Express history",
   },
@@ -25,7 +25,7 @@ const journeys = [
     title: "Management Competitions",
     description: "Learn about the case challenges, quizzes and simulations behind Manfest.",
     image: "/events/events hero.png",
-    alt: "Manfest-Varchasva festival scene at IIM Lucknow",
+    alt: "Manfest-Varchasva fest scene at IIM Lucknow",
   },
 ];
 
@@ -33,12 +33,12 @@ export function FestivalDiscover() {
   return (
     <section className={styles.discover} aria-labelledby="discover-festival">
       <div className={styles.shell}>
-        <span className={styles.smallCaps}>Inside the IIM Lucknow festival</span>
+        <span className={styles.smallCaps}>Inside the IIM Lucknow fest</span>
         <h2 id="discover-festival">Discover Manfest-Varchasva: business, culture and live performance</h2>
         <p className={styles.discoverIntro}>
-          Manfest-Varchasva is the annual business, cultural and sports festival of
+          Manfest-Varchasva is the annual business, cultural and sports fest of
           the <strong> Indian Institute of Management Lucknow (IIM Lucknow)</strong>.
-          Scheduled for 5–7 February 2027, the festival brings together management
+          Scheduled for 5–7 February 2027, the fest brings together management
           competitions, leadership conversations, sports, campus culture and
           concert experiences. Explore its history and previous editions below.
         </p>

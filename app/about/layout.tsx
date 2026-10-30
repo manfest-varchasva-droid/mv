@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 export const metadata: Metadata = {
   title: "History of Manfest-Varchasva at IIM Lucknow",
   description:
-    "Discover the history and team behind Manfest-Varchasva, IIM Lucknow's annual business, cultural and sports festival.",
+    "Discover the history and team behind Manfest-Varchasva, IIM Lucknow's annual business, cultural and sports fest.",
   alternates: {
     canonical: "/about/",
   },

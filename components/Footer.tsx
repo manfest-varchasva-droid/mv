@@ -16,7 +16,7 @@ export function Footer() {
             />
             <span>MANFEST-VARCHASVA</span>
           </div>
-          <p>IIM Lucknow&apos;s annual business, cultural and sports festival.</p>
+          <p>IIM Lucknow&apos;s annual business, cultural and sports fest.</p>
         </div>
 
         <nav aria-label="Explore Manfest-Varchasva">
