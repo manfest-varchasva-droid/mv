@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages -- These footer links intentionally use native navigation to remain responsive when the client router is busy. */
 import Image from "next/image";
 
 export function Footer() {
