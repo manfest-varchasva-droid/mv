@@ -19,7 +19,7 @@
   background:
     radial-gradient(ellipse at 45% 60%, rgba(46, 20, 76, .74), rgba(6, 5, 18, .96) 80%),
     linear-gradient(180deg, #080711, #120716);
-  animation: b1-page-wash 1.15s cubic-bezier(.3, .5, .3, 1) both;
+  animation: b1-page-wash .82s cubic-bezier(.3, .5, .3, 1) both;
 }
 
 /* City Run previously disabled its ::before; the added scoped class only
@@ -37,7 +37,7 @@
 
 @media (max-width: 700px) {
   #main-content > .b1-page-hero::before {
-    animation-duration: .95s;
+    animation-duration: .68s;
   }
 }
 
