@@ -4,9 +4,9 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 import { preload } from "react-dom";
 
 export const metadata = {
-  title: "Festival Sponsors & Partners at IIM Lucknow",
+  title: "Fest Sponsors & Partners at IIM Lucknow",
   description:
-    "Explore the organisations that have partnered with Manfest-Varchasva, IIM Lucknow's annual business, cultural and sports festival.",
+    "Explore the organisations that have partnered with Manfest-Varchasva, IIM Lucknow's annual business, cultural and sports fest.",
   alternates: {
     canonical: "/partners/",
   },
