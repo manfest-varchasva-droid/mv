@@ -112,7 +112,7 @@ export default function EventsPage() {
 
       <section className={`section section-dark ${styles.listingSection}`}>
         <div className={topics.shell} style={{ paddingTop: 20 }}>
-          <p className={topics.introText}>Looking for a specific part of the IIM Lucknow festival? Explore <Link href="/concerts/">concerts and pro-nights</Link>, <Link href="/leadership/">Leaders Express and leadership talks</Link>, or <Link href="/management-competitions/">management challenges</Link>.</p>
+          <p className={topics.introText}>Looking for a specific part of the IIM Lucknow fest? Explore <Link href="/concerts/">concerts and pro-nights</Link>, <Link href="/leadership/">Leaders Express and leadership talks</Link>, or <Link href="/management-competitions/">management challenges</Link>.</p>
         </div>
         <div className="page-shell">
           <SectionTitle eyebrow="EXPLORE" title="All" accent="Events" />
