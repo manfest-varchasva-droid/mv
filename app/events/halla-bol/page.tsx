@@ -63,7 +63,7 @@ export default function HallaBolPage() {
               <article className={styles.roleCard}>
                 <b>ALL THE WORLD&apos;S A STAGE</b>
                 <p>
-                  “All the world&apos;s a stage, and all the men and women, merely players.” — William Shakespeare
+                  “All the world&apos;s a stage, and all the men and women, merely players.” - William Shakespeare
                 </p>
               </article>
               <article className={styles.roleCard}>
