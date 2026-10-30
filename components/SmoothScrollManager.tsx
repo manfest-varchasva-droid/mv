@@ -62,6 +62,8 @@ export function SmoothScrollManager() {
     let disposed = false;
     let lenis: Lenis | null = null;
     let refreshFrame = 0;
+    let footer: HTMLElement | null = null;
+    let settleFooterScroll: (() => void) | null = null;
     const ticker = (seconds: number) => lenis?.raf(seconds * 1000);
     const syncScrollTrigger = () => ScrollTrigger.update();
 
@@ -87,6 +89,17 @@ export function SmoothScrollManager() {
       });
 
       lenis.on("scroll", syncScrollTrigger);
+
+      // Avoid moving footer links underneath the pointer while Lenis finishes
+      // a long wheel or anchor transition. Do not disable normal wheel input.
+      footer = document.querySelector<HTMLElement>(".site-footer");
+      settleFooterScroll = () => {
+        if (lenis?.isScrolling === "smooth") {
+          lenis.scrollTo(lenis.actualScroll, { immediate: true });
+        }
+      };
+      footer?.addEventListener("pointerenter", settleFooterScroll);
+      footer?.addEventListener("focusin", settleFooterScroll);
       gsap.ticker.add(ticker);
       refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
     }).catch(() => {
@@ -96,6 +109,10 @@ export function SmoothScrollManager() {
     return () => {
       disposed = true;
       if (refreshFrame) cancelAnimationFrame(refreshFrame);
+      if (footer && settleFooterScroll) {
+        footer.removeEventListener("pointerenter", settleFooterScroll);
+        footer.removeEventListener("focusin", settleFooterScroll);
+      }
       gsap.ticker.remove(ticker);
       if (lenis) {
         lenis.off("scroll", syncScrollTrigger);
