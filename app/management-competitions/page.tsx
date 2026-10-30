@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/management-competitions/" },
   openGraph: {
     title: "Management Competitions at IIM Lucknow | Manfest-Varchasva",
-    description: "Case studies, management challenges and business competitions at IIM Lucknow's annual Manfest-Varchasva festival.",
+    description: "Case studies, management challenges and business competitions at IIM Lucknow's annual Manfest-Varchasva fest.",
     url: "/management-competitions/",
     images: ["/events/events hero.png"],
   },
@@ -29,9 +29,9 @@ export default function ManagementCompetitionsPage() {
           <div className={styles.heroCopy}>
             <div className={styles.kicker} data-b1-eyebrow>Management · Business fest · IIM Lucknow</div>
             <h1>Management competitions at Manfest-Varchasva</h1>
-            <p>Built on IIM Lucknow&apos;s Manfest legacy, the festival brings together students interested in business strategy, analytical thinking, case solving and leadership.</p>
+            <p>Built on IIM Lucknow&apos;s Manfest legacy, the fest brings together students interested in business strategy, analytical thinking, case solving and leadership.</p>
             <div className={styles.linkRow} data-b1-actions>
-              <Link className={styles.primaryLink} href="/events/">See all festival events</Link>
+              <Link className={styles.primaryLink} href="/events/">See all fest events</Link>
               <Link className={styles.secondaryLink} href="/about/">The Manfest story</Link>
             </div>
           </div>
@@ -41,10 +41,10 @@ export default function ManagementCompetitionsPage() {
       <section className={styles.contentSection}>
         <div className={styles.shell}>
           <div className={styles.contentHeader}>
-            <span className={styles.smallCaps}>The business side of the festival</span>
+            <span className={styles.smallCaps}>The business side of the fest</span>
             <h2>From business cases to competitive thinking</h2>
-            <p>Manfest began as IIM Lucknow&apos;s management festival in 1988. It later came together with Varchasva, the cultural and sports festival, to form Manfest-Varchasva. The management programme has historically connected students across institutions through competitions and business discussions.</p>
-            <p>Past editions have included case competitions, management quizzes and simulations that test analysis, creativity, strategic reasoning and presentation skills. The descriptions below explain the types of activities associated with the festival&apos;s history; they are <strong>not a confirmed 2027 event list</strong>.</p>
+            <p>Manfest began as IIM Lucknow&apos;s management fest in 1988. It later came together with Varchasva, the cultural and sports fest, to form Manfest-Varchasva. The management programme has historically connected students across institutions through competitions and business discussions.</p>
+            <p>Past editions have included case competitions, management quizzes and simulations that test analysis, creativity, strategic reasoning and presentation skills. The descriptions below explain the types of activities associated with the fest&apos;s history; they are <strong>not a confirmed 2027 event list</strong>.</p>
           </div>
           <div className={styles.featureGrid}>
             <article className={styles.feature}>
@@ -61,7 +61,7 @@ export default function ManagementCompetitionsPage() {
             </article>
             <article className={styles.feature}>
               <h3>Leadership and industry interaction</h3>
-              <p>The festival also connects business learning with guest sessions, real-world perspectives and student leadership experiences.</p>
+              <p>The fest also connects business learning with guest sessions, real-world perspectives and student leadership experiences.</p>
               <Link href="/leadership/">Discover Leaders Express →</Link>
             </article>
           </div>
@@ -73,14 +73,14 @@ export default function ManagementCompetitionsPage() {
         <div className={styles.shell}>
           <div className={styles.contentHeader}>
             <span className={styles.smallCaps}>Explore previous editions</span>
-            <h2>Past management events and festival context</h2>
+            <h2>Past management events and fest context</h2>
             <p>To understand the competitions and participation formats from earlier editions, use the historical event listing. The linked 2025–26 Unstop page is preserved for reference and must not be treated as an open 2027 registration page.</p>
           </div>
           <div className={styles.linkRow}>
             <a href={previousEditionOnUnstop} className={styles.secondaryLink} target="_blank" rel="noopener noreferrer">View 2025–26 Unstop archive</a>
             <Link className={styles.primaryLink} href="/events/">Browse event categories</Link>
           </div>
-          <nav className={styles.nextNav} aria-label="Discover more festival experiences">
+          <nav className={styles.nextNav} aria-label="Discover more fest experiences">
             <Link href="/leadership/">Leadership talks and speakers →</Link>
             <Link href="/concerts/">Concerts at IIM Lucknow →</Link>
             <Link href="/city-run/">Lucknow City Run →</Link>
