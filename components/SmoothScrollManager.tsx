@@ -62,8 +62,8 @@ export function SmoothScrollManager() {
     let disposed = false;
     let lenis: Lenis | null = null;
     let refreshFrame = 0;
-    let footer: HTMLElement | null = null;
-    let settleFooterScroll: (() => void) | null = null;
+    let navigationTargets: HTMLElement[] = [];
+    let settleNavigationScroll: (() => void) | null = null;
     const ticker = (seconds: number) => lenis?.raf(seconds * 1000);
     const syncScrollTrigger = () => ScrollTrigger.update();
 
@@ -90,18 +90,24 @@ export function SmoothScrollManager() {
 
       lenis.on("scroll", syncScrollTrigger);
 
-      // Avoid moving footer links underneath the pointer while Lenis finishes
-      // a long wheel or anchor transition. Do not disable normal wheel input.
-      footer = document.querySelector<HTMLElement>(".site-footer");
-      settleFooterScroll = () => {
+      // Moving click targets can slide out from under the pointer during a
+      // Lenis transition. Settle only when interacting with navigation surfaces,
+      // preserving normal wheel scrolling elsewhere.
+      navigationTargets = Array.from(document.querySelectorAll<HTMLElement>(
+        ".site-footer, [data-stabilize-nav-target]",
+      ));
+      const settleCurrentNavigationScroll = () => {
         if (lenis?.isScrolling === "smooth") {
           lenis.scrollTo(lenis.actualScroll, { immediate: true });
         }
       };
-      footer?.addEventListener("pointerenter", settleFooterScroll);
-      footer?.addEventListener("pointermove", settleFooterScroll, { passive: true });
-      footer?.addEventListener("pointerdown", settleFooterScroll, { passive: true });
-      footer?.addEventListener("focusin", settleFooterScroll);
+      settleNavigationScroll = settleCurrentNavigationScroll;
+      navigationTargets.forEach((target) => {
+        target.addEventListener("pointerenter", settleCurrentNavigationScroll);
+        target.addEventListener("pointermove", settleCurrentNavigationScroll, { passive: true });
+        target.addEventListener("pointerdown", settleCurrentNavigationScroll, { passive: true });
+        target.addEventListener("focusin", settleCurrentNavigationScroll);
+      });
       gsap.ticker.add(ticker);
       refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
     }).catch(() => {
@@ -111,11 +117,14 @@ export function SmoothScrollManager() {
     return () => {
       disposed = true;
       if (refreshFrame) cancelAnimationFrame(refreshFrame);
-      if (footer && settleFooterScroll) {
-        footer.removeEventListener("pointerenter", settleFooterScroll);
-        footer.removeEventListener("pointermove", settleFooterScroll);
-        footer.removeEventListener("pointerdown", settleFooterScroll);
-        footer.removeEventListener("focusin", settleFooterScroll);
+      const listener = settleNavigationScroll;
+      if (listener) {
+        navigationTargets.forEach((target) => {
+          target.removeEventListener("pointerenter", listener);
+          target.removeEventListener("pointermove", listener);
+          target.removeEventListener("pointerdown", listener);
+          target.removeEventListener("focusin", listener);
+        });
       }
       gsap.ticker.remove(ticker);
       if (lenis) {
