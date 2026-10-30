@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 const description = "The Manfest-Varchasva fashion parade where confidence, storytelling and style come together on the runway.";
 
 export const metadata: Metadata = {
-  title: "JashN — 2025–26 Archive",
+  title: "JashN - 2025–26 Archive",
   description,
   alternates: {
     canonical: "/events/jashn/",
