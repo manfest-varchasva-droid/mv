@@ -25,12 +25,17 @@ export function SectionEntrance() {
       return;
     }
 
+    // A fully clipped heading does not reliably intersect. Observe its
+    // unclipped parent, but reveal the heading itself when that parent enters.
+    const revealTargets = new Map<Element, HTMLElement[]>();
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
-        const element = entry.target as HTMLElement;
-        element.classList.add("is-visible");
-        observer.unobserve(element);
+        revealTargets.get(entry.target)?.forEach((element) => {
+          element.classList.add("is-visible");
+        });
+        observer.unobserve(entry.target);
+        revealTargets.delete(entry.target);
       }
     }, { threshold: 0.06, rootMargin: "0px 0px -6% 0px" });
 
@@ -62,7 +67,13 @@ export function SectionEntrance() {
         // Retain A20 for unmasked headings/rows elsewhere in the site.
         element.classList.add("mv-reveal");
       }
-      observer.observe(element);
+      const observationTarget = element.matches("h2")
+        ? element.parentElement ?? element
+        : element;
+      const headingGroup = revealTargets.get(observationTarget) ?? [];
+      headingGroup.push(element);
+      revealTargets.set(observationTarget, headingGroup);
+      observer.observe(observationTarget);
     });
 
     return () => {
