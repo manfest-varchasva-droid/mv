@@ -70,12 +70,12 @@ export default function ConcertsPage() {
           </div>
           <div className={styles.featureGrid}>
             <article className={styles.feature}>
-              <h3>Sur — solo singing</h3>
+              <h3>Sur - solo singing</h3>
               <p>A stage for individual vocalists. View the competition description and previous-edition material before planning participation.</p>
               <Link href="/events/sur/">Explore Sur →</Link>
             </article>
             <article className={styles.feature}>
-              <h3>Stairway to Hell — bands</h3>
+              <h3>Stairway to Hell - bands</h3>
               <p>Student bands compete through live performance, energy and musicianship as part of the cultural programme.</p>
               <Link href="/events/stairway-to-hell/">Explore the band competition →</Link>
             </article>
