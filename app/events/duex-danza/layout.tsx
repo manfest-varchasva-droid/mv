@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 const description = "A freestyle duet dance competition where chemistry, creativity and rhythm come together on stage.";
 
 export const metadata: Metadata = {
-  title: "Duex Danza — 2025–26 Archive",
+  title: "Duex Danza - 2025–26 Archive",
   description,
   alternates: {
     canonical: "/events/duex-danza/",
