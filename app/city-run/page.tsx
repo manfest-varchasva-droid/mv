@@ -3,12 +3,13 @@ import Link from "next/link";
 import { SectionTitle } from "@/components/SectionTitle";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 import styles from "./city-run.module.css";
+import n from "./city-run-2027.module.css";
 import { preload } from "react-dom";
 
 export const metadata = {
   title: "Lucknow City Run 2027 — 31 January | Manfest-Varchasva",
   description:
-    "Lucknow City Run returns on 31 January 2027. Registrations will open soon. Explore the 2026 edition hosted by Manfest-Varchasva, IIM Lucknow.",
+    "City Run 2027 is on 31 January 2027. Registrations will open soon. See the 2026 highlights.",
 };
 
 const partners = [
@@ -49,16 +50,16 @@ export default function CityRunPage() {
 
   return (
     <>
-      <section className={styles.hero} data-b1-page-hero data-b6-trigger>
+      <section className={`${styles.hero} ${n.heroWithNotice}`} data-b1-page-hero data-b6-trigger>
         <div className="b6-hero-photo b6-hero-photo--city-run" data-b6-parallax="hero" aria-hidden="true" />
-        <div className={styles.upcomingNotice} aria-label="City Run 2027 announcement">
-          <div className={styles.upcomingNoticeCopy}>
+        <div className={n.upcomingNotice} aria-label="City Run 2027 announcement">
+          <div className={n.upcomingNoticeCopy}>
             <strong>City Run 2027</strong>
             <time dateTime="2027-01-31">31st January 2027</time>
           </div>
-          <span className={styles.registrationStatus}>Registrations will open soon</span>
+          <span className={n.registrationStatus}>Registrations will open soon</span>
         </div>
-        <div className={`page-shell ${styles.heroInner}`} data-b1-page-content>
+        <div className={`page-shell ${styles.heroInner} ${n.heroInnerWithNotice}`} data-b1-page-content>
           <p className={styles.kicker} data-b1-eyebrow>2026 ARCHIVE • MANFEST-VARCHASVA</p>
           <h1 className="b3-page-heading">Lucknow City Run</h1>
           <p className={styles.heroLead}>
