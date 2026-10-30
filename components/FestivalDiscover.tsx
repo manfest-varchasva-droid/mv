@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import styles from "@/app/festival-topics.module.css";
 
 const journeys = [
@@ -44,13 +43,13 @@ export function FestivalDiscover() {
         </p>
         <div className={styles.grid}>
           {journeys.map((item) => (
-            <Link className={styles.topicCard} href={item.href} key={item.href}>
+            <a className={styles.topicCard} href={item.href} key={item.href} data-stabilize-nav-target>
               <Image src={item.image} alt={item.alt} fill sizes="(max-width: 620px) 100vw, (max-width: 850px) 50vw, 33vw" />
               <span className={styles.smallCaps}>{item.kicker}</span>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
               <strong>Explore this part of the fest →</strong>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
