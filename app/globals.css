@@ -1209,7 +1209,7 @@ button, input, textarea, select { font: inherit; }
 }
 
 
-/* Reversible hover polish — subtle lift, image motion and focus glow.
+/* Reversible hover polish - subtle lift, image motion and focus glow.
    Desktop/pointer devices only so touch interactions remain unchanged. */
 @media (hover: hover) and (pointer: fine) {
   .btn,
