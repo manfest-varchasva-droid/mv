@@ -12,7 +12,8 @@
   padding: clamp(150px, 20vh, 210px) 0 clamp(55px, 8vw, 115px);
 }
 .topicHeroPhoto { position: absolute; inset: 0; z-index: -2; object-fit: cover; object-position: center; }
-.topicHero::before {
+/* Keep the text gradient separate from B1's animated ::before wash. */
+.topicHero::after {
   content: "";
   position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(90deg, rgba(9,6,20,.97) 0%, rgba(9,6,20,.81) 44%, rgba(9,6,20,.4) 100%),
@@ -79,7 +80,7 @@
   .shell { width: min(100% - 36px, 1150px); }
   .topicHero { min-height: 530px; padding: 135px 0 62px; }
   .topicHero h1 { font-size: clamp(35px,10vw,54px); }
-  .topicHero::before { background: linear-gradient(0deg, #0a0716 8%, rgba(9,6,20,.82) 60%, rgba(9,6,20,.4)); }
+  .topicHero::after { background: linear-gradient(0deg, #0a0716 8%, rgba(9,6,20,.82) 60%, rgba(9,6,20,.4)); }
   .grid, .featureGrid { grid-template-columns: 1fr; }
   .photoFrame { aspect-ratio: 16/10; }
   .topicCard { min-height: 310px; }
