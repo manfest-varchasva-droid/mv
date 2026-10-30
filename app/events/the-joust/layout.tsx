@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 const description = "The annual debate competition that tests argumentation, rebuttal, persuasion and the ability to think on your feet.";
 
 export const metadata: Metadata = {
-  title: "The Joust — 2025–26 Archive",
+  title: "The Joust - 2025–26 Archive",
   description,
   alternates: {
     canonical: "/events/the-joust/",
