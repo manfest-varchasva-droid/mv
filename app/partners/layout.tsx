@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Festival Sponsors & Partners at IIM Lucknow",
+  title: "Fest Sponsors & Partners at IIM Lucknow",
   description:
-    "Discover past sponsors, brands and institutional partners supporting Manfest-Varchasva, the annual business, cultural and sports festival of IIM Lucknow.",
+    "Discover past sponsors, brands and institutional partners supporting Manfest-Varchasva, the annual business, cultural and sports fest of IIM Lucknow.",
   alternates: {
     canonical: "/partners/",
   },
