@@ -99,6 +99,8 @@ export function SmoothScrollManager() {
         }
       };
       footer?.addEventListener("pointerenter", settleFooterScroll);
+      footer?.addEventListener("pointermove", settleFooterScroll, { passive: true });
+      footer?.addEventListener("pointerdown", settleFooterScroll, { passive: true });
       footer?.addEventListener("focusin", settleFooterScroll);
       gsap.ticker.add(ticker);
       refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
@@ -111,6 +113,8 @@ export function SmoothScrollManager() {
       if (refreshFrame) cancelAnimationFrame(refreshFrame);
       if (footer && settleFooterScroll) {
         footer.removeEventListener("pointerenter", settleFooterScroll);
+        footer.removeEventListener("pointermove", settleFooterScroll);
+        footer.removeEventListener("pointerdown", settleFooterScroll);
         footer.removeEventListener("focusin", settleFooterScroll);
       }
       gsap.ticker.remove(ticker);
