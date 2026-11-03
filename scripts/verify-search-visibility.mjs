@@ -21,7 +21,7 @@ assert.doesNotMatch(home, /THE NIGHTS|IDEAS THAT|BEYOND THE/, "Retired three-cha
 assert.match(home, /<h2[^>]*>Our\s*<span>Partners<\/span><\/h2>/, "Homepage partner marquee needs an accessible Our Partners heading");
 for (const [slug, terms] of topics) {
   const html = readFileSync(`out/${slug}/index.html`, "utf8");
-  const title = html.match(/<title>([^<]*)<\/title>/i)?.[1] ?? "";
+  const title = html.match(/<title>(.*?)<\/title>/)?.[1] ?? "";
   assert.match(title, /IIM Lucknow/i, `${slug}: missing IIM Lucknow title`);
   assert.ok(!title.includes("Manfest-Varchasva | Manfest-Varchasva"), `${slug}: duplicated title suffix`);
   assert.ok(html.includes(`<link rel="canonical" href="${base}/${slug}/"`), `${slug}: missing canonical`);
@@ -62,7 +62,7 @@ const allTitles = new Set();
 const allDescriptions = new Set();
 for (const [slug, eventName, eventType] of eventCases) {
   const html = readFileSync(`out/events/${slug}/index.html`, "utf8");
-  const title = html.match(/<title>([\\s\\S]*?)<\\/title>/i)?.[1] ?? "";
+  const title = html.match(/<title>([^<]*)<\/title>/i)?.[1] ?? "";
   const description = html.match(/<meta name="description" content="([^"]*)"/i)?.[1] ?? "";
   assert.ok(title.toLowerCase().includes(eventName.toLowerCase()), `${slug}: event name missing from title`);
   assert.ok(title.toLowerCase().includes(eventType.toLowerCase()), `${slug}: event type missing from title`);
