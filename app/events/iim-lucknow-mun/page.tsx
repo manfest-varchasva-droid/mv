@@ -1,5 +1,8 @@
+import { getEventMetadata } from "@/lib/event-seo";
 import Link from "next/link";
 import styles from "../[slug]/campus-ambassador.module.css";
+
+export const metadata = getEventMetadata("iim-lucknow-mun");
 
 export default function IIMLucknowMUNPage() {
   return (
